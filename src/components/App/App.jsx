@@ -11,6 +11,9 @@ import Notification from 'components/Notification';
 
 import { Wrapper } from './App.styled';
 
+import storage from '../../storage';
+const LS_KEY = 'savedContacts';
+
 // #########################################
 
 export default class App extends Component {
@@ -23,6 +26,16 @@ export default class App extends Component {
     ],
     filter: '',
   };
+
+  // ####### Lifecycle
+
+  componentDidMount() {
+    const savedContacts = storage.load(LS_KEY);
+
+    savedContacts && this.setState({ contacts: savedContacts });
+  }
+
+  // ####### Methods
 
   formSubmitHandler = ({ name, number }) => {
     const { checkIfContactExists, addContact } = this;
@@ -40,6 +53,12 @@ export default class App extends Component {
     );
   };
 
+  // Update local storage
+  writeToStorage = () => {
+    storage.save(LS_KEY, this.state.contacts); // callback
+  };
+
+  // Add contact
   addContact = (name, number) => {
     const contact = {
       id: nanoid(),
@@ -47,11 +66,24 @@ export default class App extends Component {
       number,
     };
 
-    this.setState(prevState => ({
+    const updateState = prevState => ({
       contacts: [...prevState.contacts, contact],
       name: '',
-    }));
+    });
+
+    this.setState(updateState, this.writeToStorage);
   };
+
+  // Delete contact
+  deleteContact = id => {
+    const updateState = prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    });
+
+    this.setState(updateState, this.writeToStorage);
+  };
+
+  // Filter
 
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
@@ -67,11 +99,7 @@ export default class App extends Component {
     );
   };
 
-  deleteContact = id => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id),
-    }));
-  };
+  // ####### Rendering
 
   render() {
     const {
