@@ -53,6 +53,8 @@ export default class App extends Component {
       contacts: [...prevState.contacts, newContact],
       name: '',
     }));
+
+    toast.success(`${name} has been added to the phonebook`);
   };
 
   // Delete contact

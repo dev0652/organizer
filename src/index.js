@@ -11,8 +11,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       toastOptions={{
         duration: 3000,
         style: {
-          background: 'LavenderBlush',
-
           maxWidth: '100%',
           fontSize: '1.3rem',
           lineHeight: '2.5rem',
