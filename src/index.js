@@ -12,8 +12,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         duration: 2000,
         style: {
           maxWidth: '100%',
-          fontSize: '1.3rem',
-          lineHeight: '2.5rem',
+          fontSize: '1.1rem',
+          lineHeight: '2rem',
           padding: '15px 30px',
           // paddingLeft: '20px',
         },
