@@ -27,16 +27,41 @@ export default class App extends Component {
     filter: '',
   };
 
-  // ####### Lifecycle
+  // >>>>>>> Lifecycle
 
   componentDidMount() {
     const savedContacts = storage.load(LS_KEY);
-
     savedContacts && this.setState({ contacts: savedContacts });
+  }
+
+  componentDidUpdate(_, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts.length !== contacts.length) {
+      storage.save(LS_KEY, this.state.contacts);
+    }
   }
 
   // ####### Methods
 
+  // Add contact
+  addContact = (name, number) => {
+    const newContact = { id: nanoid(), name, number };
+
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
+      name: '',
+    }));
+  };
+
+  // Delete contact
+  deleteContact = id => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
+  // Process form submit
   formSubmitHandler = ({ name, number }) => {
     const { checkIfContactExists, addContact } = this;
 
@@ -45,6 +70,7 @@ export default class App extends Component {
       : addContact(name, number);
   };
 
+  // Check if contact with this name already exists
   checkIfContactExists = nameToCompare => {
     const { contacts } = this.state;
 
@@ -53,38 +79,7 @@ export default class App extends Component {
     );
   };
 
-  // Update local storage
-  writeToStorage = () => {
-    storage.save(LS_KEY, this.state.contacts); // callback
-  };
-
-  // Add contact
-  addContact = (name, number) => {
-    const contact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-
-    const updateState = prevState => ({
-      contacts: [...prevState.contacts, contact],
-      name: '',
-    });
-
-    this.setState(updateState, this.writeToStorage);
-  };
-
-  // Delete contact
-  deleteContact = id => {
-    const updateState = prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== id),
-    });
-
-    this.setState(updateState, this.writeToStorage);
-  };
-
-  // Filter
-
+  // Filter contacts by name
   changeFilter = event => {
     this.setState({ filter: event.currentTarget.value });
   };
@@ -99,7 +94,7 @@ export default class App extends Component {
     );
   };
 
-  // ####### Rendering
+  // >>>>>>> Rendering
 
   render() {
     const {
