@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { nanoid } from 'nanoid';
+import toast from 'react-hot-toast';
 
 // #########################################
 
@@ -66,7 +67,7 @@ export default class App extends Component {
     const { checkIfContactExists, addContact } = this;
 
     return checkIfContactExists(name)
-      ? alert(`${name} is already a contact`)
+      ? toast.error(`${name} is already a contact`)
       : addContact(name, number);
   };
 
