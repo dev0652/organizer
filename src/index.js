@@ -17,6 +17,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           padding: '15px 30px',
           // paddingLeft: '20px',
         },
+
+        success: {
+          style: {
+            // background: 'Cornsilk',
+            background: '#f0fff0',
+          },
+        },
+        error: {
+          style: {
+            background: 'LavenderBlush',
+          },
+        },
       }}
     />
   </React.StrictMode>

@@ -62,6 +62,8 @@ export default class App extends Component {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
     }));
+
+    toast.success('Contact has been deleted');
   };
 
   // Process form submit
