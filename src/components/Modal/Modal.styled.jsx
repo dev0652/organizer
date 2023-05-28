@@ -11,10 +11,12 @@ export const Overlay = styled.div`
   align-items: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
-  /* cursor: not-allowed; */
+  cursor: cell;
 `;
 
 export const ModalContent = styled.div`
+  cursor: auto;
+
   width: 300px;
   background-color: #fff;
   padding: 30px;
