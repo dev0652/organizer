@@ -12,7 +12,20 @@ export const ListItem = styled.li`
   justify-content: space-between;
 `;
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+`;
+export const Name = styled.p``;
+
+export const Telephone = styled.p`
+  color: gray;
+  font-size: 0.9rem;
+`;
+
 export const Button = styled.button`
   border: none;
   background-color: transparent;
+  color: crimson;
 `;

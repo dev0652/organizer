@@ -1,6 +1,13 @@
 import { BsTrash3 } from 'react-icons/bs';
 import PropTypes from 'prop-types';
-import { Button, List, ListItem } from './Contacts.styled';
+import {
+  Button,
+  List,
+  ListItem,
+  Name,
+  Telephone,
+  Wrapper,
+} from './Contacts.styled';
 
 const Contacts = ({ contacts, onDeleteContact }) => {
   // Sort contacts in alphabetical order
@@ -12,11 +19,10 @@ const Contacts = ({ contacts, onDeleteContact }) => {
     <List>
       {sortedContacts.map(({ id, name, number }) => (
         <ListItem key={id}>
-          {/* Contact name and phone number */}
-          <p className="contact-text">
-            {name}: {number}
-          </p>
-
+          <Wrapper>
+            <Name>{name}</Name>
+            <Telephone>{number}</Telephone>
+          </Wrapper>
           {/* Delete contact button */}
           <Button onClick={() => onDeleteContact(id)}>
             <BsTrash3 />

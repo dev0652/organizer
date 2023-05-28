@@ -10,7 +10,7 @@ import Contacts from 'components/Contacts';
 import Filter from 'components/Filter';
 import Notification from 'components/Notification';
 
-import { Wrapper } from './App.styled';
+import { ResetLS, Wrapper } from './App.styled';
 
 import storage from '../../storage';
 const LS_KEY = 'savedContacts';
@@ -132,6 +132,12 @@ export default class App extends Component {
             />
           )}
         </Section>
+
+        <form>
+          <ResetLS type="submit" onClick={() => localStorage.clear()}>
+            Clear LS
+          </ResetLS>
+        </form>
       </Wrapper>
     );
   }

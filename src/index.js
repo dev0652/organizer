@@ -21,7 +21,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         success: {
           style: {
             // background: 'Cornsilk',
-            background: '#f0fff0',
+            // background: '#f0fff0',
+            background: '#f5fffa',
           },
         },
         error: {

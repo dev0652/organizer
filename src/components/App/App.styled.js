@@ -11,3 +11,9 @@ export const Wrapper = styled.div`
 
   gap: 40px;
 `;
+
+export const ResetLS = styled.button`
+  position: absolute;
+  top: 20px;
+  right: 20px;
+`;
