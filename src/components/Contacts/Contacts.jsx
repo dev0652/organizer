@@ -24,7 +24,10 @@ const Contacts = ({ contacts, onDeleteContact }) => {
             <Telephone>{number}</Telephone>
           </Wrapper>
           {/* Delete contact button */}
-          <Button onClick={() => onDeleteContact(id)}>
+          <Button
+            onClick={() => onDeleteContact(id)}
+            aria-label="Delete contact"
+          >
             <BsTrash3 />
           </Button>
         </ListItem>

@@ -13,6 +13,7 @@ import Notification from 'components/Notification';
 import { ResetLS, Wrapper } from './App.styled';
 
 import storage from '../../storage';
+import Modal from 'components/Modal/Modal';
 const LS_KEY = 'savedContacts';
 
 // #########################################
@@ -26,6 +27,7 @@ export default class App extends Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
+    showModal: false,
   };
 
   // >>>>>>> Lifecycle
@@ -70,6 +72,8 @@ export default class App extends Component {
   formSubmitHandler = ({ name, number }) => {
     const { checkIfContactExists, addContact } = this;
 
+    this.toggleModal();
+
     return checkIfContactExists(name)
       ? toast.error(`${name} is already a contact`)
       : addContact(name, number);
@@ -99,22 +103,38 @@ export default class App extends Component {
     );
   };
 
+  // Modal
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
+
   // >>>>>>> Rendering
 
   render() {
     const {
-      state: { contacts, filter },
+      state: { contacts, filter, showModal },
       formSubmitHandler,
       changeFilter,
       getFilteredContacts,
       deleteContact,
+      toggleModal,
     } = this;
 
     return (
       <Wrapper>
-        <Section title="Add Contact">
-          <Form onSubmit={formSubmitHandler} />
-        </Section>
+        <button type="button" onClick={toggleModal}>
+          Add a new contact
+        </button>
+
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <Section title="Add Contact">
+              <Form onSubmit={formSubmitHandler} />
+            </Section>
+          </Modal>
+        )}
 
         <Section title="Contacts">
           {contacts.length > 1 && (
@@ -133,6 +153,7 @@ export default class App extends Component {
           )}
         </Section>
 
+        {/* The purpose of this form is to reload the page after LocalStorage has been cleared */}
         <form>
           <ResetLS type="submit" onClick={() => localStorage.clear()}>
             Clear LS
