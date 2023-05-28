@@ -112,7 +112,7 @@ export default class App extends Component {
 
     return (
       <Wrapper>
-        <Section title="Phonebook">
+        <Section title="Add Contact">
           <Form onSubmit={formSubmitHandler} />
         </Section>
 
