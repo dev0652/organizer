@@ -9,6 +9,8 @@ import {
   Wrapper,
 } from './Contacts.styled';
 
+// ################################################
+
 const Contacts = ({ contacts, onDeleteContact }) => {
   // Sort contacts in alphabetical order
   const sortedContacts = [...contacts].sort((a, b) =>
@@ -37,6 +39,8 @@ const Contacts = ({ contacts, onDeleteContact }) => {
 };
 
 export default Contacts;
+
+// ################################################
 
 Contacts.propTypes = {
   contacts: PropTypes.arrayOf(
