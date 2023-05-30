@@ -22,7 +22,7 @@ export default function Modal({ onClose, children }) {
     return () => {
       window.removeEventListener('keydown', handleKeydown);
     };
-  }, []);
+  });
 
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) onClose();
