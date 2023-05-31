@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
 
@@ -61,13 +61,22 @@ export default function App() {
   // Filter contacts by name
   const changeFilter = event => setFilter(event.currentTarget.value);
 
-  const getFilteredContacts = () => {
+  // const getFilteredContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
+
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(normalizedFilter)
+  //   );
+  // };
+  // (converted to useMemo )
+
+  const filteredContacts = useMemo(() => {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
-  };
+  }, [contacts, filter]);
 
   // Modal пуньк-пуньк
   const toggleModal = () => setShowModal(!showModal);
@@ -97,7 +106,8 @@ export default function App() {
 
         {contacts.length !== 0 && (
           <Contacts
-            contacts={getFilteredContacts()}
+            // contacts={getFilteredContacts()}
+            contacts={filteredContacts}
             onDeleteContact={deleteContact}
           />
         )}
