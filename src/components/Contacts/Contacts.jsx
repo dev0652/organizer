@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { deletedContact } from 'redux/actions';
 
 import { BsTrash3 } from 'react-icons/bs';
+import toast from 'react-hot-toast';
 
 import {
   Button,
@@ -27,6 +28,11 @@ const Contacts = () => {
 
   const dispatch = useDispatch();
 
+  const handleDelete = id => {
+    dispatch(deletedContact(id));
+    toast.success('Contact has been deleted');
+  };
+
   // If filtered, display only contacts matching the filter
   const visibleContacts = getVisibleContacts(contacts, filter);
 
@@ -44,10 +50,7 @@ const Contacts = () => {
             <Telephone>{number}</Telephone>
           </Wrapper>
 
-          <Button
-            onClick={() => dispatch(deletedContact(id))}
-            aria-label="Delete contact"
-          >
+          <Button onClick={() => handleDelete(id)} aria-label="Delete contact">
             <BsTrash3 />
           </Button>
         </ListItem>

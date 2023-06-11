@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 
-import toast from 'react-hot-toast';
 import defaultContacts from '../data/defaultContacts';
 import localStorage from '../localStorage';
 
@@ -10,26 +9,10 @@ const contactsInitialState = localStorage.load() ?? defaultContacts;
 
 const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
-    //
-    // Add contact
-
     case 'contacts/addedContact':
-      const name = action.payload.name;
-
-      if (checkIfContactExists(state, name)) {
-        toast.error(`${name} is already a contact`);
-        return state;
-      }
-
-      toast.success(`${name} has been added to the phonebook`);
-
       return [...state, action.payload];
 
-    // Delete contact
-
     case 'contacts/deletedContact':
-      toast.success('Contact has been deleted');
-
       return state.filter(contact => contact.id !== action.payload);
 
     default:
@@ -48,13 +31,6 @@ const filterReducer = (state = '', action) => {
       return state;
   }
 };
-
-// ################################
-
-const checkIfContactExists = (contacts, nameToCompare) =>
-  contacts.find(
-    ({ name }) => name.toLowerCase() === nameToCompare.toLowerCase()
-  );
 
 // ################################
 
