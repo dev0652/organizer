@@ -14,6 +14,7 @@ import {
 } from './Contacts.styled';
 
 // ################################################
+
 const getVisibleContacts = (contacts, filter) => {
   if (!filter) return contacts;
 

@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import defaultContacts from '../data/defaultContacts';
 import localStorage from '../localStorage';
 
-// ############# Contacts ####################
+// ##################################
 
 const contactsInitialState = localStorage.load() ?? defaultContacts;
 
@@ -20,8 +20,6 @@ const contactsReducer = (state = contactsInitialState, action) => {
   }
 };
 
-// ############# Filter ###########
-
 const filterReducer = (state = '', action) => {
   switch (action.type) {
     case 'filter/updatedFilter':
@@ -32,7 +30,7 @@ const filterReducer = (state = '', action) => {
   }
 };
 
-// ################################
+// ##################################
 
 const rootReducer = combineReducers({
   contacts: contactsReducer,
