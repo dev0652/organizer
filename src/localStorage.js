@@ -16,7 +16,7 @@ const load = () => {
   try {
     const serializedState = window.localStorage.getItem(LS_KEY);
 
-    return serializedState === null ? undefined : JSON.parse(serializedState);
+    return serializedState === null ? null : JSON.parse(serializedState);
   } catch (error) {
     console.error('Get state error: ', error.message);
   }

@@ -33,7 +33,11 @@ export default function App() {
 
         {/* This form is used to reload the page after LocalStorage has been cleared */}
         <form>
-          <LoadDefaultsButton type="submit" onClick={localStorage.remove}>
+          <LoadDefaultsButton
+            type="submit"
+            onClick={localStorage.remove}
+            disabled={!localStorage.load()}
+          >
             Load defaults
           </LoadDefaultsButton>
         </form>
