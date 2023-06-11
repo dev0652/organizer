@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
+
 import toast from 'react-hot-toast';
-import defaultContacts from 'data/defaultContacts';
+import defaultContacts from '../data/defaultContacts';
+import localStorage from '../localStorage';
 
-// ################################
+// ############# Contacts ####################
 
-const contactsState = {
-  contacts: localStorage.load() ?? defaultContacts,
-};
+const contactsInitialState = localStorage.load() ?? defaultContacts;
 
-const contactsReducer = (state = contactsState, action) => {
+const contactsReducer = (state = contactsInitialState, action) => {
   switch (action.type) {
     //
-    // ############# Add contact #############
+    // Add contact
 
     case 'contacts/addedContact':
       const name = action.payload.name;
@@ -28,7 +28,7 @@ const contactsReducer = (state = contactsState, action) => {
         contacts: [...state.contacts, action.payload],
       };
 
-    // ############# Delete contact ##########
+    // Delete contact
 
     case 'contacts/deletedContact':
       toast.success('Contact has been deleted');
@@ -45,13 +45,9 @@ const contactsReducer = (state = contactsState, action) => {
   }
 };
 
-// ############# Update filter ###########
+// ############# Filter ###########
 
-const filterState = {
-  filter: '',
-};
-
-const filterReducer = (state = filterState, action) => {
+const filterReducer = (state = '', action) => {
   switch (action.type) {
     case 'filter/updatedFilter':
       return {
@@ -73,7 +69,9 @@ const checkIfContactExists = (contacts, nameToCompare) =>
 
 // ################################
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   contacts: contactsReducer,
   filter: filterReducer,
 });
+
+export default rootReducer;
