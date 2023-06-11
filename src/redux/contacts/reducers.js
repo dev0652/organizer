@@ -1,5 +1,6 @@
 import defaultContacts from 'data/defaultContacts';
 import localStorage from 'localStorage';
+import { ADD, DELETE } from './types';
 
 // ##################################
 
@@ -7,10 +8,10 @@ const initialState = localStorage.load() ?? defaultContacts;
 
 const contactsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'contacts/addedContact':
+    case ADD:
       return [...state, action.payload];
 
-    case 'contacts/deletedContact':
+    case DELETE:
       return state.filter(contact => contact.id !== action.payload);
 
     default:

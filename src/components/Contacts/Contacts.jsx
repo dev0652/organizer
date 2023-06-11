@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deletedContact } from 'redux/actions';
+import { deletedContact } from 'redux/contacts/actions';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';

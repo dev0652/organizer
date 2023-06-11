@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { updateFilter } from 'redux/actions';
+import { updateFilter } from 'redux/filter/actions';
 
 import { Label } from './Filter.styled';
 
