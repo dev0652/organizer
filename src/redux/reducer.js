@@ -16,29 +16,21 @@ const contactsReducer = (state = contactsInitialState, action) => {
     case 'contacts/addedContact':
       const name = action.payload.name;
 
-      if (checkIfContactExists(state.contacts, name)) {
+      if (checkIfContactExists(state, name)) {
         toast.error(`${name} is already a contact`);
         return state;
       }
 
       toast.success(`${name} has been added to the phonebook`);
 
-      return {
-        ...state,
-        contacts: [...state.contacts, action.payload],
-      };
+      return [...state, action.payload];
 
     // Delete contact
 
     case 'contacts/deletedContact':
       toast.success('Contact has been deleted');
 
-      return {
-        ...state,
-        contacts: state.contacts.filter(
-          contact => contact.id !== action.payload
-        ),
-      };
+      return state.filter(contact => contact.id !== action.payload);
 
     default:
       return state;
@@ -50,10 +42,7 @@ const contactsReducer = (state = contactsInitialState, action) => {
 const filterReducer = (state = '', action) => {
   switch (action.type) {
     case 'filter/updatedFilter':
-      return {
-        ...state,
-        filter: action.payload,
-      };
+      return action.payload;
 
     default:
       return state;
