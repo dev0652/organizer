@@ -14,6 +14,8 @@ import {
   Wrapper,
 } from './App.styled';
 
+import localStorage from 'localStorage';
+
 // ################################################
 
 export default function App() {
@@ -31,10 +33,7 @@ export default function App() {
 
         {/* This form is used to reload the page after LocalStorage has been cleared */}
         <form>
-          <LoadDefaultsButton
-            type="submit"
-            onClick={() => window.localStorage.clear()}
-          >
+          <LoadDefaultsButton type="submit" onClick={localStorage.remove}>
             Load defaults
           </LoadDefaultsButton>
         </form>

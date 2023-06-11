@@ -1,27 +1,30 @@
-const save = (key, value) => {
+const LS_KEY = 'savedContacts';
+
+// ############################
+
+const save = value => {
   try {
     const serializedState = JSON.stringify(value);
-    window.localStorage.setItem(key, serializedState);
+
+    window.localStorage.setItem(LS_KEY, serializedState);
   } catch (error) {
-    console.error('Set state error: ', error.message);
+    console.error('Error loading from localStorage: ', error.message);
   }
 };
 
-const load = key => {
+const load = () => {
   try {
-    const serializedState = window.localStorage.getItem(key);
+    const serializedState = window.localStorage.getItem(LS_KEY);
+
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
     console.error('Get state error: ', error.message);
   }
 };
 
-const remove = key => {
+const remove = () => {
   try {
-    const serializedState = window.localStorage.getItem(key);
-    return serializedState === null
-      ? undefined
-      : window.localStorage.removeItem(serializedState);
+    window.localStorage.removeItem(LS_KEY);
   } catch (error) {
     console.error('Get state error: ', error.message);
   }

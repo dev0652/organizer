@@ -1,20 +1,8 @@
-import defaultContacts from 'data/defaultContacts';
 import toast from 'react-hot-toast';
 
-import localStorage from '../localStorage';
-const LS_KEY = 'savedContacts';
-
 // ################################
 
-const initialState = {
-  contacts: localStorage.load(LS_KEY) ?? defaultContacts,
-
-  filter: '',
-};
-
-// ################################
-
-export const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state, action) => {
   switch (action.type) {
     //   Add contact
     case 'contacts/addedContact':
@@ -30,8 +18,6 @@ export const rootReducer = (state = initialState, action) => {
         toast.error(`${name} is already a contact`);
         return state;
       }
-
-      localStorage.save(LS_KEY, action.payload);
 
       toast.success(`${name} has been added to the phonebook`);
 
