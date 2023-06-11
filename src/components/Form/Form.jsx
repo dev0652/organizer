@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 
+import { addContact } from 'redux/actions';
 import { FormWrapper, Label } from './Form.styled';
 
 // ################################################
 
-export default function Form({ onSubmit }) {
+export default function Form({ toggleModal }) {
+  //
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const dispatch = useDispatch();
 
-  const state = { name, number };
-
+  // Update input on change
   const handleChange = event => {
     const { name, value } = event.currentTarget;
 
@@ -26,13 +28,16 @@ export default function Form({ onSubmit }) {
     }
   };
 
+  // On form submit
   const handleSubmit = event => {
     event.preventDefault();
 
-    onSubmit(state);
+    dispatch(addContact(name, number));
     reset();
+    toggleModal();
   };
 
+  // Reset local state (and form)
   const reset = () => {
     setName('');
     setNumber('');
@@ -70,9 +75,3 @@ export default function Form({ onSubmit }) {
     </FormWrapper>
   );
 }
-
-// ##############################################
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

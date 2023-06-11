@@ -1,5 +1,9 @@
+import { useSelector, useDispatch } from 'react-redux';
+import { deletedContact } from 'redux/actions';
+
+import toast from 'react-hot-toast';
 import { BsTrash3 } from 'react-icons/bs';
-import PropTypes from 'prop-types';
+
 import {
   Button,
   List,
@@ -11,9 +15,24 @@ import {
 
 // ################################################
 
-const Contacts = ({ contacts, onDeleteContact }) => {
+const Contacts = () => {
+  const contacts = useSelector(state => state.contacts);
+  const filter = useSelector(state => state.filter);
+  const dispatch = useDispatch();
+
+  const getVisibleContacts = (contacts, filter) => {
+    if (!filter) return contacts;
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
+  };
+
+  // If filtered, display only contacts matching the filter
+  const visibleContacts = getVisibleContacts(contacts, filter);
+
   // Sort contacts in alphabetical order
-  const sortedContacts = [...contacts].sort((a, b) =>
+  const sortedContacts = [...visibleContacts].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
 
@@ -25,9 +44,9 @@ const Contacts = ({ contacts, onDeleteContact }) => {
             <Name>{name}</Name>
             <Telephone>{number}</Telephone>
           </Wrapper>
-          {/* Delete contact button */}
+
           <Button
-            onClick={() => onDeleteContact(id)}
+            onClick={() => dispatch(deletedContact(id))}
             aria-label="Delete contact"
           >
             <BsTrash3 />
@@ -39,16 +58,3 @@ const Contacts = ({ contacts, onDeleteContact }) => {
 };
 
 export default Contacts;
-
-// ################################################
-
-Contacts.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onDeleteContact: PropTypes.func.isRequired,
-};

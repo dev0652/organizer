@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
+
 import App from 'components/App';
 import './index.css';
 import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
+
     <Toaster
       toastOptions={{
         duration: 2000,
@@ -20,8 +27,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
         success: {
           style: {
-            // background: 'Cornsilk',
-            // background: '#f0fff0',
             background: '#f5fffa',
           },
         },
