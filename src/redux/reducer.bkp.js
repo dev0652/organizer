@@ -1,22 +1,22 @@
-import { combineReducers } from 'redux';
 import toast from 'react-hot-toast';
-import defaultContacts from 'data/defaultContacts';
 
 // ################################
 
-const contactsState = {
-  contacts: localStorage.load() ?? defaultContacts,
-};
-
-const contactsReducer = (state = contactsState, action) => {
+export const rootReducer = (state, action) => {
   switch (action.type) {
     //
     // ############# Add contact #############
 
     case 'contacts/addedContact':
+      // Check if contact with this name already exists
+      const checkIfContactExists = nameToCompare =>
+        state.contacts.find(
+          ({ name }) => name.toLowerCase() === nameToCompare.toLowerCase()
+        );
+
       const name = action.payload.name;
 
-      if (checkIfContactExists(state.contacts, name)) {
+      if (checkIfContactExists(name)) {
         toast.error(`${name} is already a contact`);
         return state;
       }
@@ -40,40 +40,17 @@ const contactsReducer = (state = contactsState, action) => {
         ),
       };
 
-    default:
-      return state;
-  }
-};
+    // ############# Update filter ###########
 
-// ############# Update filter ###########
-
-const filterState = {
-  filter: '',
-};
-
-const filterReducer = (state = filterState, action) => {
-  switch (action.type) {
     case 'filter/updatedFilter':
       return {
         ...state,
         filter: action.payload,
       };
 
+    // ############# Default #################
+
     default:
       return state;
   }
 };
-
-// ################################
-
-const checkIfContactExists = (contacts, nameToCompare) =>
-  contacts.find(
-    ({ name }) => name.toLowerCase() === nameToCompare.toLowerCase()
-  );
-
-// ################################
-
-export const rootReducer = combineReducers({
-  contacts: contactsReducer,
-  filter: filterReducer,
-});
