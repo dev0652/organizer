@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import toast from 'react-hot-toast';
 
-import { addContact } from 'redux/contacts/actions';
+import { addContact } from 'redux/contacts/slice';
 import { FormWrapper, Label } from './Form.styled';
 
 // ################################################

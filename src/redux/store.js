@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-// import rootReducer from './reducer';
-import localStorage from '../localStorage';
 
-import contactsReducer from './contacts/reducer';
-import filterReducer from './filter/reducer';
+import { contactsReducer } from './contacts/slice';
+import { filterReducer } from './filter/slice';
+
+import localStorage from '../localStorage';
 
 // ###############################################
 
