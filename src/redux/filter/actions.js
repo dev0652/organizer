@@ -1,6 +1,4 @@
+import { createAction } from '@reduxjs/toolkit';
 import { UPD } from './types';
 
-export const updateFilter = filterValue => ({
-  type: UPD,
-  payload: filterValue,
-});
+export const updateFilter = createAction(UPD);

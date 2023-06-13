@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deletedContact } from 'redux/contacts/actions';
+import { deleteContact } from 'redux/contacts/actions';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
@@ -30,7 +30,7 @@ const Contacts = () => {
   const dispatch = useDispatch();
 
   const handleDelete = id => {
-    dispatch(deletedContact(id));
+    dispatch(deleteContact(id));
     toast.success('Contact has been deleted');
   };
 

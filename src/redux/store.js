@@ -1,17 +1,18 @@
-import { createStore } from 'redux';
-import { devToolsEnhancer } from '@redux-devtools/extension';
-
-import rootReducer from './reducer';
+import { configureStore } from '@reduxjs/toolkit';
+// import rootReducer from './reducer';
 import localStorage from '../localStorage';
 
-// import defaultContacts from 'data/defaultContacts';
+import contactsReducer from './contacts/reducer';
+import filterReducer from './filter/reducer';
 
-// const preloadedState = { contacts: localStorage.load() ?? defaultContacts, filter: '', };
-// export const store = createStore(rootReducer, preloadedState, enhancer);
+// ###############################################
 
-const enhancer = devToolsEnhancer();
-
-export const store = createStore(rootReducer, enhancer);
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+    filter: filterReducer,
+  },
+});
 
 store.subscribe(() => {
   localStorage.save(store.getState().contacts);

@@ -1,2 +1,2 @@
-export const ADD = 'contacts/addedContact';
-export const DELETE = 'contacts/deletedContact';
+export const ADD = 'contacts/addContact';
+export const DELETE = 'contacts/deleteContact';

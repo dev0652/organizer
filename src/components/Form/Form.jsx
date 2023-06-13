@@ -12,9 +12,9 @@ export default function Form({ toggleModal }) {
   //
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const { contacts } = useSelector(state => state);
 
   const dispatch = useDispatch();
-  const { contacts } = useSelector(state => state);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -25,8 +25,8 @@ export default function Form({ toggleModal }) {
     }
 
     dispatch(addContact(name, number));
-    toast.success(`${name} has been added to the phonebook`);
     toggleModal();
+    toast.success(`${name} has been added to the phonebook`);
   };
 
   // Check if contact with this name already exists
