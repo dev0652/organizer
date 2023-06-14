@@ -1,16 +1,32 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
-import defaultContacts from 'data/defaultContacts';
-
 // ################################################
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: defaultContacts,
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
+
   reducers: {
+    fetchingInProgress(state) {
+      state.isLoading = true;
+    },
+    fetchingSuccess(state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = payload;
+    },
+    fetchingError(state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+
     addContact: {
-      reducer(state, action) {
-        state.push(action.payload);
+      reducer(state, { payload }) {
+        state.push(payload);
       },
       prepare(name, number) {
         return {
@@ -18,17 +34,19 @@ const contactsSlice = createSlice({
         };
       },
     },
-    deleteContact(state, action) {
-      return state.filter(contact => contact.id !== action.payload);
-    },
-    loadDefaults() {
-      return defaultContacts;
+    deleteContact(state, { payload }) {
+      return state.filter(contact => contact.id !== payload);
     },
   },
 });
 
-export const { addContact, deleteContact, loadDefaults } =
-  contactsSlice.actions;
+export const {
+  addContact,
+  deleteContact,
+  fetchingInProgress,
+  fetchingSuccess,
+  fetchingError,
+} = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
 

@@ -24,8 +24,10 @@ const getVisibleContacts = (contacts, filter) => {
   );
 };
 
+// ################################################
+
 const Contacts = () => {
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
   const filter = useSelector(getFilterValue);
   const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ const Contacts = () => {
   };
 
   // If filtered, display only contacts matching the filter
-  const visibleContacts = getVisibleContacts(contacts, filter);
+  const visibleContacts = getVisibleContacts(items, filter);
 
   // Sort contacts in alphabetical order
   const sortedContacts = [...visibleContacts].sort((a, b) =>
@@ -44,11 +46,11 @@ const Contacts = () => {
 
   return (
     <List>
-      {sortedContacts.map(({ id, name, number }) => (
+      {sortedContacts.map(({ id, name, phone }) => (
         <ListItem key={id}>
           <Wrapper>
             <Name>{name}</Name>
-            <Telephone>{number}</Telephone>
+            <Telephone>{phone}</Telephone>
           </Wrapper>
 
           <Button onClick={() => handleDelete(id)} aria-label="Delete contact">

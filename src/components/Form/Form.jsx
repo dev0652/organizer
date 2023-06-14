@@ -11,7 +11,8 @@ import { FormWrapper, Label } from './Form.styled';
 export default function Form({ toggleModal }) {
   //
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
+
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
@@ -23,7 +24,7 @@ export default function Form({ toggleModal }) {
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContact(name, phone));
     toggleModal();
     toast.success(`${name} has been added to the phonebook`);
   };
@@ -42,8 +43,8 @@ export default function Form({ toggleModal }) {
       case 'name':
         setName(value);
         break;
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
       default:
         return;
@@ -57,8 +58,6 @@ export default function Form({ toggleModal }) {
         <input
           type="text"
           name="name"
-          // pattern="^[a-zA-Zа-яА-Я]+(([' \\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           value={name}
           onChange={handleChange}
@@ -66,14 +65,12 @@ export default function Form({ toggleModal }) {
       </Label>
 
       <Label>
-        Number
+        Telephone
         <input
           type="tel"
-          name="number"
-          // pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$"
-          // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          name="phone"
           required
-          value={number}
+          value={phone}
           onChange={handleChange}
         />
       </Label>
