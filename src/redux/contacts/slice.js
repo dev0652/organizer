@@ -1,15 +1,12 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 import defaultContacts from 'data/defaultContacts';
-import localStorage from 'localStorage';
 
-// ##################################
-
-const initialState = localStorage.load() ?? defaultContacts;
+// ################################################
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: initialState,
+  initialState: defaultContacts,
   reducers: {
     addContact: {
       reducer(state, action) {
@@ -24,10 +21,15 @@ const contactsSlice = createSlice({
     deleteContact(state, action) {
       return state.filter(contact => contact.id !== action.payload);
     },
+    loadDefaults() {
+      return defaultContacts;
+    },
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
-export const contactsReducer = contactsSlice.reducer;
-
 export default contactsSlice;
+
+export const { addContact, deleteContact, loadDefaults } =
+  contactsSlice.actions;
+
+export const contactsReducer = contactsSlice.reducer;

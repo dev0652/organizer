@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Section from 'components/Section';
 import Form from 'components/Form';
@@ -14,15 +14,31 @@ import {
   Wrapper,
 } from './App.styled';
 
-import localStorage from 'localStorage';
+import toast from 'react-hot-toast';
+
+import { store } from 'redux/store';
+import { loadDefaults } from 'redux/contacts/slice';
+
+import defaultContacts from 'data/defaultContacts';
 
 // ################################################
 
 export default function App() {
   const contacts = useSelector(state => state.contacts);
+  const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
+
+  const handleLoadDefaults = () => {
+    dispatch(loadDefaults());
+    toast.success('Default contacts loaded', {
+      style: { background: 'Lavender' },
+      icon: '💾',
+    });
+  };
+
+  const isDefault = store.getState().contacts === defaultContacts;
 
   return (
     <Wrapper>
@@ -31,16 +47,13 @@ export default function App() {
           New contact
         </OpenModalButton>
 
-        {/* This form is used to reload the page after LocalStorage has been cleared */}
-        <form>
-          <LoadDefaultsButton
-            type="submit"
-            onClick={localStorage.remove}
-            disabled={!localStorage.load()}
-          >
-            Load defaults
-          </LoadDefaultsButton>
-        </form>
+        <LoadDefaultsButton
+          type="button"
+          onClick={handleLoadDefaults}
+          disabled={isDefault}
+        >
+          Load defaults
+        </LoadDefaultsButton>
       </ButtonsWrapper>
 
       {showModal && (

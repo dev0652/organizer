@@ -1,19 +1,30 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
 import { contactsReducer } from './contacts/slice';
 import { filterReducer } from './filter/slice';
 
-import localStorage from '../localStorage';
+import { persistStore, persistReducer } from 'redux-persist';
+import thunk from 'redux-thunk';
+import storage from 'redux-persist/lib/storage';
 
 // ###############################################
 
-export const store = configureStore({
-  reducer: {
-    contacts: contactsReducer,
-    filter: filterReducer,
-  },
+const persistConfig = {
+  key: 'contacts',
+  storage,
+  whitelist: ['contacts'],
+};
+
+const rootReducer = combineReducers({
+  contacts: contactsReducer,
+  filter: filterReducer,
 });
 
-store.subscribe(() => {
-  localStorage.save(store.getState().contacts);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
 });
+
+export const persistor = persistStore(store);
