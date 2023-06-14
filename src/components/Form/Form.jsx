@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import toast from 'react-hot-toast';
 
-import { addContact } from 'redux/contacts/slice';
+import { addContact, getContacts } from 'redux/contacts/slice';
 import { FormWrapper, Label } from './Form.styled';
 
 // ################################################
@@ -12,8 +12,7 @@ export default function Form({ toggleModal }) {
   //
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { contacts } = useSelector(state => state);
-
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = event => {

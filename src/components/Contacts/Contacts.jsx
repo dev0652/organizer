@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contacts/slice';
+import { deleteContact, getContacts } from 'redux/contacts/slice';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
@@ -12,6 +12,7 @@ import {
   Telephone,
   Wrapper,
 } from './Contacts.styled';
+import { getFilterValue } from 'redux/filter/slice';
 
 // ################################################
 
@@ -24,9 +25,8 @@ const getVisibleContacts = (contacts, filter) => {
 };
 
 const Contacts = () => {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter);
-
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilterValue);
   const dispatch = useDispatch();
 
   const handleDelete = id => {

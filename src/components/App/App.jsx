@@ -17,14 +17,14 @@ import {
 import toast from 'react-hot-toast';
 
 import { store } from 'redux/store';
-import { loadDefaults } from 'redux/contacts/slice';
+import { getContacts, loadDefaults } from 'redux/contacts/slice';
 
 import defaultContacts from 'data/defaultContacts';
 
 // ################################################
 
 export default function App() {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);

@@ -31,3 +31,6 @@ export const { addContact, deleteContact, loadDefaults } =
   contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
+
+// Selector
+export const getContacts = state => state.contacts;
