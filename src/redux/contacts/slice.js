@@ -27,8 +27,6 @@ const contactsSlice = createSlice({
   },
 });
 
-export default contactsSlice;
-
 export const { addContact, deleteContact, loadDefaults } =
   contactsSlice.actions;
 
