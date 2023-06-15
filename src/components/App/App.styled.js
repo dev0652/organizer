@@ -12,6 +12,21 @@ export const Wrapper = styled.div`
   gap: 40px;
 `;
 
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  /* justify-content: space-between; */
+`;
+
 export const OpenModalButton = styled.button`
   flex-grow: 1;
+`;
+
+export const LoadDefaultsButton = styled.button`
+  /* position: absolute;
+  top: 20px;
+  right: 20px; */
+  /* display: inline-flex; */
+  /* height: 100%; */
 `;

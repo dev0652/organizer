@@ -7,7 +7,12 @@ import Contacts from 'components/Contacts';
 import Filter from 'components/Filter';
 import Notification from 'components/Notification';
 import Modal from 'components/Modal/Modal';
-import { OpenModalButton, Wrapper } from './App.styled';
+import {
+  ButtonsWrapper,
+  LoadDefaultsButton,
+  OpenModalButton,
+  Wrapper,
+} from './App.styled';
 
 import { getContacts } from 'redux/contacts/slice';
 import { fetchContacts } from 'redux/operations';
@@ -28,11 +33,31 @@ export default function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  // const handleLoadDefaults = () => {
+  //   dispatch(loadDefaults());
+  //   toast.success('Default contacts loaded', {
+  //     style: { background: 'Lavender' },
+  //     icon: '💾',
+  //   });
+  // };
+
+  // #### Render
+
   return (
     <Wrapper>
+      {/* <ButtonsWrapper> */}
       <OpenModalButton type="button" onClick={toggleModal}>
         New contact
       </OpenModalButton>
+
+      {/* <LoadDefaultsButton
+          type="button"
+          onClick={handleLoadDefaults}
+          disabled={isDefault}
+        >
+          Load defaults
+        </LoadDefaultsButton> */}
+      {/* </ButtonsWrapper> */}
 
       {showModal && (
         <Modal onClose={toggleModal}>
@@ -47,7 +72,7 @@ export default function App() {
 
         {error && <Notification message={error} />}
 
-        {items.length === 0 && (
+        {items.length === 0 && !isLoading && (
           <Notification message="Your phonebook is empty" />
         )}
 
