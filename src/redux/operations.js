@@ -1,21 +1,14 @@
-import axios from 'axios';
-import {
-  fetchingInProgress,
-  fetchingSuccess,
-  fetchingError,
-} from './contacts/slice';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import * as api from 'services/api';
 
-// https://mockapi.io/projects/648a37bd5fa58521cab1030d
-axios.defaults.baseURL = 'https://648a37bd5fa58521cab1030c.mockapi.io';
-
-export const fetchContacts = () => async dispatch => {
-  try {
-    dispatch(fetchingInProgress());
-    const response = await axios.get('/contacts');
-    console.log('response: ', response);
-    dispatch(fetchingSuccess(response.data));
-    console.log('response.data: ', response.data);
-  } catch ({ message }) {
-    dispatch(fetchingError(message));
-  }
+// Асинхронний генератор екшену:
+const payloadCreator = async () => {
+  const contacts = await api.fetchContacts();
+  return contacts;
 };
+
+export const fetchContacts = createAsyncThunk(
+  'contacts/fetchAll',
+  payloadCreator
+);
+// !!! returns an operation that automatically generates actions for pending, fulfilled and rejected promise - see in slice.js

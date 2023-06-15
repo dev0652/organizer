@@ -1,4 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { fetchContacts } from 'redux/operations';
 
 // ################################################
 
@@ -11,19 +12,6 @@ const contactsSlice = createSlice({
   },
 
   reducers: {
-    fetchingInProgress(state) {
-      state.isLoading = true;
-    },
-    fetchingSuccess(state, { payload }) {
-      state.isLoading = false;
-      state.error = null;
-      state.items = payload;
-    },
-    fetchingError(state, { payload }) {
-      state.isLoading = false;
-      state.error = payload;
-    },
-
     addContact: {
       reducer(state, { payload }) {
         state.push(payload);
@@ -38,15 +26,26 @@ const contactsSlice = createSlice({
       return state.filter(contact => contact.id !== payload);
     },
   },
+
+  extraReducers: {
+    [fetchContacts.pending](state) {
+      state.isLoading = true;
+    },
+
+    [fetchContacts.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items = payload;
+    },
+
+    [fetchContacts.rejected](state, { payload }) {
+      state.isLoading = false;
+      state.error = payload;
+    },
+  },
 });
 
-export const {
-  addContact,
-  deleteContact,
-  fetchingInProgress,
-  fetchingSuccess,
-  fetchingError,
-} = contactsSlice.actions;
+export const { addContact, deleteContact } = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
 
