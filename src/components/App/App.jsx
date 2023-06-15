@@ -12,6 +12,9 @@ import { OpenModalButton, Wrapper } from './App.styled';
 import { getContacts } from 'redux/contacts/slice';
 import { fetchContacts } from 'redux/operations';
 
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import loaderOptions from 'services/loaderOptions';
+
 // ################################################
 
 export default function App() {
@@ -40,8 +43,9 @@ export default function App() {
       )}
 
       <Section title="Contacts">
-        {isLoading && <p>Loading phonebook...</p>}
-        {error && <p>{error}</p>}
+        {isLoading ? Loading.pulse(loaderOptions) : Loading.remove()}
+
+        {error && <Notification message={error} />}
 
         {items.length === 0 && (
           <Notification message="Your phonebook is empty" />
