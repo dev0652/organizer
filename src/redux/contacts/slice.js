@@ -38,9 +38,10 @@ const contactsSlice = createSlice({
       state.items = payload;
     },
 
-    [fetchContacts.rejected](state, { payload }) {
+    [fetchContacts.rejected](state, action) {
+      console.log('in error', action);
       state.isLoading = false;
-      state.error = payload;
+      state.error = `${action.error.name}: ${action.error.message}`;
     },
   },
 });

@@ -9,6 +9,7 @@ import Notification from 'components/Notification';
 import Modal from 'components/Modal/Modal';
 import {
   ButtonsWrapper,
+  ErrorWrapper,
   LoadDefaultsButton,
   OpenModalButton,
   Wrapper,
@@ -44,42 +45,50 @@ export default function App() {
   // #### Render
 
   return (
-    <Wrapper>
-      {/* <ButtonsWrapper> */}
-      <OpenModalButton type="button" onClick={toggleModal}>
-        New contact
-      </OpenModalButton>
+    <>
+      {isLoading ? Loading.pulse(loaderOptions) : Loading.remove()}
 
-      {/* <LoadDefaultsButton
+      {error && (
+        <ErrorWrapper>
+          <Notification message={error} />
+        </ErrorWrapper>
+      )}
+
+      {!isLoading && !error && (
+        <Wrapper>
+          {showModal && (
+            <Modal onClose={toggleModal}>
+              <Section title="Add Contact">
+                <Form toggleModal={toggleModal} />
+              </Section>
+            </Modal>
+          )}
+
+          {/* <ButtonsWrapper> */}
+          <OpenModalButton type="button" onClick={toggleModal}>
+            New contact
+          </OpenModalButton>
+
+          {/* <LoadDefaultsButton
           type="button"
           onClick={handleLoadDefaults}
           disabled={isDefault}
         >
           Load defaults
         </LoadDefaultsButton> */}
-      {/* </ButtonsWrapper> */}
+          {/* </ButtonsWrapper> */}
 
-      {showModal && (
-        <Modal onClose={toggleModal}>
-          <Section title="Add Contact">
-            <Form toggleModal={toggleModal} />
+          <Section title="Contacts">
+            {items.length === 0 && !isLoading && (
+              <Notification message="Your phonebook is empty" />
+            )}
+
+            {items.length > 1 && <Filter />}
+
+            {items.length > 0 && <Contacts />}
           </Section>
-        </Modal>
+        </Wrapper>
       )}
-
-      <Section title="Contacts">
-        {isLoading ? Loading.pulse(loaderOptions) : Loading.remove()}
-
-        {error && <Notification message={error} />}
-
-        {items.length === 0 && !isLoading && (
-          <Notification message="Your phonebook is empty" />
-        )}
-
-        {items.length > 1 && <Filter />}
-
-        {items.length > 0 && <Contacts />}
-      </Section>
-    </Wrapper>
+    </>
   );
 }

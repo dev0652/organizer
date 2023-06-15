@@ -1,14 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api';
 
-// Асинхронний генератор екшену:
+// Asynchronous action generator:
 const payloadCreator = async () => {
   const contacts = await api.fetchContacts();
   return contacts;
 };
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  payloadCreator
-);
-// !!! returns an operation that automatically generates actions for pending, fulfilled and rejected promise - see in slice.js
+export const fetchContacts = createAsyncThunk('contacts/fetch', payloadCreator);

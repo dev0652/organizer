@@ -1,5 +1,12 @@
 import { styled } from 'styled-components';
 
+export const ErrorWrapper = styled.div`
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const Wrapper = styled.div`
   padding: 15px;
   min-width: 200px;
