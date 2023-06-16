@@ -8,15 +8,15 @@ import Filter from 'components/Filter';
 import Notification from 'components/Notification';
 import Modal from 'components/Modal/Modal';
 import {
-  // ButtonsWrapper,
+  ButtonsWrapper,
   // ErrorWrapper,
-  // LoadDefaultsButton,
+  LoadDefaultsButton,
   OpenModalButton,
   Wrapper,
 } from './App.styled';
 
 import { getContacts } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { addContact, fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
@@ -33,20 +33,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(fetchContacts());
-    // const promise = dispatch(fetchContacts());
-
-    // return () => {
-    //   promise.abort();
-    // };
   }, [dispatch]);
-
-  // const handleLoadDefaults = () => {
-  //   dispatch(loadDefaults());
-  //   toast.success('Default contacts loaded', {
-  //     style: { background: 'Lavender' },
-  //     icon: '💾',
-  //   });
-  // };
 
   // #### Render
 
@@ -63,19 +50,18 @@ export default function App() {
           </Modal>
         )}
 
-        {/* <ButtonsWrapper> */}
-        <OpenModalButton type="button" onClick={toggleModal} disabled={error}>
-          New contact
-        </OpenModalButton>
+        <ButtonsWrapper>
+          <OpenModalButton type="button" onClick={toggleModal} disabled={error}>
+            New contact
+          </OpenModalButton>
 
-        {/* <LoadDefaultsButton
-          type="button"
-          onClick={handleLoadDefaults}
-          disabled={isDefault}
-        >
-          Load defaults
-        </LoadDefaultsButton> */}
-        {/* </ButtonsWrapper> */}
+          <LoadDefaultsButton
+            type="button"
+            onClick={() => dispatch(addContact())}
+          >
+            Add random
+          </LoadDefaultsButton>
+        </ButtonsWrapper>
 
         <Section title="Contacts">
           {!isLoading && error && (
