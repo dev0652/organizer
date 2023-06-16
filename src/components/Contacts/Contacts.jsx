@@ -1,9 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectContacts,
-  selectFilter,
-  selectVisibleContacts,
-} from 'redux/selectors';
+import { selectVisibleContacts } from 'redux/selectors';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
