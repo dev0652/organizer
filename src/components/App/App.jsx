@@ -15,7 +15,7 @@ import {
   Wrapper,
 } from './App.styled';
 
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { addContact, fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -24,7 +24,7 @@ import loaderOptions from 'services/loaderOptions';
 // ################################################
 
 export default function App() {
-  const { items, isLoading, error } = useSelector(getContacts);
+  const { items, isLoading, error } = useSelector(selectContacts);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);

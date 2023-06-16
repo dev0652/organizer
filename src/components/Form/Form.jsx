@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 
 // import { addContact } from 'redux/contacts/slice';
 import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 
 import { FormWrapper, Label } from './Form.styled';
 
@@ -16,7 +16,7 @@ export default function Form({ toggleModal }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const { items } = useSelector(getContacts);
+  const { items } = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = event => {

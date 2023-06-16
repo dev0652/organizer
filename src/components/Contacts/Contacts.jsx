@@ -1,5 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts, getFilterValue } from 'redux/selectors';
+import {
+  selectContacts,
+  selectFilter,
+  selectVisibleContacts,
+} from 'redux/selectors';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
@@ -17,33 +21,21 @@ import { deleteContact } from 'redux/operations';
 
 // ################################################
 
-const getVisibleContacts = (contacts, filter) => {
-  if (!filter) return contacts;
-
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
-  );
-};
-
-// ################################################
-
 const Contacts = () => {
-  const { items } = useSelector(getContacts);
-  const filter = useSelector(getFilterValue);
   const dispatch = useDispatch();
 
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-    toast.success('Contact has been deleted');
-  };
-
   // If filtered, display only contacts matching the filter
-  const visibleContacts = getVisibleContacts(items, filter);
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   // Sort contacts in alphabetical order
   const sortedContacts = [...visibleContacts].sort((a, b) =>
     a.name.localeCompare(b.name)
   );
+
+  const handleDelete = id => {
+    dispatch(deleteContact(id));
+    toast.success('Contact has been deleted');
+  };
 
   return (
     <List>
