@@ -1,34 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api';
 
-// ! https://redux-toolkit.js.org/api/createAsyncThunk#handling-thunk-errors
+function generateOperation(type) {
+  function payloadCreator(type) {
+    const statement = type === 'fetch' ? `${type}Contacts` : `${type}Contact`;
+    return async arg => await api[statement](arg ? arg : '');
+  }
+  return createAsyncThunk(`contacts/${type}`, payloadCreator(type));
+}
 
-// Fetch:
-const payloadCreatorFetch = async () => {
-  const data = await api.fetchContacts();
-  return data;
-};
-
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetch',
-  payloadCreatorFetch
-);
-
-// Add:
-const payloadCreatorAdd = async newContact => {
-  const data = await api.addContact(newContact);
-  return data;
-};
-
-export const addContact = createAsyncThunk('contacts/add', payloadCreatorAdd);
-
-// Delete:
-const payloadCreatorDelete = async id => {
-  const data = await api.deleteContact(id);
-  return data;
-};
-
-export const deleteContact = createAsyncThunk(
-  'contacts/delete',
-  payloadCreatorDelete
-);
+export const fetchContacts = generateOperation('fetch');
+export const addContact = generateOperation('add');
+export const deleteContact = generateOperation('delete');
