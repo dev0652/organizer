@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteContact, getContacts } from 'redux/contacts/slice';
+import { getContacts, getFilterValue } from 'redux/selectors';
 
 import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
@@ -12,7 +12,8 @@ import {
   Telephone,
   Wrapper,
 } from './Contacts.styled';
-import { getFilterValue } from 'redux/filter/slice';
+
+import { deleteContact } from 'redux/operations';
 
 // ################################################
 

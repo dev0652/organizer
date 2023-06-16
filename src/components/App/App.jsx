@@ -8,14 +8,14 @@ import Filter from 'components/Filter';
 import Notification from 'components/Notification';
 import Modal from 'components/Modal/Modal';
 import {
-  ButtonsWrapper,
+  // ButtonsWrapper,
   ErrorWrapper,
-  LoadDefaultsButton,
+  // LoadDefaultsButton,
   OpenModalButton,
   Wrapper,
 } from './App.styled';
 
-import { getContacts } from 'redux/contacts/slice';
+import { getContacts } from 'redux/selectors';
 import { fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
@@ -25,13 +25,19 @@ import loaderOptions from 'services/loaderOptions';
 
 export default function App() {
   const { items, isLoading, error } = useSelector(getContacts);
-  const dispatch = useDispatch();
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchContacts());
+    // const promise = dispatch(fetchContacts());
+
+    // return () => {
+    //   promise.abort();
+    // };
   }, [dispatch]);
 
   // const handleLoadDefaults = () => {
@@ -48,7 +54,7 @@ export default function App() {
     <>
       {isLoading ? Loading.pulse(loaderOptions) : Loading.remove()}
 
-      {error && (
+      {!isLoading && error && (
         <ErrorWrapper>
           <Notification message={error} />
         </ErrorWrapper>

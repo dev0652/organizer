@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import toast from 'react-hot-toast';
 
-import { addContact, getContacts } from 'redux/contacts/slice';
+// import { addContact } from 'redux/contacts/slice';
+import { addContact } from 'redux/operations';
+import { getContacts } from 'redux/selectors';
+
 import { FormWrapper, Label } from './Form.styled';
 
 // ################################################
@@ -13,7 +16,7 @@ export default function Form({ toggleModal }) {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const contacts = useSelector(getContacts);
+  const { items } = useSelector(getContacts);
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -24,14 +27,16 @@ export default function Form({ toggleModal }) {
       return;
     }
 
-    dispatch(addContact(name, phone));
+    const newContact = { name, phone };
+
+    dispatch(addContact(newContact));
     toggleModal();
     toast.success(`${name} has been added to the phonebook`);
   };
 
   // Check if contact with this name already exists
   const checkIfContactExists = nameToCompare =>
-    contacts.find(
+    items.find(
       ({ name }) => name.toLowerCase() === nameToCompare.toLowerCase()
     );
 

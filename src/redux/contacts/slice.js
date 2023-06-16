@@ -1,5 +1,5 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts, addContact, deleteContact } from 'redux/operations';
 
 // ################################################
 
@@ -11,23 +11,8 @@ const contactsSlice = createSlice({
     error: null,
   },
 
-  reducers: {
-    addContact: {
-      reducer(state, { payload }) {
-        state.push(payload);
-      },
-      prepare(name, number) {
-        return {
-          payload: { name, number, id: nanoid() },
-        };
-      },
-    },
-    deleteContact(state, { payload }) {
-      return state.filter(contact => contact.id !== payload);
-    },
-  },
-
   extraReducers: {
+    // Fetch:
     [fetchContacts.pending](state) {
       state.isLoading = true;
     },
@@ -38,17 +23,53 @@ const contactsSlice = createSlice({
       state.items = payload;
     },
 
-    [fetchContacts.rejected](state, action) {
-      console.log('in error', action);
+    [fetchContacts.rejected](state, { error: { name, message } }) {
       state.isLoading = false;
-      state.error = `${action.error.name}: ${action.error.message}`;
+      // if (name !== 'AbortError') {
+      state.error = `${name}: ${message}`;
+      // }
+    },
+
+    // Add:
+    [addContact.pending](state) {
+      state.isLoading = true;
+    },
+
+    [addContact.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(payload);
+    },
+
+    [addContact.rejected](state, { error: { name, message } }) {
+      state.isLoading = false;
+      // if (name !== 'AbortError') {
+      state.error = `${name}: ${message}`;
+      // }
+    },
+
+    // Delete:
+    [deleteContact.pending](state) {
+      state.isLoading = true;
+    },
+
+    [deleteContact.fulfilled](state, { payload }) {
+      state.isLoading = false;
+      state.error = null;
+      // state.items.filter(item => item.id !== payload);
+      const index = state.items.findIndex(item => item.id === payload.id);
+      state.items.splice(index, 1);
+    },
+
+    [deleteContact.rejected](state, { error: { name, message } }) {
+      state.isLoading = false;
+      // if (name !== 'AbortError') {
+      state.error = `${name}: ${message}`;
+      // }
     },
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+// export const { addContact, deleteContact } = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;
-
-// Selector
-export const getContacts = state => state.contacts;
