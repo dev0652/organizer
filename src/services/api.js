@@ -18,3 +18,8 @@ export const deleteContact = async id => {
   const { data } = await axios.delete(`/contacts/${id}`);
   return data;
 };
+
+export const editContact = async (id, editedContact) => {
+  const { data } = await axios.put(`/contacts/${id}`, editedContact);
+  return data;
+};

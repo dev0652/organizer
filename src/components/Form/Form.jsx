@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import toast from 'react-hot-toast';
 
-// import { addContact } from 'redux/contacts/slice';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 

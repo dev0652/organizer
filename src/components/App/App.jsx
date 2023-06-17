@@ -74,15 +74,15 @@ export default function App() {
         </Sidebar>
 
         <Right>{currentId && <Card />}</Right>
-      </PageWrapper>
 
-      {showModal && (
-        <Modal onClose={toggleModal}>
-          <Section title="New Contact">
-            <Form toggleModal={toggleModal} />
-          </Section>
-        </Modal>
-      )}
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <Section title="New Contact">
+              <Form toggleModal={toggleModal} />
+            </Section>
+          </Modal>
+        )}
+      </PageWrapper>
     </>
   );
 }

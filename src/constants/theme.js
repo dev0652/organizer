@@ -12,7 +12,7 @@ export const theme = {
     highlightedText: 'whitesmoke',
   },
 
-  spacing: value => `${value * 4}px`,
+  // spacing: value => `${value * 4}px`,
   borderRadius: '20px',
 
   boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.19)',
@@ -54,6 +54,11 @@ export const BaseIconButton = styled.button`
   border: none;
   background-color: transparent;
   border-radius: 50%;
+
+  min-height: var(--size);
+  height: var(--size);
+  width: var(--size);
+  min-width: var(--size);
 `;
 
 export const AccentedIconButton = styled(BaseIconButton)`

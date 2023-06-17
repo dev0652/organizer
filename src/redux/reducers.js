@@ -25,3 +25,13 @@ export const handleDeleteFulfilled = (state, { payload }) => {
   state.items.splice(index, 1);
   state.currentId = null;
 };
+
+export const handleEditFulfilled = (state, { payload }) => {
+  const { id, name, phone, email } = payload;
+  const contact = state.items.find(item => item.id === id);
+
+  contact.name = name;
+  contact.phone = phone;
+  contact.email = email;
+  state.currentId = null;
+};

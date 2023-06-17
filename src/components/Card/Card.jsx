@@ -1,5 +1,15 @@
+import { useState } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
+import { deleteContact } from 'redux/operations';
+
+import toast from 'react-hot-toast';
+
+import Modal from 'components/Modal';
+import Section from 'components/Section';
+import EditForm from 'components/EditForm';
+
 import {
   EditButton,
   DeleteButton,
@@ -12,11 +22,13 @@ import {
   TelephoneLink,
   EmailLink,
 } from './Card.styled';
-import { deleteContact } from 'redux/operations';
 
-import toast from 'react-hot-toast';
+// ##################################################
 
 export const Card = () => {
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
+
   const dispatch = useDispatch();
 
   const { items, currentId } = useSelector(selectContacts);
@@ -44,12 +56,28 @@ export const Card = () => {
       </Meta>
 
       <ButtonWrapper>
-        <EditButton type="button">Edit</EditButton>
+        <EditButton type="button" onClick={toggleModal}>
+          Edit
+        </EditButton>
 
         <DeleteButton type="button" onClick={() => handleDelete(currentId)}>
           Delete
         </DeleteButton>
       </ButtonWrapper>
+
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <Section title="Edit Contact">
+            <EditForm
+              toggleModal={toggleModal}
+              nameToEdit={name}
+              phoneToEdit={phone}
+              emailToEdit={email}
+              id={currentId}
+            />
+          </Section>
+        </Modal>
+      )}
     </CardWrapper>
   );
 };

@@ -15,6 +15,7 @@ export const ListItem = styled.li`
   width: 100%;
   display: flex;
   /* justify-content: space-between; */
+  align-items: center;
   gap: 30px;
 `;
 
@@ -33,6 +34,10 @@ export const ContactLink = styled.a`
   padding: 10px 20px;
   border-radius: ${({ theme }) => theme.borderRadius};
 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.colors.highlightedText};
@@ -42,17 +47,14 @@ export const ContactLink = styled.a`
 `;
 
 export const DeleteIcon = styled(BsTrash3)`
-  --size: 50%;
-  height: var(--size);
+  --size: 60%;
+  /* height: var(--size); */
   width: var(--size);
 `;
 
 export const DeleteIconButton = styled(BaseIconButton)`
-  --size: 100%;
-  height: var(--size);
-  width: 40px;
+  --size: 40px;
 
-  /* color: #4285f4; */
   color: ${({ theme }) => theme.colors.secondaryText};
 
   &:hover,

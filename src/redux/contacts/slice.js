@@ -5,12 +5,17 @@ import {
   isRejected,
 } from '@reduxjs/toolkit';
 
-import { fetchContacts, addContact, deleteContact } from 'redux/operations';
+import * as ops from 'redux/operations';
 import * as r from 'redux/reducers';
 
 // ################################################
 
-const extraActions = [fetchContacts, addContact, deleteContact];
+const extraActions = [
+  ops.fetchContacts,
+  ops.addContact,
+  ops.deleteContact,
+  ops.editContact,
+];
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -28,9 +33,10 @@ const contactsSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(fetchContacts.fulfilled, r.handleFetchFulfilled)
-      .addCase(addContact.fulfilled, r.handleAddFulfilled)
-      .addCase(deleteContact.fulfilled, r.handleDeleteFulfilled)
+      .addCase(ops.fetchContacts.fulfilled, r.handleFetchFulfilled)
+      .addCase(ops.addContact.fulfilled, r.handleAddFulfilled)
+      .addCase(ops.deleteContact.fulfilled, r.handleDeleteFulfilled)
+      .addCase(ops.editContact.fulfilled, r.handleEditFulfilled)
       .addMatcher(isFulfilled(...extraActions), r.handleFulfilled)
       .addMatcher(isPending(...extraActions), r.handlePending)
       .addMatcher(isRejected(...extraActions), r.handleRejected),

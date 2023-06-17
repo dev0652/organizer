@@ -50,9 +50,7 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const NewContactIconButton = styled(AccentedIconButton)`
-  --size: 100%;
-  height: var(--size);
-  width: 40px;
+  --size: 36px;
 `;
 
 export const AddIcon = styled(HiPlus)`
