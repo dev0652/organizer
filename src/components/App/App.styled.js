@@ -4,12 +4,7 @@ import { HiPlus } from 'react-icons/hi';
 
 export const PageWrapper = styled.div`
   display: flex;
-  /* height: 100%; */
-
   height: 100vh;
-  /* overflow-y: hidden; */
-  /* background-color: beige; */
-  outline: auto;
 `;
 
 export const Sidebar = styled.div`
@@ -31,11 +26,6 @@ export const Sidebar = styled.div`
     var(--gradient-start-color) 55%,
     var(--gradient-end-color) 100%
   );
-  /* background-attachment: fixed; */
-
-  /* height: 100vh; */
-  /* height: 100%; */
-  /* overflow-y: auto; */
 `;
 
 export const Right = styled.div`

@@ -8,6 +8,7 @@ export const List = styled.ul`
   gap: 10px;
 
   overflow-y: auto;
+  padding-right: 20px;
 `;
 
 export const ListItem = styled.li`

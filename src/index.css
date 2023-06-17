@@ -11,8 +11,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   height: 100vh;
-  /* overflow: hidden; */
-  /* background-color: beige; */
+
+  /* Firefox: */
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: GhostWhite;
+  overflow: auto;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: gainsboro;
+  border-radius: 12px;
 }
 
 a,
