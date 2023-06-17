@@ -18,8 +18,14 @@ const contactsSlice = createSlice({
     items: [],
     isLoading: false,
     error: null,
+    currentId: null,
   },
-  reducers: {},
+  reducers: {
+    setSelectedContactId(state, { payload }) {
+      state.currentId = payload;
+    },
+  },
+
   extraReducers: builder =>
     builder
       .addCase(fetchContacts.fulfilled, r.handleFetchFulfilled)
@@ -30,4 +36,5 @@ const contactsSlice = createSlice({
       .addMatcher(isRejected(...extraActions), r.handleRejected),
 });
 
+export const { setSelectedContactId } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

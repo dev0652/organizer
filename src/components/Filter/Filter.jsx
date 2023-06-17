@@ -1,10 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/filter/slice';
-import { selectFilter } from 'redux/selectors';
+import { selectContacts, selectFilter } from 'redux/selectors';
 
-import { Label } from './Filter.styled';
+import { Label, TextField } from './Filter.styled';
 
 const Filter = () => {
+  const { items } = useSelector(selectContacts);
+
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
@@ -17,8 +19,13 @@ const Filter = () => {
 
   return (
     <Label>
-      Filter contacts by name
-      <input type="text" value={filter} onChange={handleChange} />
+      {/* Filter contacts by name */}
+      <TextField
+        type="text"
+        value={filter}
+        onChange={handleChange}
+        placeholder={`Search ${items.length} contacts`}
+      />
     </Label>
   );
 };

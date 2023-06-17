@@ -11,7 +11,14 @@ import {
   ButtonsWrapper,
   // ErrorWrapper,
   LoadDefaultsButton,
+  // Name,
   OpenModalButton,
+  Right,
+  Sidebar,
+  Temp,
+  // Telephone,
+  // TelephoneLink,
+  TestWrapper,
   Wrapper,
 } from './App.styled';
 
@@ -20,11 +27,12 @@ import { addContact, fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
+import { Card } from 'components/Card/Card';
 
 // ################################################
 
 export default function App() {
-  const { items, isLoading, error } = useSelector(selectContacts);
+  const { items, isLoading, error, currentId } = useSelector(selectContacts);
 
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
@@ -35,11 +43,60 @@ export default function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  // #### Render
-
   return (
     <>
       {isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
+
+      <TestWrapper>
+        <Sidebar>
+          {/* <ButtonsWrapper>
+            <OpenModalButton
+              type="button"
+              onClick={toggleModal}
+              disabled={error}
+            >
+              New contact
+            </OpenModalButton>
+
+            <LoadDefaultsButton
+              type="button"
+              onClick={() => dispatch(addContact())}
+            >
+              Add random
+            </LoadDefaultsButton>
+          </ButtonsWrapper> */}
+
+          <Section title="Contacts">
+            {!isLoading && error && (
+              // <ErrorWrapper>
+              <Notification message={error} />
+              // </ErrorWrapper>
+            )}
+
+            {items.length === 0 && !isLoading && !error && (
+              <Notification message="Your phonebook is empty" />
+            )}
+
+            {/* {items.length > 1 && <Filter />} */}
+
+            <Temp>
+              <Filter />
+
+              <OpenModalButton
+                type="button"
+                onClick={toggleModal}
+                disabled={error}
+              >
+                New
+              </OpenModalButton>
+            </Temp>
+
+            {items.length > 0 && <Contacts />}
+          </Section>
+        </Sidebar>
+
+        <Right>{currentId && <Card />}</Right>
+      </TestWrapper>
 
       <Wrapper>
         {showModal && (
@@ -49,35 +106,6 @@ export default function App() {
             </Section>
           </Modal>
         )}
-
-        <ButtonsWrapper>
-          <OpenModalButton type="button" onClick={toggleModal} disabled={error}>
-            New contact
-          </OpenModalButton>
-
-          <LoadDefaultsButton
-            type="button"
-            onClick={() => dispatch(addContact())}
-          >
-            Add random
-          </LoadDefaultsButton>
-        </ButtonsWrapper>
-
-        <Section title="Contacts">
-          {!isLoading && error && (
-            // <ErrorWrapper>
-            <Notification message={error} />
-            // </ErrorWrapper>
-          )}
-
-          {items.length === 0 && !isLoading && !error && (
-            <Notification message="Your phonebook is empty" />
-          )}
-
-          {items.length > 1 && <Filter />}
-
-          {items.length > 0 && <Contacts />}
-        </Section>
       </Wrapper>
     </>
   );

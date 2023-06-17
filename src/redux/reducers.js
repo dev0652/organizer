@@ -23,4 +23,5 @@ export const handleAddFulfilled = (state, { payload }) => {
 export const handleDeleteFulfilled = (state, { payload }) => {
   const index = state.items.findIndex(item => item.id === payload.id);
   state.items.splice(index, 1);
+  state.currentId = null;
 };
