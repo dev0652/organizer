@@ -3,6 +3,7 @@ import { styled } from 'styled-components';
 export const theme = {
   colors: {
     accent: '#4285f4',
+    accentDark: '#3469c1',
     warning: 'tomato',
 
     primaryText: '#212121',
@@ -34,10 +35,24 @@ export const BaseButton = styled.button`
 `;
 
 export const BaseIconButton = styled.button`
-  /* display: flex; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   border: none;
   background-color: transparent;
   border-radius: 50%;
+`;
+
+export const AccentedButton = styled(BaseIconButton)`
+  color: ${({ theme }) => theme.colors.highlightedText};
+
+  background-color: ${({ theme }) => theme.colors.accent};
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.accentDark};
+  }
 `;
 
 export const BaseCardLink = styled.a`

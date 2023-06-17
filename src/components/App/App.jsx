@@ -8,18 +8,15 @@ import Filter from 'components/Filter';
 import Notification from 'components/Notification';
 import Modal from 'components/Modal/Modal';
 import {
-  ButtonsWrapper,
-  // ErrorWrapper,
+  AddIcon,
+  NewContactIconButton,
   LoadDefaultsButton,
-  // Name,
-  OpenModalButton,
   Right,
   Sidebar,
-  Temp,
-  // Telephone,
-  // TelephoneLink,
-  TestWrapper,
+  Bar,
+  PageWrapper,
   Wrapper,
+  AddRandomContactButton,
 } from './App.styled';
 
 import { selectContacts } from 'redux/selectors';
@@ -47,56 +44,40 @@ export default function App() {
     <>
       {isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
 
-      <TestWrapper>
+      <PageWrapper>
         <Sidebar>
-          {/* <ButtonsWrapper>
-            <OpenModalButton
-              type="button"
-              onClick={toggleModal}
-              disabled={error}
-            >
-              New contact
-            </OpenModalButton>
-
-            <LoadDefaultsButton
-              type="button"
-              onClick={() => dispatch(addContact())}
-            >
-              Add random
-            </LoadDefaultsButton>
-          </ButtonsWrapper> */}
-
           <Section title="Contacts">
-            {!isLoading && error && (
-              // <ErrorWrapper>
-              <Notification message={error} />
-              // </ErrorWrapper>
-            )}
-
-            {items.length === 0 && !isLoading && !error && (
-              <Notification message="Your phonebook is empty" />
-            )}
-
-            {/* {items.length > 1 && <Filter />} */}
-
-            <Temp>
+            <Bar>
               <Filter />
 
-              <OpenModalButton
+              <NewContactIconButton
                 type="button"
                 onClick={toggleModal}
                 disabled={error}
+                aria-label="New contact"
               >
-                New
-              </OpenModalButton>
-            </Temp>
-
-            {items.length > 0 && <Contacts />}
+                <AddIcon />
+              </NewContactIconButton>
+            </Bar>
           </Section>
+
+          {!isLoading && error && (
+            // <ErrorWrapper>
+            <Notification message={error} />
+            // </ErrorWrapper>
+          )}
+
+          {items.length === 0 && !isLoading && !error && (
+            <Notification message="Your phonebook is empty" />
+          )}
+
+          {/* {items.length > 1 && <Filter />} */}
+
+          {items.length > 0 && <Contacts />}
         </Sidebar>
 
         <Right>{currentId && <Card />}</Right>
-      </TestWrapper>
+      </PageWrapper>
 
       <Wrapper>
         {showModal && (
@@ -107,6 +88,13 @@ export default function App() {
           </Modal>
         )}
       </Wrapper>
+
+      <AddRandomContactButton
+        type="button"
+        onClick={() => dispatch(addContact())}
+      >
+        Add random
+      </AddRandomContactButton>
     </>
   );
 }

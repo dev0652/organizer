@@ -1,4 +1,6 @@
+import { AccentedButton, BaseIconButton } from 'constants/theme';
 import { styled } from 'styled-components';
+import { HiPlus } from 'react-icons/hi';
 
 export const ErrorWrapper = styled.div`
   height: 50vh;
@@ -23,62 +25,55 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   align-items: baseline;
   gap: 20px;
-
-  /* justify-content: end; */
 `;
 
-export const OpenModalButton = styled.button`
-  /* flex-grow: 1; */
-  /* --size: 5rem;
+export const NewContactIconButton = styled(AccentedButton)`
+  --size: 100%;
+  height: var(--size);
+  width: 40px;
+`;
+
+export const AddIcon = styled(HiPlus)`
+  --size: 70%;
   height: var(--size);
   width: var(--size);
-  border-radius: 50%; */
-
-  font-size: 1.2rem;
-
-  padding: 5px 15px;
-  border: 2px solid black;
-  border-radius: 6px;
-
-  background-color: lightGray;
-  /* color: SteelBlue; */
-
-  &:hover,
-  &:focus {
-    background-color: steelBlue;
-    font-weight: 500;
-  }
 `;
 
-export const LoadDefaultsButton = styled.button`
+export const AddRandomContactButton = styled(AccentedButton)`
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+
   --size: 4rem;
   height: var(--size);
   width: var(--size);
   border-radius: 50%;
+
+  /* background-color: ${({ theme }) => theme.colors.warning}; */
 `;
 
-// ############
-
-export const TestWrapper = styled.div`
+export const PageWrapper = styled.div`
   display: flex;
 `;
 
 export const Sidebar = styled.div`
-  /* display: flex; */
   padding: 25px;
-  /* min-width: 200px; */
   max-width: 300px;
-  /* margin-left: auto;
-  margin-right: auto; */
+
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-
-  gap: 40px;
+  gap: 30px;
 
   background-color: #f7f7f7;
   height: 100vh;
   overflow-y: auto;
+
+  flex-grow: 1;
+`;
+
+export const Bar = styled.div`
+  display: flex;
+  gap: 20px;
 `;
 
 export const Right = styled.div`
@@ -87,9 +82,4 @@ export const Right = styled.div`
   padding-top: 50px;
   flex-grow: 1;
   align-items: start;
-`;
-
-export const Temp = styled.div`
-  display: flex;
-  gap: 10px;
 `;

@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectVisibleContacts } from 'redux/selectors';
 
-import { BsTrash3 } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 
 import {
@@ -9,6 +8,7 @@ import {
   ContactLink,
   List,
   ListItem,
+  DeleteIcon,
   // Name,
   // Telephone,
   // TelephoneLink,
@@ -47,18 +47,13 @@ const Contacts = () => {
         <ListItem key={id}>
           <ContactLink href="" onClick={handleContactClick} id={id}>
             {name}
-            {/* <Wrapper>
-              <Name>{name}</Name>
-              <Telephone>{phone}</Telephone>
-            </Wrapper> */}
-            {/* <TelephoneLink href={`tel:+${phone}`}>{phone}</TelephoneLink> */}
           </ContactLink>
 
           <DeleteIconButton
             onClick={() => handleDelete(id)}
             aria-label="Delete contact"
           >
-            <BsTrash3 />
+            <DeleteIcon />
           </DeleteIconButton>
         </ListItem>
       ))}
