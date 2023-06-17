@@ -2,11 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api';
 
 function generateOperation(type) {
+  //
   function payloadCreator(type) {
     const statement = type === 'fetch' ? `${type}Contacts` : `${type}Contact`;
-    return async (arg1 = null, arg2 = null) =>
-      await api[statement](arg1 && arg1, arg2 && arg2, !arg1 && !arg2 && '');
+
+    return async arg => await api[statement](arg ? arg : '');
   }
+  //
   return createAsyncThunk(`contacts/${type}`, payloadCreator(type));
 }
 

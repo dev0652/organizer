@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/operations';
 
-import toast from 'react-hot-toast';
-
 import Modal from 'components/Modal';
 import Section from 'components/Section';
 import EditForm from 'components/EditForm';
@@ -38,7 +36,6 @@ export const Card = () => {
 
   const handleDelete = id => {
     dispatch(deleteContact(id));
-    toast.success('Contact has been deleted');
   };
 
   return (

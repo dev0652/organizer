@@ -21,6 +21,7 @@ export default function Form({ toggleModal }) {
   //
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
 
   const { items } = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -33,11 +34,8 @@ export default function Form({ toggleModal }) {
       return;
     }
 
-    const newContact = { name, phone };
-
-    dispatch(addContact(newContact));
+    dispatch(addContact({ name, phone, email }));
     toggleModal();
-    toast.success(`${name} has been added to the phonebook`);
   };
 
   // Check if contact with this name already exists
@@ -56,6 +54,9 @@ export default function Form({ toggleModal }) {
         break;
       case 'phone':
         setPhone(value);
+        break;
+      case 'email':
+        setEmail(value);
         break;
       default:
         return;
@@ -81,6 +82,14 @@ export default function Form({ toggleModal }) {
           value={phone}
           onChange={handleChange}
           placeholder="Telephone"
+        />
+
+        <TextField
+          type="tel"
+          name="email"
+          value={email}
+          onChange={handleChange}
+          placeholder="Email"
         />
       </FieldsWrapper>
 

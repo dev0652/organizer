@@ -1,18 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectVisibleContacts } from 'redux/selectors';
 
-import toast from 'react-hot-toast';
-
 import {
   DeleteIconButton,
   ContactLink,
   List,
   ListItem,
   DeleteIcon,
-  // Name,
-  // Telephone,
-  // TelephoneLink,
-  // Wrapper,
 } from './Contacts.styled';
 
 import { deleteContact } from 'redux/operations';
@@ -33,7 +27,6 @@ const Contacts = () => {
 
   const handleDelete = id => {
     dispatch(deleteContact(id));
-    toast.success('Contact has been deleted');
   };
 
   const handleContactClick = event => {

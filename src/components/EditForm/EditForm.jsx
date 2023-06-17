@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import toast from 'react-hot-toast';
-
 import { editContact } from 'redux/operations';
 
 import {
@@ -14,7 +12,7 @@ import {
 
 // ################################################
 
-export default function Form({
+export default function EditForm({
   toggleModal,
   nameToEdit,
   phoneToEdit,
@@ -30,10 +28,10 @@ export default function Form({
 
   const handleSubmit = event => {
     event.preventDefault();
+    const editedContact = { name, phone, email };
 
-    dispatch(editContact(id, { name, phone, email }));
+    dispatch(editContact({ id, editedContact }));
     toggleModal();
-    // toast.success('Changes have been saved');
   };
 
   // Update input on change
@@ -79,7 +77,6 @@ export default function Form({
         <TextField
           type="tel"
           name="email"
-          required
           value={email}
           onChange={handleChange}
           placeholder="Email"
