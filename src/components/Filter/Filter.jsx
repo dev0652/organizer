@@ -2,13 +2,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import { updateFilter } from 'redux/filter/slice';
 import { selectContacts, selectFilter } from 'redux/selectors';
 
-import { Label, TextField } from './Filter.styled';
+import { TextField } from './Filter.styled';
+import { useEffect } from 'react';
 
 const Filter = () => {
   const { items } = useSelector(selectContacts);
-
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const textField = document.querySelector('#searchBox');
+
+    if (!textField) return;
+
+    if (items.length === 0) {
+      textField.setAttribute('disabled', '');
+    }
+
+    if (items.length > 0) {
+      textField.removeAttribute('disabled');
+    }
+  }, [items.length]);
 
   const handleChange = event => {
     const filter = event.target.value;
@@ -17,16 +31,21 @@ const Filter = () => {
     dispatch(updateFilter(normalizedFilter));
   };
 
+  const getMessage = () => {
+    if (items.length === 0) return 'Phonebook is empty';
+    if (items.length === 1) return 'Not enough contacts to search in';
+
+    return `Search ${items.length} contacts`;
+  };
+
   return (
-    <Label>
-      {/* Filter contacts by name */}
-      <TextField
-        type="text"
-        value={filter}
-        onChange={handleChange}
-        placeholder={`Search ${items.length} contacts`}
-      />
-    </Label>
+    <TextField
+      type="text"
+      value={filter}
+      onChange={handleChange}
+      placeholder={getMessage()}
+      id="searchBox"
+    />
   );
 };
 

@@ -58,17 +58,11 @@ export default function App() {
             </Bar>
           </Section>
 
-          {!isLoading && error && (
-            // <ErrorWrapper>
-            <Notification message={error} />
-            // </ErrorWrapper>
-          )}
+          {!isLoading && error && <Notification message={error} />}
 
           {items.length === 0 && !isLoading && !error && (
-            <Notification message="Your phonebook is empty" />
+            <p>Your contacts will be displayed here once you add them</p>
           )}
-
-          {/* {items.length > 1 && <Filter />} */}
 
           {items.length > 0 && <Contacts />}
         </Sidebar>

@@ -13,7 +13,9 @@ export const handleFulfilled = state => {
   state.error = null;
 };
 
-// Specific:
+// On success:
+
+// Fetch contacts
 export const handleFetchFulfilled = (state, { payload }) => {
   state.items = payload;
 };
@@ -24,6 +26,7 @@ export const handleAddFulfilled = (state, { payload }) => {
   toast.success(`${payload.name} has been added to the phonebook`);
 };
 
+// Delete
 export const handleDeleteFulfilled = (state, { payload }) => {
   const index = state.items.findIndex(item => item.id === payload.id);
   state.items.splice(index, 1);
@@ -32,6 +35,7 @@ export const handleDeleteFulfilled = (state, { payload }) => {
   toast.success('Contact has been deleted');
 };
 
+// Edit
 export const handleEditFulfilled = (state, { payload }) => {
   const { id, name, phone, email } = payload;
   const contact = state.items.find(item => item.id === id);
@@ -39,7 +43,6 @@ export const handleEditFulfilled = (state, { payload }) => {
   contact.name = name;
   contact.phone = phone;
   contact.email = email;
-  state.currentId = null;
 
   toast.success('Changes have been saved');
 };

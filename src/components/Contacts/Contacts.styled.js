@@ -1,6 +1,4 @@
 import { styled } from 'styled-components';
-import { BaseIconButton } from 'constants/theme';
-import { BsTrash3 } from 'react-icons/bs';
 
 export const List = styled.ul`
   display: flex;
@@ -14,9 +12,6 @@ export const List = styled.ul`
 export const ListItem = styled.li`
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
-  align-items: center;
-  gap: 30px;
 `;
 
 export const Wrapper = styled.div`
@@ -43,28 +38,5 @@ export const ContactLink = styled.a`
     color: ${({ theme }) => theme.colors.highlightedText};
     background-color: #4285f4;
     font-weight: 500;
-  }
-`;
-
-export const DeleteIcon = styled(BsTrash3)`
-  --size: 60%;
-  /* height: var(--size); */
-  width: var(--size);
-`;
-
-export const DeleteIconButton = styled(BaseIconButton)`
-  --size: 40px;
-
-  color: ${({ theme }) => theme.colors.secondaryText};
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.colors.highlightedText};
-    background-color: ${({ theme }) => theme.colors.warning};
-    font-weight: 500;
-
-    & > ${DeleteIcon} {
-      transform: scale(1.1);
-    }
   }
 `;

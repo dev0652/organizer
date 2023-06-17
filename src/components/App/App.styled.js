@@ -32,25 +32,10 @@ export const Right = styled.div`
   display: flex;
   padding: 25px;
   padding-top: 50px;
-  /* flex-grow: 10; */
-  /* align-items: start; */
-`;
-
-// export const ErrorWrapper = styled.div`
-//   height: 50vh;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
 `;
 
 export const NewContactIconButton = styled(AccentedIconButton)`
-  --size: 36px;
+  --size: 40px;
 `;
 
 export const AddIcon = styled(HiPlus)`

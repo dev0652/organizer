@@ -19,6 +19,8 @@ import {
   Name,
   TelephoneLink,
   EmailLink,
+  DeleteIconButton,
+  DeleteIcon,
 } from './Card.styled';
 
 // ##################################################
@@ -60,6 +62,13 @@ export const Card = () => {
         <DeleteButton type="button" onClick={() => handleDelete(currentId)}>
           Delete
         </DeleteButton>
+        {/* 
+        <DeleteIconButton
+          onClick={() => handleDelete(currentId)}
+          aria-label="Delete contact"
+        >
+          <DeleteIcon />
+        </DeleteIconButton> */}
       </ButtonWrapper>
 
       {showModal && (

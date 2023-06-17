@@ -1,11 +1,12 @@
 import { BaseTextField } from 'constants/theme';
 import { styled } from 'styled-components';
 
-export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-`;
-
 export const TextField = styled(BaseTextField)`
-  width: 90%;
+  width: 100%;
+  padding: 0 25px;
+
+  &::placeholder {
+    color: Silver;
+    /* padding-left: 15px; */
+  }
 `;

@@ -1,11 +1,9 @@
 import { styled } from 'styled-components';
-import { BaseButton, BaseCardLink } from 'constants/theme';
+import { BaseButton, BaseCardLink, BaseIconButton } from 'constants/theme';
+import { BsTrash3 } from 'react-icons/bs';
 
 export const CardWrapper = styled.div`
-  /* border: 6px solid lightgray; */
   border-radius: ${({ theme }) => theme.borderRadius};
-  /* background-color: ${({ theme }) => theme.colors.lightBg}; */
-  /* box-shadow: ${({ theme }) => theme.boxShadow}; */
 
   padding: 20px 30px;
   flex-grow: 1;
@@ -59,5 +57,28 @@ export const DeleteButton = styled(BaseButton)`
     color: whitesmoke;
     background-color: ${({ theme }) => theme.colors.warning};
     font-weight: 500;
+  }
+`;
+
+export const DeleteIcon = styled(BsTrash3)`
+  --size: 60%;
+  /* height: var(--size); */
+  width: var(--size);
+`;
+
+export const DeleteIconButton = styled(BaseIconButton)`
+  --size: 40px;
+
+  color: ${({ theme }) => theme.colors.secondaryText};
+
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.highlightedText};
+    background-color: ${({ theme }) => theme.colors.warning};
+    font-weight: 500;
+
+    & > ${DeleteIcon} {
+      transform: scale(1.1);
+    }
   }
 `;

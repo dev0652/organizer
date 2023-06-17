@@ -1,15 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { selectVisibleContacts } from 'redux/selectors';
 
-import {
-  DeleteIconButton,
-  ContactLink,
-  List,
-  ListItem,
-  DeleteIcon,
-} from './Contacts.styled';
+import { ContactLink, List, ListItem } from './Contacts.styled';
 
-import { deleteContact } from 'redux/operations';
 import { setSelectedContactId } from 'redux/contacts/slice';
 
 // ################################################
@@ -25,10 +18,6 @@ const Contacts = () => {
     a.name.localeCompare(b.name)
   );
 
-  const handleDelete = id => {
-    dispatch(deleteContact(id));
-  };
-
   const handleContactClick = event => {
     event.preventDefault();
     dispatch(setSelectedContactId(event.target.id));
@@ -41,13 +30,6 @@ const Contacts = () => {
           <ContactLink href="" onClick={handleContactClick} id={id}>
             {name}
           </ContactLink>
-
-          <DeleteIconButton
-            onClick={() => handleDelete(id)}
-            aria-label="Delete contact"
-          >
-            <DeleteIcon />
-          </DeleteIconButton>
         </ListItem>
       ))}
     </List>
