@@ -1,12 +1,34 @@
+import { AccentedButton, BaseButton, BaseTextField } from 'constants/theme';
 import { styled } from 'styled-components';
 
 export const FormWrapper = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
+`;
+
+export const FieldsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 `;
 
 export const Label = styled.label`
   display: flex;
   flex-direction: column;
+`;
+
+export const TextField = styled(BaseTextField)``;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
+`;
+
+export const AddButton = styled(BaseButton)``;
+
+export const AddRandomContactButton = styled(AccentedButton)`
+  /* width: 70%;
+  align-self: center; */
 `;

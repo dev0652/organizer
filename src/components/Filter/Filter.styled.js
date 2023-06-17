@@ -1,3 +1,4 @@
+import { BaseTextField } from 'constants/theme';
 import { styled } from 'styled-components';
 
 export const Label = styled.label`
@@ -5,10 +6,6 @@ export const Label = styled.label`
   flex-direction: column;
 `;
 
-export const TextField = styled.input`
-  padding: 0 10px;
-  border-radius: 6px;
-  font-size: 1.1rem;
-  line-height: 2;
+export const TextField = styled(BaseTextField)`
   width: 90%;
 `;

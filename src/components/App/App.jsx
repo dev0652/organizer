@@ -10,17 +10,14 @@ import Modal from 'components/Modal/Modal';
 import {
   AddIcon,
   NewContactIconButton,
-  LoadDefaultsButton,
   Right,
   Sidebar,
   Bar,
   PageWrapper,
-  Wrapper,
-  AddRandomContactButton,
 } from './App.styled';
 
 import { selectContacts } from 'redux/selectors';
-import { addContact, fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
@@ -79,22 +76,13 @@ export default function App() {
         <Right>{currentId && <Card />}</Right>
       </PageWrapper>
 
-      <Wrapper>
-        {showModal && (
-          <Modal onClose={toggleModal}>
-            <Section title="Add Contact">
-              <Form toggleModal={toggleModal} />
-            </Section>
-          </Modal>
-        )}
-      </Wrapper>
-
-      <AddRandomContactButton
-        type="button"
-        onClick={() => dispatch(addContact())}
-      >
-        Add random
-      </AddRandomContactButton>
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <Section title="New Contact">
+            <Form toggleModal={toggleModal} />
+          </Section>
+        </Modal>
+      )}
     </>
   );
 }

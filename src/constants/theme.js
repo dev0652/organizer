@@ -5,6 +5,7 @@ export const theme = {
     accent: '#4285f4',
     accentDark: '#3469c1',
     warning: 'tomato',
+    lightBg: '#f7f7f7',
 
     primaryText: '#212121',
     secondaryText: 'gray',
@@ -34,6 +35,17 @@ export const BaseButton = styled.button`
   }
 `;
 
+export const AccentedButton = styled(BaseButton)`
+  color: ${({ theme }) => theme.colors.highlightedText};
+
+  background-color: ${({ theme }) => theme.colors.accent};
+
+  &:hover,
+  &:focus {
+    background-color: ${({ theme }) => theme.colors.accentDark};
+  }
+`;
+
 export const BaseIconButton = styled.button`
   display: flex;
   justify-content: center;
@@ -44,7 +56,7 @@ export const BaseIconButton = styled.button`
   border-radius: 50%;
 `;
 
-export const AccentedButton = styled(BaseIconButton)`
+export const AccentedIconButton = styled(BaseIconButton)`
   color: ${({ theme }) => theme.colors.highlightedText};
 
   background-color: ${({ theme }) => theme.colors.accent};
@@ -63,6 +75,12 @@ export const BaseCardLink = styled.a`
   &:hover,
   &:focus {
     color: ${({ theme }) => theme.colors.accent};
-    /* font-weight: 500; */
   }
+`;
+
+export const BaseTextField = styled.input`
+  padding: 0 10px;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  font-size: 1.1rem;
+  line-height: 2;
 `;

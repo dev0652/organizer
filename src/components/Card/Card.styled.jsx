@@ -2,9 +2,12 @@ import { styled } from 'styled-components';
 import { BaseButton, BaseCardLink } from 'constants/theme';
 
 export const CardWrapper = styled.div`
-  border: 6px solid lightgray;
-  border-radius: 10px;
-  padding: 20px 15px;
+  /* border: 6px solid lightgray; */
+  border-radius: ${({ theme }) => theme.borderRadius};
+  /* background-color: ${({ theme }) => theme.colors.lightBg}; */
+  /* box-shadow: ${({ theme }) => theme.boxShadow}; */
+
+  padding: 20px 30px;
   flex-grow: 1;
   max-width: 400px;
 
@@ -14,9 +17,8 @@ export const CardWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  border-radius: 10px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   overflow: hidden;
-  background-color: red;
   width: 200px;
 
   box-shadow: ${({ theme }) => theme.boxShadow};
@@ -36,6 +38,7 @@ export const Meta = styled.div`
 `;
 
 export const Name = styled.p`
+  font-size: 2rem;
   font-weight: 600;
 `;
 
@@ -45,7 +48,6 @@ export const EmailLink = styled(BaseCardLink)``;
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  /* justify-content: end; */
   gap: 20px;
 `;
 

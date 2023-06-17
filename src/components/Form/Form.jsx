@@ -7,7 +7,14 @@ import toast from 'react-hot-toast';
 import { addContact } from 'redux/operations';
 import { selectContacts } from 'redux/selectors';
 
-import { FormWrapper, Label } from './Form.styled';
+import {
+  AddButton,
+  AddRandomContactButton,
+  ButtonsWrapper,
+  FieldsWrapper,
+  FormWrapper,
+  TextField,
+} from './Form.styled';
 
 // ################################################
 
@@ -58,29 +65,36 @@ export default function Form({ toggleModal }) {
 
   return (
     <FormWrapper onSubmit={handleSubmit}>
-      <Label>
-        Name
-        <input
+      <FieldsWrapper>
+        <TextField
           type="text"
           name="name"
           required
           value={name}
           onChange={handleChange}
+          placeholder="Name"
         />
-      </Label>
 
-      <Label>
-        Telephone
-        <input
+        <TextField
           type="tel"
           name="phone"
           required
           value={phone}
           onChange={handleChange}
+          placeholder="Telephone"
         />
-      </Label>
+      </FieldsWrapper>
 
-      <button type="submit">Add contact</button>
+      <ButtonsWrapper>
+        <AddButton type="submit">Add contact</AddButton>
+
+        <AddRandomContactButton
+          type="button"
+          onClick={() => dispatch(addContact())}
+        >
+          Add random
+        </AddRandomContactButton>
+      </ButtonsWrapper>
     </FormWrapper>
   );
 }

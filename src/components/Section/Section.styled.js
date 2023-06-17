@@ -4,7 +4,9 @@ export const Wrapper = styled.div`
   /* margin-bottom: 10px; */
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 `;
 
-export const Title = styled.h2``;
+export const Title = styled.h2`
+  color: ${({ theme }) => theme.colors.accentDark};
+`;
