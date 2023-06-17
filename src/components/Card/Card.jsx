@@ -19,8 +19,6 @@ import {
   Name,
   TelephoneLink,
   EmailLink,
-  DeleteIconButton,
-  DeleteIcon,
 } from './Card.styled';
 
 // ##################################################
