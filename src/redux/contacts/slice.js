@@ -24,6 +24,7 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
     currentId: null,
+    toastMessage: '',
   },
   reducers: {
     setSelectedContactId(state, { payload }) {

@@ -4,6 +4,7 @@ import { selectVisibleContacts } from 'redux/selectors';
 import { ContactLink, List, ListItem } from './Contacts.styled';
 
 import { setSelectedContactId } from 'redux/contacts/slice';
+import { Toast } from 'components/Toast/Toast';
 
 // ################################################
 
@@ -25,6 +26,7 @@ const Contacts = () => {
 
   return (
     <List>
+      <Toast />
       {sortedContacts.map(({ id, name, phone }) => (
         <ListItem key={id}>
           <ContactLink href="" onClick={handleContactClick} id={id}>

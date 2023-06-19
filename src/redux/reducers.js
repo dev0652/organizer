@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 // Common:
 export const handlePending = state => {
@@ -22,17 +22,16 @@ export const handleFetchFulfilled = (state, { payload }) => {
 
 export const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
-
-  toast.success(`${payload.name} has been added to the phonebook`);
+  state.toastMessage = `${payload.name} has been added to the phonebook`;
 };
 
 // Delete
 export const handleDeleteFulfilled = (state, { payload }) => {
   const index = state.items.findIndex(item => item.id === payload.id);
+
   state.items.splice(index, 1);
   state.currentId = null;
-
-  toast.success('Contact has been deleted');
+  state.toastMessage = 'Contact has been deleted';
 };
 
 // Edit
@@ -43,6 +42,5 @@ export const handleEditFulfilled = (state, { payload }) => {
   contact.name = name;
   contact.phone = phone;
   contact.email = email;
-
-  toast.success('Changes have been saved');
+  state.toastMessage = 'Changes have been saved';
 };
