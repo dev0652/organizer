@@ -1,4 +1,4 @@
-import { AccentedButton, BaseButton, BaseTextField } from 'constants/theme';
+import { BaseButton, BaseTextField } from 'constants/theme';
 import { styled } from 'styled-components';
 
 export const FormWrapper = styled.form`

@@ -8,8 +8,6 @@ import { selectContacts } from 'redux/selectors';
 
 import {
   AddButton,
-  AddRandomContactButton,
-  ButtonsWrapper,
   FieldsWrapper,
   FormWrapper,
   TextField,
