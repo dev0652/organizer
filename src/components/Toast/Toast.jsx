@@ -3,6 +3,9 @@ import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 
+import { Toaster } from 'react-hot-toast';
+import { containerStyle, toastOptions } from 'services/toastOptions';
+
 export const Toast = () => {
   const { toastMessage } = useSelector(selectContacts);
 
@@ -10,5 +13,7 @@ export const Toast = () => {
     toast.success(toastMessage);
   }, [toastMessage]);
 
-  return <div></div>;
+  return (
+    <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
+  );
 };
