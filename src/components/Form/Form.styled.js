@@ -20,15 +20,4 @@ export const Label = styled.label`
 
 export const TextField = styled(BaseTextField)``;
 
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  /* flex-direction: column; */
-  gap: 10px;
-`;
-
 export const AddButton = styled(BaseButton)``;
-
-export const AddRandomContactButton = styled(AccentedButton)`
-  /* width: 70%;
-  align-self: center; */
-`;

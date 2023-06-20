@@ -93,16 +93,7 @@ export default function Form({ toggleModal }) {
         />
       </FieldsWrapper>
 
-      <ButtonsWrapper>
-        <AddButton type="submit">Add contact</AddButton>
-
-        <AddRandomContactButton
-          type="button"
-          onClick={() => dispatch(addContact())}
-        >
-          Add random
-        </AddRandomContactButton>
-      </ButtonsWrapper>
+      <AddButton type="submit">Add contact</AddButton>
     </FormWrapper>
   );
 }

@@ -1,16 +1,17 @@
-// import toast from 'react-hot-toast';
-
 // Common:
 export const handlePending = state => {
   state.isLoading = true;
 };
 export const handleRejected = (state, { error: { message } }) => {
   state.isLoading = false;
+  state.toastType = 'error';
   state.error = message;
+  state.toastMessage = message;
 };
 export const handleFulfilled = state => {
   state.isLoading = false;
   state.error = null;
+  state.toastType = 'success';
 };
 
 // On success:
@@ -22,7 +23,8 @@ export const handleFetchFulfilled = (state, { payload }) => {
 
 export const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
-  state.toastMessage = `${payload.name} has been added to the phonebook`;
+  // state.toastMessage = `${payload.name} has been added to the phonebook`;
+  state.toastMessage = 'Contact has been added';
 };
 
 // Delete

@@ -14,10 +14,13 @@ import {
   Sidebar,
   Bar,
   PageWrapper,
+  NewRandomContactButton,
+  ButtonsWrapper,
+  AddRandomIcon,
 } from './App.styled';
 
 import { selectContacts } from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
+import { addContact, fetchContacts } from 'redux/operations';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
@@ -47,27 +50,39 @@ export default function App() {
             <Bar>
               <Filter />
 
-              <NewContactIconButton
-                type="button"
-                onClick={toggleModal}
-                disabled={error}
-                aria-label="New contact"
-              >
-                <AddIcon />
-              </NewContactIconButton>
+              <ButtonsWrapper>
+                <NewContactIconButton
+                  type="button"
+                  onClick={toggleModal}
+                  disabled={error}
+                  aria-label="New contact"
+                >
+                  <AddIcon />
+                </NewContactIconButton>
+
+                <NewRandomContactButton
+                  type="button"
+                  onClick={() => dispatch(addContact())}
+                  disabled={error}
+                  aria-label="New random contact (for testing)"
+                >
+                  <AddRandomIcon />
+                </NewRandomContactButton>
+              </ButtonsWrapper>
             </Bar>
           </Section>
 
-          {!isLoading && error && <Notification message={error} />}
-
-          {items.length === 0 && !isLoading && !error && (
-            <p>Your contacts will be displayed here once you add them</p>
-          )}
+          {/* {items.length === 0 && !isLoading && (
+            <p>There are no contacts to display</p>
+          )} */}
 
           {items.length > 0 && <Contacts />}
         </Sidebar>
 
-        <Right>{currentId && <Card />}</Right>
+        <Right>
+          {!isLoading && error && <Notification message={error} />}
+          {currentId && <Card />}
+        </Right>
 
         {showModal && (
           <Modal onClose={toggleModal}>

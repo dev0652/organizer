@@ -24,11 +24,15 @@ const contactsSlice = createSlice({
     isLoading: false,
     error: null,
     currentId: null,
-    toastMessage: '',
+    toastMessage: null,
+    toastType: 'success',
   },
   reducers: {
     setSelectedContactId(state, { payload }) {
       state.currentId = payload;
+    },
+    resetToastMessage(state) {
+      state.toastMessage = null;
     },
   },
 
@@ -43,5 +47,6 @@ const contactsSlice = createSlice({
       .addMatcher(isRejected(...extraActions), r.handleRejected),
 });
 
-export const { setSelectedContactId } = contactsSlice.actions;
+export const { setSelectedContactId, resetToastMessage } =
+  contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;

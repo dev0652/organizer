@@ -7,11 +7,9 @@ import { store } from './redux/store';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/theme';
 
-// import { Toaster } from 'react-hot-toast';
-// import { containerStyle, toastOptions } from 'services/toastOptions';
-
 import App from 'components/App';
 import './index.css';
+import { Toast } from 'components/Toast/Toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -19,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
-    </Provider>
 
-    {/* <Toaster containerStyle={containerStyle} toastOptions={toastOptions} /> */}
+      <Toast />
+    </Provider>
   </React.StrictMode>
 );

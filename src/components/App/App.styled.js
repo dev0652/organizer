@@ -1,6 +1,6 @@
 import { AccentedIconButton } from 'constants/theme';
 import { styled } from 'styled-components';
-import { HiPlus } from 'react-icons/hi';
+import { HiPlus, HiChevronDoubleRight } from 'react-icons/hi';
 
 export const PageWrapper = styled.div`
   display: flex;
@@ -30,15 +30,33 @@ export const Sidebar = styled.div`
 
 export const Right = styled.div`
   display: flex;
+  flex-direction: column;
   padding: 25px;
   padding-top: 50px;
+  flex-grow: 1;
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  /* flex-direction: column; */
+  gap: 10px;
 `;
 
 export const NewContactIconButton = styled(AccentedIconButton)`
   --size: 40px;
 `;
 
+export const NewRandomContactButton = styled(AccentedIconButton)`
+  --size: 40px;
+`;
+
 export const AddIcon = styled(HiPlus)`
+  --size: 70%;
+  height: var(--size);
+  width: var(--size);
+`;
+
+export const AddRandomIcon = styled(HiChevronDoubleRight)`
   --size: 70%;
   height: var(--size);
   width: var(--size);

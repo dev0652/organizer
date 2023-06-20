@@ -1,7 +1,17 @@
 import PropTypes from 'prop-types';
-import { Message } from './Notification.styled';
+import { Icon, Message, Text, Wrapper } from './Notification.styled';
 
-const Notification = ({ message }) => <Message>{message}</Message>;
+//
+
+const Notification = ({ message }) => (
+  <Wrapper>
+    <Icon />
+    <Text>
+      <Message>{message}</Message>
+      <Message>Try reloading the page or check back later</Message>
+    </Text>
+  </Wrapper>
+);
 
 export default Notification;
 

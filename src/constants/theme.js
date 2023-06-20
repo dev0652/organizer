@@ -70,6 +70,11 @@ export const AccentedIconButton = styled(BaseIconButton)`
   &:focus {
     background-color: ${({ theme }) => theme.colors.accentDark};
   }
+
+  &:disabled {
+    /* background-color: ${({ theme }) => theme.colors.lightBg}; */
+    background-color: Gainsboro;
+  }
 `;
 
 export const BaseCardLink = styled.a`

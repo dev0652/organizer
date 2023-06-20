@@ -83,9 +83,7 @@ export default function EditForm({
         />
       </FieldsWrapper>
 
-      {/* <ButtonsWrapper> */}
       <EditButton type="submit">Save changes</EditButton>
-      {/* </ButtonsWrapper> */}
     </FormWrapper>
   );
 }
