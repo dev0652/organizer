@@ -18,7 +18,7 @@ export const Toast = () => {
       dispatch(resetToastMessage());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [toastMessage]);
+  }, [dispatch, toastMessage]);
 
   return (
     <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
