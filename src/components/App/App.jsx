@@ -5,7 +5,7 @@ import Section from 'components/Section';
 import Form from 'components/Form';
 import Contacts from 'components/Contacts';
 import Filter from 'components/Filter';
-import Notification from 'components/Notification';
+import Error from 'components/Error';
 import Modal from 'components/Modal/Modal';
 import {
   AddIcon,
@@ -25,6 +25,7 @@ import { addContact, fetchContacts } from 'redux/operations';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
 import { Card } from 'components/Card/Card';
+import { Prompt } from 'components/Prompt/Prompt';
 
 // ################################################
 
@@ -72,15 +73,12 @@ export default function App() {
             </Bar>
           </Section>
 
-          {/* {items.length === 0 && !isLoading && (
-            <p>There are no contacts to display</p>
-          )} */}
-
           {items.length > 0 && <Contacts />}
         </Sidebar>
 
         <Right>
-          {!isLoading && error && <Notification message={error} />}
+          {!isLoading && error && <Error message={error} />}
+          {!currentId && !error && <Prompt />}
           {currentId && <Card />}
         </Right>
 

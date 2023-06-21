@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { Icon, Message, Text, Wrapper } from './Notification.styled';
+import { Icon, Message, Text, Wrapper } from './Error.styled';
 
 //
 
-const Notification = ({ message }) => (
+const Error = ({ message }) => (
   <Wrapper>
     <Icon />
     <Text>
@@ -13,10 +13,10 @@ const Notification = ({ message }) => (
   </Wrapper>
 );
 
-export default Notification;
+export default Error;
 
 // ######################################
 
-Notification.propTypes = {
+Error.propTypes = {
   message: PropTypes.string.isRequired,
 };
