@@ -8,8 +8,8 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './constants/theme';
 
 import App from 'components/App';
+import Toast from 'components/Toast';
 import './index.css';
-import { Toast } from 'components/Toast/Toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

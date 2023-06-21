@@ -5,7 +5,7 @@ import { selectContacts, selectFilter } from 'redux/selectors';
 import { TextField } from './Filter.styled';
 import { useEffect } from 'react';
 
-const Filter = () => {
+export default function Filter() {
   const { items } = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
@@ -47,6 +47,4 @@ const Filter = () => {
       id="searchBox"
     />
   );
-};
-
-export default Filter;
+}

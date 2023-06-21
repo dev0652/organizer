@@ -7,7 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import { containerStyle, toastOptions } from 'services/toastOptions';
 import { resetToastMessage } from 'redux/contacts/slice';
 
-export const Toast = () => {
+export default function Toast() {
   const { toastType, toastMessage } = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -23,4 +23,4 @@ export const Toast = () => {
   return (
     <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
   );
-};
+}

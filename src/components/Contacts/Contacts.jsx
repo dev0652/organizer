@@ -7,7 +7,7 @@ import { setSelectedContactId } from 'redux/contacts/slice';
 
 // ################################################
 
-const Contacts = () => {
+export default function Contacts() {
   const dispatch = useDispatch();
 
   // If filtered, display only contacts matching the filter
@@ -34,6 +34,4 @@ const Contacts = () => {
       ))}
     </List>
   );
-};
-
-export default Contacts;
+}
