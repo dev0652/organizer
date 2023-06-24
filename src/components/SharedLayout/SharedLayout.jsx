@@ -3,9 +3,16 @@ import { Outlet } from 'react-router-dom';
 
 import { AppBar, Container, StyledNavLink } from './SharedLayout.styled';
 
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import loaderOptions from 'services/loaderOptions';
+import { useSelector } from 'react-redux';
+import { selectContacts } from 'redux/selectors';
+
 // ##############################
 
 export default function SharedLayout() {
+  const { isLoading } = useSelector(selectContacts);
+
   return (
     <>
       <AppBar>
@@ -17,7 +24,9 @@ export default function SharedLayout() {
         </Container>
       </AppBar>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
+      >
         <Container>
           <main>
             <Outlet />

@@ -22,8 +22,8 @@ import {
 import { selectContacts } from 'redux/selectors';
 import { addContact, fetchContacts } from 'redux/operations';
 
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
-import loaderOptions from 'services/loaderOptions';
+// import { Loading } from 'notiflix/build/notiflix-loading-aio';
+// import loaderOptions from 'services/loaderOptions';
 import { Card } from 'components/Card/Card';
 import { Prompt } from 'components/Prompt/Prompt';
 
@@ -43,7 +43,7 @@ export default function Contacts() {
 
   return (
     <>
-      {isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
+      {/* {isLoading ? Loading.dots(loaderOptions) : Loading.remove()} */}
 
       <PageWrapper>
         <Sidebar>
