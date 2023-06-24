@@ -2,9 +2,15 @@ import { AccentedIconButton } from 'constants/theme';
 import { styled } from 'styled-components';
 import { HiPlus, HiChevronDoubleRight } from 'react-icons/hi';
 
+// Body height adjust to compensate for positioned header height
+const header = document.querySelector('.header');
+const { height: pageHeaderHeight } = header.getBoundingClientRect();
+const subtractedValue = `${pageHeaderHeight}px`;
+
 export const PageWrapper = styled.div`
   display: flex;
-  height: 100vh;
+  /* height: 100vh; */
+  height: calc(100vh - ${subtractedValue});
 `;
 
 export const Sidebar = styled.div`

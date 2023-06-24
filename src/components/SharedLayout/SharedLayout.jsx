@@ -15,7 +15,7 @@ export default function SharedLayout() {
 
   return (
     <>
-      <AppBar>
+      <AppBar className="header">
         <Container>
           <nav>
             <StyledNavLink to="/">Home</StyledNavLink>
