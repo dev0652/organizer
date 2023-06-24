@@ -23,7 +23,7 @@ import {
 
 // ##################################################
 
-export const Card = () => {
+export default function Card() {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = () => setShowModal(!showModal);
 
@@ -84,4 +84,4 @@ export const Card = () => {
       )}
     </CardWrapper>
   );
-};
+}
