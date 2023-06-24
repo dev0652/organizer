@@ -1,37 +1,95 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { selectVisibleContacts } from 'redux/selectors';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { ContactLink, List, ListItem } from './Contacts.styled';
+import Section from 'components/Section';
+import Form from 'components/Form';
+import Contacts from 'components/ContactsList';
+import Filter from 'components/Filter';
+import Error from 'components/Error';
+import Modal from 'components/Modal/Modal';
+import {
+  AddIcon,
+  NewContactIconButton,
+  Right,
+  Sidebar,
+  Bar,
+  PageWrapper,
+  NewRandomContactButton,
+  ButtonsWrapper,
+  AddRandomIcon,
+} from './Contacts.styled';
 
-import { setSelectedContactId } from 'redux/contacts/slice';
+import { selectContacts } from 'redux/selectors';
+import { addContact, fetchContacts } from 'redux/operations';
+
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import loaderOptions from 'services/loaderOptions';
+import { Card } from 'components/Card/Card';
+import { Prompt } from 'components/Prompt/Prompt';
 
 // ################################################
 
-export default function Contacts() {
+export default function App() {
+  const { items, isLoading, error, currentId } = useSelector(selectContacts);
+
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => setShowModal(!showModal);
+
   const dispatch = useDispatch();
 
-  // If filtered, display only contacts matching the filter
-  const visibleContacts = useSelector(selectVisibleContacts);
-
-  // Sort contacts in alphabetical order
-  const sortedContacts = [...visibleContacts].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
-
-  const handleContactClick = event => {
-    event.preventDefault();
-    dispatch(setSelectedContactId(event.target.id));
-  };
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
-    <List>
-      {sortedContacts.map(({ id, name, phone }) => (
-        <ListItem key={id}>
-          <ContactLink href="" onClick={handleContactClick} id={id}>
-            {name}
-          </ContactLink>
-        </ListItem>
-      ))}
-    </List>
+    <>
+      {isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
+
+      <PageWrapper>
+        <Sidebar>
+          <Section title="Contacts">
+            <Bar>
+              <Filter />
+
+              <ButtonsWrapper>
+                <NewContactIconButton
+                  type="button"
+                  onClick={toggleModal}
+                  disabled={error}
+                  aria-label="New contact"
+                >
+                  <AddIcon />
+                </NewContactIconButton>
+
+                <NewRandomContactButton
+                  type="button"
+                  onClick={() => dispatch(addContact())}
+                  disabled={error}
+                  aria-label="New random contact (for testing)"
+                >
+                  <AddRandomIcon />
+                </NewRandomContactButton>
+              </ButtonsWrapper>
+            </Bar>
+          </Section>
+
+          {items.length > 0 && <Contacts />}
+        </Sidebar>
+
+        <Right>
+          {!isLoading && error && <Error message={error} />}
+          {!currentId && !error && <Prompt />}
+          {currentId && <Card />}
+        </Right>
+
+        {showModal && (
+          <Modal onClose={toggleModal}>
+            <Section title="New Contact">
+              <Form toggleModal={toggleModal} />
+            </Section>
+          </Modal>
+        )}
+      </PageWrapper>
+    </>
   );
 }
