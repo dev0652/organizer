@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Section from 'components/Section';
 import Form from 'components/Form';
-import Contacts from 'components/ContactsList';
+import ContactsList from 'components/ContactsList';
 import Filter from 'components/Filter';
 import Error from 'components/Error';
-import Modal from 'components/Modal/Modal';
+import Modal from 'components/Modal';
 import {
   AddIcon,
   NewContactIconButton,
@@ -29,7 +29,7 @@ import { Prompt } from 'components/Prompt/Prompt';
 
 // ################################################
 
-export default function App() {
+export default function Contacts() {
   const { items, isLoading, error, currentId } = useSelector(selectContacts);
 
   const [showModal, setShowModal] = useState(false);
@@ -73,7 +73,7 @@ export default function App() {
             </Bar>
           </Section>
 
-          {items.length > 0 && <Contacts />}
+          {items.length > 0 && <ContactsList />}
         </Sidebar>
 
         <Right>
