@@ -23,8 +23,7 @@ export const handleFetchFulfilled = (state, { payload }) => {
 
 export const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
-  // state.toastMessage = `${payload.name} has been added to the phonebook`;
-  state.toastMessage = 'Contact has been added';
+  state.toastMessage = `${payload.name} has been added to the phonebook`;
 };
 
 // Delete

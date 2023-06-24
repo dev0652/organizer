@@ -1,43 +1,73 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { breakpoints } from 'constants/variables';
+
+// const mobile = breakpoints.mobile;
+const tablet = breakpoints.tablet;
+const desktop = breakpoints.desktop;
+const desktopWide = breakpoints.desktopWide;
+
+export const Container = styled.div`
+  /* outline: 2px solid red; */
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (max-width: (${tablet} - 1)) {
+    min-width: calc(100vw - 40px);
+  }
+
+  @media screen and (min-width: ${tablet}) {
+    width: ${tablet};
+  }
+
+  @media screen and (min-width: ${desktop}) {
+    width: ${desktop};
+  }
+
+  @media screen and (min-width: ${desktopWide}) {
+    width: ${desktopWide};
+  }
+`;
+
+// export const HeaderContainer = styled(Container)`
+//   outline: 2px solid green;
+// `;
 
 export const AppBar = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 16px;
-  border-bottom: 1px solid black;
+
+  padding: 8px 10px;
+  border-bottom: 2px solid gray;
 
   /* background-color: rgb(3, 37, 65); */
 
-  > nav {
+  nav {
     display: flex;
+    gap: 5px;
   }
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  padding: 8px 16px;
-  border-radius: 4px;
+  color: black;
+  font-size: 1.1rem;
   text-decoration: none;
-  /* color: whiteSmoke; */
+  /* padding: 8px 16px; */
+  padding: 10px 20px;
 
-  :hover,
-  :focus {
-    text-decoration: none;
-    color: goldenRod;
-    font-weight: 500;
-  }
+  border-radius: ${({ theme }) => theme.borderRadius};
 
   &.active {
-    color: rgb(45, 187, 208);
     font-weight: 500;
+    color: ${({ theme }) => theme.colors.accent};
+  }
 
-    :hover,
-    :focus {
-      text-decoration: none;
-      color: goldenRod;
-    }
+  &:hover,
+  &:focus {
+    color: ${({ theme }) => theme.colors.highlightedText};
+    background-color: #4285f4;
+    font-weight: 500;
   }
 `;

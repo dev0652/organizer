@@ -1,5 +1,5 @@
 import { styled } from 'styled-components';
-import { FiInfo } from 'react-icons/fi';
+import { CiCircleInfo as ReactIcon } from 'react-icons/ci';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const Text = styled.div`
   align-items: center;
 `;
 
-export const Icon = styled(FiInfo)`
+export const Icon = styled(ReactIcon)`
   --size: 5rem;
   height: var(--size);
   width: var(--size);

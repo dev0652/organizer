@@ -3,10 +3,9 @@ import { styled } from 'styled-components';
 
 export const TextField = styled(BaseTextField)`
   width: 100%;
-  padding: 0 25px;
+  padding: 2px 25px 0;
 
   &::placeholder {
     color: Silver;
-    /* padding-left: 15px; */
   }
 `;
