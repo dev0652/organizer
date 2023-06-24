@@ -6,8 +6,6 @@ const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const Register = lazy(() => import('pages/Register'));
 const NotFound = lazy(() => import('pages/NotFound'));
 
-// const Cast = lazy(() => import('components/Cast'));
-// const Reviews = lazy(() => import('components/Reviews'));
 const SharedLayout = lazy(() => import('components/SharedLayout'));
 
 // ################################################

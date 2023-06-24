@@ -2,6 +2,7 @@ import React from 'react';
 // import { createRoot } from 'react-dom/client';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 
 import { Provider } from 'react-redux';
 import { store } from 'redux/store';
@@ -18,7 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <BrowserRouter basename="/goit-react-hw-08-phonebook">
-          <App />
+          <HelmetProvider>
+            <App />
+          </HelmetProvider>
         </BrowserRouter>
       </ThemeProvider>
 
