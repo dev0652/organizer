@@ -6,6 +6,7 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const register = async credentials => {
   const { data } = await axios.post('/users/signup', credentials);
+  setAuthHeader(data.token);
   return data;
 };
 
@@ -16,6 +17,7 @@ export const login = async credentials => {
 
 export const logout = async () => {
   const { data } = await axios.post('/users/logout');
+  clearAuthHeader();
   return data;
 };
 

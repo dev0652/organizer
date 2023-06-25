@@ -2,12 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api';
 
 // Operation generator
-function generateOperation(type) {
-  function payloadCreator(type) {
-    return async arg => await api[type](arg ? arg : '');
-  }
+const generateOperation = type => {
+  // 1. Generate the payloadCreator callback for createAsyncThunk
+  const payloadCreator = type => async arg => await api[type](arg ? arg : '');
+  // 2. . Generate the thunk action creator
   return createAsyncThunk(`auth/${type}`, payloadCreator(type));
-}
+};
 
 // Generated operations
 export const register = generateOperation('register');

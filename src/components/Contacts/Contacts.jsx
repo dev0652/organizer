@@ -37,6 +37,11 @@ export default function Contacts() {
 
   useEffect(() => {
     dispatch(fetchContacts());
+    //  const promise = dispatch(fetchContacts())
+    // return () => {
+    //   // `createAsyncThunk` attaches an `abort()` method to the promise
+    //   promise.abort()
+    // }
   }, [dispatch]);
 
   return (

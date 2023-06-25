@@ -1,27 +1,34 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-import { AppBar, Container, StyledNavLink } from './SharedLayout.styled';
+import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
 import { useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
+import { selectAuth, selectContacts } from 'redux/selectors';
+import UserBar from 'components/UserBar';
+import AuthNav from 'components/AuthNav/AuthNav';
+import { StyledNavLink } from 'styling/links';
 
 // ##############################
 
 export default function SharedLayout() {
   const { isLoading } = useSelector(selectContacts);
+  const { isLoggedIn } = useSelector(selectAuth);
 
   return (
     <>
       <AppBar className="header">
         <Container>
-          <nav>
-            <StyledNavLink to="/">Home</StyledNavLink>
-            <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-            <StyledNavLink to="/register">Sign Up</StyledNavLink>
-          </nav>
+          <AppBarWrapper>
+            <nav>
+              <StyledNavLink to="/">Home</StyledNavLink>
+              <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+            </nav>
+
+            {isLoggedIn ? <UserBar /> : <AuthNav />}
+          </AppBarWrapper>
         </Container>
       </AppBar>
 

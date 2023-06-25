@@ -17,14 +17,6 @@ import { authReducer } from './auth/slice';
 
 // ###############################################
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-];
-
 // Persisting token field from auth slice to localStorage
 const authPersistConfig = {
   key: 'auth',
@@ -32,13 +24,21 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+// #######################################################
+
 export const store = configureStore({
   reducer: {
+    // auth: authReducer,
     auth: persistReducer(authPersistConfig, authReducer),
     contacts: contactsReducer,
     filter: filterReducer,
   },
-  middleware,
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
   devTools: process.env.NODE_ENV === 'development',
 });
 

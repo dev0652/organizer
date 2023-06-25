@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
-import { BaseButton, BaseCardLink, BaseIconButton } from 'styling/buttons';
+import { BaseButton, BaseIconButton } from 'styling/buttons';
+import { BaseCardLink } from 'styling/links';
 
 import { BsTrash3 } from 'react-icons/bs';
 

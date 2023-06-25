@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { breakpoints } from 'styling/variables';
 
 // const mobile = breakpoints.mobile;
@@ -35,6 +34,12 @@ export const Container = styled.div`
 //   outline: 2px solid green;
 // `;
 
+export const AppBarWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const AppBar = styled.header`
   display: flex;
   align-items: center;
@@ -49,27 +54,5 @@ export const AppBar = styled.header`
   nav {
     display: flex;
     gap: 5px;
-  }
-`;
-
-export const StyledNavLink = styled(NavLink)`
-  color: black;
-  font-size: 1.1rem;
-  text-decoration: none;
-  /* padding: 8px 16px; */
-  padding: 10px 20px;
-
-  border-radius: ${({ theme }) => theme.borderRadius};
-
-  &.active {
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.accent};
-  }
-
-  &:hover,
-  &:focus {
-    color: ${({ theme }) => theme.colors.highlightedText};
-    background-color: #4285f4;
-    font-weight: 500;
   }
 `;

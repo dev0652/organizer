@@ -59,14 +59,3 @@ export const AccentedIconButton = styled(BaseIconButton)`
     background-color: gainsboro;
   }
 `;
-
-export const BaseCardLink = styled.a`
-  text-decoration: none;
-  color: ${theme.colors.secondaryText};
-  font-size: 1.2rem;
-
-  &:hover,
-  &:focus {
-    color: ${theme.colors.accent};
-  }
-`;

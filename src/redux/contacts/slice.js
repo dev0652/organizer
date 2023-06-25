@@ -6,7 +6,7 @@ import {
 } from '@reduxjs/toolkit';
 
 import * as ops from 'redux/contacts/operations';
-import * as r from 'redux/reducers';
+import * as r from 'redux/contacts/reducers';
 
 // ################################################
 
