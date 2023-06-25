@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import * as api from 'services/mockapi';
 import * as api from 'services/api';
 
 function generateOperation(type) {

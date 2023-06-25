@@ -14,8 +14,8 @@ import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 export default function AddForm({ toggleModal }) {
   //
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
+  const [number, setNumber] = useState('');
+  // const [email, setEmail] = useState('');
 
   const { items } = useSelector(selectContacts);
   const dispatch = useDispatch();
@@ -28,7 +28,13 @@ export default function AddForm({ toggleModal }) {
       return;
     }
 
-    dispatch(addContact({ name, phone, email }));
+    dispatch(
+      addContact({
+        name,
+        number,
+        // email
+      })
+    );
     toggleModal();
   };
 
@@ -46,12 +52,12 @@ export default function AddForm({ toggleModal }) {
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
-      case 'email':
-        setEmail(value);
-        break;
+      // case 'email':
+      //   setEmail(value);
+      //   break;
       default:
         return;
     }
@@ -71,20 +77,20 @@ export default function AddForm({ toggleModal }) {
 
         <TextField
           type="tel"
-          name="phone"
+          name="number"
           required
-          value={phone}
+          value={number}
           onChange={handleChange}
           placeholder="Telephone"
         />
 
-        <TextField
+        {/* <TextField
           type="tel"
           name="email"
           value={email}
           onChange={handleChange}
           placeholder="Email"
-        />
+        /> */}
       </FieldsWrapper>
 
       <SubmitButton type="submit">Add contact</SubmitButton>

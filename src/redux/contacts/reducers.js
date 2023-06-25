@@ -21,12 +21,13 @@ export const handleFetchFulfilled = (state, { payload }) => {
   state.items = payload;
 };
 
+// Add a new contact
 export const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
   state.toastMessage = `${payload.name} has been added to the phonebook`;
 };
 
-// Delete
+// Delete a contact
 export const handleDeleteFulfilled = (state, { payload }) => {
   const index = state.items.findIndex(item => item.id === payload.id);
 
@@ -35,7 +36,7 @@ export const handleDeleteFulfilled = (state, { payload }) => {
   state.toastMessage = 'Contact has been deleted';
 };
 
-// Edit
+// Edit a contact
 export const handleEditFulfilled = (state, { payload }) => {
   const { id, name, phone, email } = payload;
   const contact = state.items.find(item => item.id === id);

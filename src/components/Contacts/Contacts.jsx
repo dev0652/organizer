@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { faker } from '@faker-js/faker';
+
 import Section from 'components/Section';
 import AddForm from 'components/Forms/AddForm';
 import ContactsList from 'components/ContactsList';
@@ -44,6 +46,17 @@ export default function Contacts() {
     // }
   }, [dispatch]);
 
+  const addRandomContact = () => {
+    const randomContact = {
+      name: faker.person.fullName(),
+      number: faker.phone.number(),
+      // email: faker.internet.exampleEmail(),
+      // image: faker.internet.avatar(),
+    };
+
+    dispatch(addContact(randomContact));
+  };
+
   return (
     <PageWrapper>
       <Sidebar>
@@ -63,7 +76,7 @@ export default function Contacts() {
 
               <NewRandomContactButton
                 type="button"
-                onClick={() => dispatch(addContact())}
+                onClick={addRandomContact}
                 disabled={error}
                 aria-label="New random contact (for testing)"
               >

@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { deleteContact } from 'redux/contacts/operations';
 
+import { faker } from '@faker-js/faker';
+
 import Modal from 'components/Modal';
 import Section from 'components/Section';
 import EditForm from 'components/Forms/EditForm';
@@ -30,9 +32,16 @@ export default function Card() {
   const dispatch = useDispatch();
 
   const { items, currentId } = useSelector(selectContacts);
-  const { name, phone, email, image } = items.find(
-    item => item.id === currentId
-  );
+  const {
+    name,
+    number,
+    // email, image
+  } = items.find(item => item.id === currentId);
+
+  const email = faker.internet.exampleEmail();
+  const image = faker.image.avatar();
+  // const image = faker.image.people(640, 640, true);
+  // faker.image.people(width, height, randomize?: boolean = false)
 
   const handleDelete = id => {
     dispatch(deleteContact(id));
@@ -41,13 +50,13 @@ export default function Card() {
   return (
     <CardWrapper>
       <ImageWrapper>
-        <Image src={image} alt={name} width={200} />
+        <Image src={image} alt={name} width={640} />
       </ImageWrapper>
 
       <Meta>
         <Name>{name}</Name>
 
-        <TelephoneLink href={`tel:+${phone}`}>{phone}</TelephoneLink>
+        <TelephoneLink href={`tel:+${number}`}>{number}</TelephoneLink>
 
         <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
       </Meta>
@@ -75,7 +84,7 @@ export default function Card() {
             <EditForm
               toggleModal={toggleModal}
               nameToEdit={name}
-              phoneToEdit={phone}
+              phoneToEdit={number}
               emailToEdit={email}
               id={currentId}
             />

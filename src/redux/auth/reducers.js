@@ -31,7 +31,6 @@ export const handleLoginFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
   state.isLoggedIn = true;
-
   state.toastMessageAuth = 'You have signed in to your account';
 };
 
@@ -40,7 +39,6 @@ export const handleLogoutFulfilled = state => {
   state.user = { name: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
-
   state.toastMessageAuth = 'You have signed out of your account';
 };
 

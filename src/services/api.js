@@ -4,6 +4,8 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+// User
+
 export const register = async credentials => {
   const { data } = await axios.post('/users/signup', credentials);
   setAuthHeader(data.token);
@@ -23,7 +25,7 @@ export const logout = async () => {
 };
 
 export const refresh = async () => {
-  const { data } = await axios.get('/users/me');
+  const { data } = await axios.get('/users/current');
   return data;
 };
 
@@ -35,4 +37,26 @@ export const setAuthHeader = token => {
 // Utility to remove JWT
 export const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
+};
+
+// Contacts
+
+export const fetchContacts = async () => {
+  const { data } = await axios.get('/contacts');
+  return data;
+};
+
+export const addContact = async newContact => {
+  const { data } = await axios.post('/contacts', newContact);
+  return data;
+};
+
+export const deleteContact = async id => {
+  const { data } = await axios.delete(`/contacts/${id}`);
+  return data;
+};
+
+export const editContact = async ({ id, editedContact }) => {
+  const { data } = await axios.patch(`/contacts/${id}`, editedContact);
+  return data;
 };

@@ -17,14 +17,18 @@ export default function EditForm({
 }) {
   //
   const [name, setName] = useState(nameToEdit);
-  const [phone, setPhone] = useState(phoneToEdit);
-  const [email, setEmail] = useState(emailToEdit);
+  const [number, setNumber] = useState(phoneToEdit);
+  // const [email, setEmail] = useState(emailToEdit);
 
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
     event.preventDefault();
-    const editedContact = { name, phone, email };
+    const editedContact = {
+      name,
+      number,
+      // email
+    };
 
     dispatch(editContact({ id, editedContact }));
     toggleModal();
@@ -38,12 +42,12 @@ export default function EditForm({
       case 'name':
         setName(value);
         break;
-      case 'phone':
-        setPhone(value);
+      case 'number':
+        setNumber(value);
         break;
-      case 'email':
-        setEmail(value);
-        break;
+      // case 'email':
+      //   setEmail(value);
+      //   break;
       default:
         return;
     }
@@ -63,20 +67,20 @@ export default function EditForm({
 
         <TextField
           type="tel"
-          name="phone"
+          name="number"
           required
-          value={phone}
+          value={number}
           onChange={handleChange}
           placeholder="Telephone"
         />
 
-        <TextField
+        {/* <TextField
           type="email"
           name="email"
           value={email}
           onChange={handleChange}
           placeholder="Email"
-        />
+        /> */}
       </FieldsWrapper>
 
       <SubmitButton type="submit">Save changes</SubmitButton>
