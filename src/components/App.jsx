@@ -1,3 +1,4 @@
+import Login from 'pages/Login';
 import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

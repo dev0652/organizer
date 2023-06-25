@@ -12,8 +12,9 @@ export default function UserBar() {
   } = useSelector(selectAuth);
 
   const dispatch = useDispatch();
-
-  const handleLogout = () => dispatch(logout);
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <Wrapper>

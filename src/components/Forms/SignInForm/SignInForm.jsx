@@ -1,15 +1,14 @@
-// import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { register } from 'redux/auth/operations';
+import { login } from 'redux/auth/operations';
 
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
-import { FormContainer } from './SignUpForm.styled';
+import { FormContainer } from './SignInForm.styled';
 
 // ################################################
 
-export default function SignUpForm() {
+export default function SignInForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = event => {
@@ -18,12 +17,11 @@ export default function SignUpForm() {
     const form = event.currentTarget;
 
     const credentials = {
-      name: form.elements.name.value,
       email: form.elements.email.value,
       password: form.elements.password.value,
     };
 
-    dispatch(register(credentials));
+    dispatch(login(credentials));
     form.reset();
     // toggleModal();
   };
@@ -32,14 +30,6 @@ export default function SignUpForm() {
     <FormContainer>
       <FormWrapper onSubmit={handleSubmit}>
         <FieldsWrapper>
-          <TextField
-            type="text"
-            name="name"
-            placeholder="Name"
-            defaultValue="placeholder"
-            required
-          />
-
           <TextField
             type="email"
             name="email"
@@ -59,7 +49,7 @@ export default function SignUpForm() {
           />
         </FieldsWrapper>
 
-        <SubmitButton type="submit">Sign up</SubmitButton>
+        <SubmitButton type="submit">Sign in</SubmitButton>
       </FormWrapper>
     </FormContainer>
   );

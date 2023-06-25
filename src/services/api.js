@@ -12,6 +12,7 @@ export const register = async credentials => {
 
 export const login = async credentials => {
   const { data } = await axios.post('/users/login', credentials);
+  setAuthHeader(data.token);
   return data;
 };
 

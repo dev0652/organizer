@@ -5,37 +5,42 @@ export const handlePending = state => {
 export const handleRejected = (state, { error: { message } }) => {
   state.isLoading = false;
   state.toastTypeAuth = 'error';
-  state.error = message;
   state.toastMessageAuth = message;
+  state.error = message;
 };
 export const handleFulfilled = state => {
   state.isLoading = false;
-  state.error = null;
   state.toastTypeAuth = 'success';
+  state.error = null;
 };
 
 // On success:
 
-// Sign up
+// Register
 export const handleRegisterFulfilled = (state, { payload }) => {
   state.user = payload.user;
   state.token = payload.token;
   state.isLoggedIn = true;
 
-  state.toastMessageAuth = 'Registration successful!';
+  state.toastMessageAuth =
+    'Registration successful! You have been signed in to your account';
 };
 
-// Sign in
+// Log in
 export const handleLoginFulfilled = (state, { payload }) => {
+  state.user = payload.user;
+  state.token = payload.token;
+  state.isLoggedIn = true;
+
   state.toastMessageAuth = 'You have signed in to your account';
 };
 
-// Sign out
+// Log out
 export const handleLogoutFulfilled = state => {
-  state.user.name = null;
-  state.user.email = null;
+  state.user = { name: null, email: null };
   state.token = null;
   state.isLoggedIn = false;
+
   state.toastMessageAuth = 'You have signed out of your account';
 };
 

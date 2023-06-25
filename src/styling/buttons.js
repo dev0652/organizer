@@ -16,6 +16,10 @@ export const BaseButton = styled.button`
     color: ${theme.colors.highlightedText};
     font-weight: 500;
   }
+
+  &:active {
+    background-color: ${theme.colors.accentDark};
+  }
 `;
 
 export const AccentedButton = styled(BaseButton)`
@@ -26,6 +30,10 @@ export const AccentedButton = styled(BaseButton)`
   &:hover,
   &:focus {
     background-color: ${theme.colors.accentDark};
+  }
+
+  &:active {
+    background-color: ${theme.colors.accentDarker};
   }
 `;
 

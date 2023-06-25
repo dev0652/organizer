@@ -17,6 +17,8 @@ export default function SharedLayout() {
   const { isLoading } = useSelector(selectContacts);
   const { isLoggedIn } = useSelector(selectAuth);
 
+  // useEffect(() => {}, [isLoggedIn]);
+
   return (
     <>
       <AppBar className="header">
@@ -24,7 +26,9 @@ export default function SharedLayout() {
           <AppBarWrapper>
             <nav>
               <StyledNavLink to="/">Home</StyledNavLink>
-              <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+              {isLoggedIn && (
+                <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+              )}
             </nav>
 
             {isLoggedIn ? <UserBar /> : <AuthNav />}

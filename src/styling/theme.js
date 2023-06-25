@@ -2,6 +2,7 @@ export const theme = {
   colors: {
     accent: '#4285f4',
     accentDark: '#3469c1',
+    accentDarker: '#1f3f74',
     warning: 'tomato',
     lightBg: '#f7f7f7',
 
