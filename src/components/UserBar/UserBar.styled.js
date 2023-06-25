@@ -5,3 +5,7 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 10px;
 `;
+
+export const WelcomeMsg = styled.div`
+  font-weight: bold;
+`;

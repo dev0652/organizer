@@ -19,11 +19,11 @@ export const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   /* padding: 8px 16px; */
   padding: 10px 20px;
+  font-weight: bold;
 
   border-radius: ${({ theme }) => theme.borderRadius};
 
   &.active {
-    font-weight: 500;
     color: ${({ theme }) => theme.colors.accent};
   }
 

@@ -22,8 +22,7 @@ export const handleRegisterFulfilled = (state, { payload }) => {
   state.token = payload.token;
   state.isLoggedIn = true;
 
-  state.toastMessageAuth =
-    'Registration successful. Please sign in with your new account';
+  state.toastMessageAuth = 'Registration successful!';
 };
 
 // Sign in
