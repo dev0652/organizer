@@ -32,27 +32,14 @@ export default function SignUpForm() {
     <FormContainer>
       <FormWrapper onSubmit={handleSubmit}>
         <FieldsWrapper>
-          <TextField
-            type="text"
-            name="name"
-            placeholder="Name"
-            defaultValue="placeholder"
-            required
-          />
+          <TextField type="text" name="name" placeholder="Name" required />
 
-          <TextField
-            type="email"
-            name="email"
-            placeholder="Email"
-            defaultValue="mailbox@mail.nl"
-            required
-          />
+          <TextField type="email" name="email" placeholder="Email" required />
 
           <TextField
             type="password"
             name="password"
             placeholder="Password"
-            defaultValue="1234567"
             pattern="(?=.*).{7,}"
             title="Password must be at least 7 characters long"
             required

@@ -43,6 +43,17 @@ export const handleLogoutFulfilled = state => {
 };
 
 // Refresh
+export const handleRefreshPending = state => {
+  state.isRefreshing = true;
+};
+
+export const handleRefreshRejected = state => {
+  state.isLoggedIn = false;
+  state.isRefreshing = false;
+};
+
 export const handleRefreshFulfilled = (state, { payload }) => {
-  // state.toastMessageAuth = 'You have signed out of your account';
+  state.user = payload;
+  state.isLoggedIn = true;
+  state.isRefreshing = false;
 };

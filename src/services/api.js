@@ -4,7 +4,7 @@ import axios from 'axios';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// User
+// ############### User ##########################
 
 export const register = async credentials => {
   const { data } = await axios.post('/users/signup', credentials);
@@ -24,7 +24,8 @@ export const logout = async () => {
   return data;
 };
 
-export const refresh = async () => {
+export const refresh = async token => {
+  setAuthHeader(token);
   const { data } = await axios.get('/users/current');
   return data;
 };
@@ -39,7 +40,7 @@ export const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// Contacts
+// ############### Contacts ##########################
 
 export const fetchContacts = async () => {
   const { data } = await axios.get('/contacts');

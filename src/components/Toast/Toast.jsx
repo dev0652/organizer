@@ -17,7 +17,6 @@ export default function Toast() {
 
   useEffect(() => {
     const message = toastMessage || toastMessageAuth || null;
-    // const resetAction = message === toastMessage ? resetToastMessage : resetToastMessageAuth;
 
     let type;
     let resetAction;
