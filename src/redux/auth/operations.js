@@ -15,7 +15,8 @@ export const login = generateOperation('login');
 export const logout = generateOperation('logout');
 
 export const refresh = createAsyncThunk('auth/refresh', async (_, thunkAPI) => {
-  const { token } = thunkAPI.getState().auth;
+  const state = thunkAPI.getState();
+  const { token } = state.auth;
   if (!token) return;
 
   return await api.refresh(token);
