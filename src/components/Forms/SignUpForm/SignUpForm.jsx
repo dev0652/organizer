@@ -6,7 +6,6 @@ import { register } from 'redux/auth/operations';
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 import { FormContainer } from './SignUpForm.styled';
-import { toast } from 'react-hot-toast';
 
 // ################################################
 
@@ -70,7 +69,7 @@ export default function SignUpForm() {
             name="name"
             placeholder="Name"
             // value={name}
-            value="placeholder"
+            defaultValue="placeholder"
             // onChange={handleChange}
             required
           />
@@ -80,7 +79,7 @@ export default function SignUpForm() {
             name="email"
             placeholder="Email"
             // value={email}
-            value="mailbox@mail.nl"
+            defaultValue="mailbox@mail.nl"
             // onChange={handleChange}
             required
           />
@@ -90,7 +89,7 @@ export default function SignUpForm() {
             name="password"
             placeholder="Password"
             // value={password}
-            value="1234567"
+            defaultValue="1234567"
             // onChange={handleChange}
             pattern="(?=.*).{7,}"
             title="Password must be at least 7 characters long"
