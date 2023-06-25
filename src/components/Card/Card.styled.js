@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
-import { BaseButton, BaseCardLink, BaseIconButton } from 'constants/theme';
+import { BaseButton, BaseCardLink, BaseIconButton } from 'styling/buttons';
+
 import { BsTrash3 } from 'react-icons/bs';
 
 export const CardWrapper = styled.div`

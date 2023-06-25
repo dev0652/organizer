@@ -1,4 +1,5 @@
-import { AccentedIconButton } from 'constants/theme';
+import { AccentedIconButton } from 'styling/buttons';
+
 import { styled } from 'styled-components';
 import { HiPlus, HiChevronDoubleRight } from 'react-icons/hi';
 

@@ -2,9 +2,11 @@ import { createSelector } from '@reduxjs/toolkit';
 
 // ##################################################
 
-export const selectContacts = state => state.contacts;
+// Filter
 export const selectFilter = state => state.filter;
 
+// Contacts
+export const selectContacts = state => state.contacts;
 export const selectVisibleContacts = createSelector(
   [selectContacts, selectFilter],
   ({ items }, filter) => {
@@ -15,11 +17,12 @@ export const selectVisibleContacts = createSelector(
 );
 
 // export const selectVisibleContacts = state => {
-
 //   const { items } = selectContacts(state);
 //   const filter = selectFilter(state);
-
 //   if (!filter) return items;
+//   return items.filter(contact => contact.name.toLowerCase().includes(filter));};
 
-//   return items.filter(contact => contact.name.toLowerCase().includes(filter));
-// };
+// Authentication
+export const selectIsLoggedIn = state => state.auth.isLoggedIn;
+export const selectUser = state => state.auth.user;
+export const selectIsRefreshing = state => state.auth.isRefreshing;

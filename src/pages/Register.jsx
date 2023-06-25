@@ -1,5 +1,5 @@
-import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import SignUpForm from 'components/Forms/SignUpForm';
 
 export default function Register() {
   return (
@@ -12,7 +12,7 @@ export default function Register() {
         />
       </Helmet>
 
-      <div>Register</div>
+      <SignUpForm />
     </>
   );
 }

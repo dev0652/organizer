@@ -1,5 +1,16 @@
-import { BaseButton, BaseTextField } from 'constants/theme';
 import { styled } from 'styled-components';
+import { theme } from 'styling/theme';
+
+export const TextField = styled.input`
+  padding: 0 10px;
+  border-radius: ${theme.borderRadius};
+  font-size: 1.1rem;
+  line-height: 2;
+
+  &::placeholder {
+    color: Silver;
+  }
+`;
 
 export const FormWrapper = styled.form`
   display: flex;
@@ -17,12 +28,3 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
 `;
-
-export const TextField = styled(BaseTextField)``;
-
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  gap: 10px;
-`;
-
-export const EditButton = styled(BaseButton)``;

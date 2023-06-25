@@ -1,25 +1,35 @@
 import axios from 'axios';
 
-// Project: https://mockapi.io/projects/648a37bd5fa58521cab1030d
+// Backend: https://mockapi.io/projects/648a37bd5fa58521cab1030d
 
-axios.defaults.baseURL = 'https://648a37bd5fa58521cab1030c.mockapi.io';
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-export const fetchContacts = async () => {
-  const { data } = await axios.get('/contacts');
+export const register = async credentials => {
+  const { data } = await axios.post('/users/signup', credentials);
   return data;
 };
 
-export const addContact = async newContact => {
-  const { data } = await axios.post('/contacts', newContact);
+export const login = async credentials => {
+  const { data } = await axios.post('/users/login', credentials);
   return data;
 };
 
-export const deleteContact = async id => {
-  const { data } = await axios.delete(`/contacts/${id}`);
+export const logout = async () => {
+  const { data } = await axios.post('/users/logout');
   return data;
 };
 
-export const editContact = async ({ id, editedContact }) => {
-  const { data } = await axios.put(`/contacts/${id}`, editedContact);
+export const refresh = async () => {
+  const { data } = await axios.get('/users/me');
   return data;
+};
+
+// Utility to add JWT
+export const setAuthHeader = token => {
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+};
+
+// Utility to remove JWT
+export const clearAuthHeader = () => {
+  axios.defaults.headers.common.Authorization = '';
 };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { breakpoints } from 'constants/variables';
+import { breakpoints } from 'styling/variables';
 
 // const mobile = breakpoints.mobile;
 const tablet = breakpoints.tablet;

@@ -20,6 +20,7 @@ export default function SharedLayout() {
           <nav>
             <StyledNavLink to="/">Home</StyledNavLink>
             <StyledNavLink to="/contacts">Contacts</StyledNavLink>
+            <StyledNavLink to="/register">Sign Up</StyledNavLink>
           </nav>
         </Container>
       </AppBar>

@@ -5,7 +5,7 @@ import {
   isRejected,
 } from '@reduxjs/toolkit';
 
-import * as ops from 'redux/operations';
+import * as ops from 'redux/contacts/operations';
 import * as r from 'redux/reducers';
 
 // ################################################

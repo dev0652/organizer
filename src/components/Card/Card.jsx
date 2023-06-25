@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 
 import Modal from 'components/Modal';
 import Section from 'components/Section';
-import EditForm from 'components/EditForm';
+import EditForm from 'components/Forms/EditForm';
 
 import {
   EditButton,
