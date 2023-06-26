@@ -1,23 +1,24 @@
 import { Suspense } from 'react';
+import { useSelector } from 'react-redux';
+import { selectAuth, selectContacts } from 'redux/selectors';
 import { Outlet } from 'react-router-dom';
 
-import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
+import UserBar from 'components/UserBar';
+import AuthNav from 'components/AuthNav';
+
+import Toast from 'components/Toast';
 
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
-import { useSelector } from 'react-redux';
-import { selectAuth, selectContacts } from 'redux/selectors';
-import UserBar from 'components/UserBar';
-import AuthNav from 'components/AuthNav/AuthNav';
+
 import { StyledNavLink } from 'styling/links';
+import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
 
 // ##############################
 
 export default function SharedLayout() {
   const { isLoading } = useSelector(selectContacts);
   const { isLoggedIn } = useSelector(selectAuth);
-
-  // useEffect(() => {}, [isLoggedIn]);
 
   return (
     <>
@@ -45,6 +46,8 @@ export default function SharedLayout() {
           </main>
         </Container>
       </Suspense>
+
+      <Toast />
     </>
   );
 }

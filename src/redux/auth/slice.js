@@ -1,4 +1,9 @@
-import { createSlice, isFulfilled, isRejected } from '@reduxjs/toolkit';
+import {
+  createSlice,
+  isFulfilled,
+  isPending,
+  isRejected,
+} from '@reduxjs/toolkit';
 
 import * as ops from 'redux/auth/operations';
 import * as r from 'redux/auth/reducers';
@@ -17,6 +22,7 @@ const authSlice = createSlice({
 
     toastMessageAuth: null,
     toastTypeAuth: 'success',
+    isLoading: false,
     error: null,
   },
   reducers: {
@@ -35,6 +41,7 @@ const authSlice = createSlice({
       .addCase(ops.refresh.fulfilled, r.handleRefreshFulfilled)
 
       .addMatcher(isFulfilled(...extraActions), r.handleFulfilled)
+      .addMatcher(isPending(...extraActions), r.handlePending)
       .addMatcher(isRejected(...extraActions), r.handleRejected),
 });
 

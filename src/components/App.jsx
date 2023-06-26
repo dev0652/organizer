@@ -9,7 +9,8 @@ import { selectAuth } from 'redux/selectors';
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
-const SharedLayout = lazy(() => import('components/SharedLayout'));
+import SharedLayout from 'components/SharedLayout';
+
 const Home = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const Register = lazy(() => import('pages/Register'));

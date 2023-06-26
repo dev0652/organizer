@@ -1,11 +1,15 @@
 // Common:
-
+export const handlePending = state => {
+  state.isLoading = true;
+};
 export const handleRejected = (state, { error: { message } }) => {
+  state.isLoading = false;
   state.toastTypeAuth = 'error';
   state.toastMessageAuth = message;
   state.error = message;
 };
 export const handleFulfilled = state => {
+  state.isLoading = false;
   state.toastTypeAuth = 'success';
   state.error = null;
 };
@@ -18,7 +22,8 @@ export const handleRegisterFulfilled = (state, { payload }) => {
   state.token = payload.token;
   state.isLoggedIn = true;
 
-  state.toastMessageAuth = 'Registration successful!';
+  state.toastMessageAuth =
+    'Registration successful! You have been signed in to your account';
 };
 
 // Log in
@@ -43,6 +48,7 @@ export const handleRefreshPending = state => {
 };
 
 export const handleRefreshRejected = state => {
+  // state.isLoggedIn = false;
   state.isRefreshing = false;
 };
 
