@@ -48,7 +48,6 @@ export const handleRefreshPending = state => {
 };
 
 export const handleRefreshRejected = state => {
-  // state.isLoggedIn = false;
   state.isRefreshing = false;
 };
 

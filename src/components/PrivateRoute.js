@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import { selectAuth } from 'redux/selectors';
 import { Navigate } from 'react-router-dom';
+import { selectAuth } from 'redux/selectors';
 
 export default function PrivateRoute({
   component: Component,

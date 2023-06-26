@@ -37,15 +37,15 @@ export default function SharedLayout() {
         </Container>
       </AppBar>
 
-      <Suspense
-        fallback={isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
-      >
-        <Container>
+      <Container>
+        <Suspense
+          fallback={isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
+        >
           <main>
             <Outlet />
           </main>
-        </Container>
-      </Suspense>
+        </Suspense>
+      </Container>
 
       <Toast />
     </>
