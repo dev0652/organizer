@@ -2,11 +2,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import * as api from 'services/api';
 
 // Operation generator
-const generateOperation = type => {
+const generateOperation = actionType => {
   // 1. Generate the payloadCreator callback for createAsyncThunk
   const payloadCreator = type => async arg => await api[type](arg ? arg : '');
   // 2. . Generate the thunk action creator
-  return createAsyncThunk(`auth/${type}`, payloadCreator(type));
+  return createAsyncThunk(`auth/${actionType}`, payloadCreator(actionType));
 };
 
 // Generated operations
