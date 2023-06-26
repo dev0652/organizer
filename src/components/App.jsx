@@ -34,28 +34,33 @@ export default function App() {
   }, [dispatch, token]);
 
   return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        !isRefreshing && <Route index element={<Home />} />
-        <Route
-          path="contacts"
-          element={<PrivateRoute component={<ContactsPage />} />}
-        />
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute component={<Login />} redirectTo="/contacts" />
-          }
-        />
-      </Route>
+    !isRefreshing && (
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />
+          <Route
+            path="contacts"
+            element={<PrivateRoute component={<ContactsPage />} />}
+          />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                component={<Register />}
+                redirectTo="/contacts"
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute component={<Login />} redirectTo="/contacts" />
+            }
+          />
+        </Route>
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    )
   );
 }
