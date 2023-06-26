@@ -19,46 +19,43 @@ const NotFound = lazy(() => import('pages/NotFound'));
 // ################################################
 
 export default function App() {
-  const { isRefreshing } = useSelector(selectAuth);
+  const { isRefreshing, token } = useSelector(selectAuth);
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!token) return;
+
     dispatch(refresh());
     //  const promise = dispatch(refresh())
     // return () => {
     //   // `createAsyncThunk` attaches an `abort()` method to the promise
     //   promise.abort()
     // }
-  }, [dispatch]);
+  }, [dispatch, token]);
 
   return (
-    !isRefreshing && (
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
-          <Route
-            path="contacts"
-            element={<PrivateRoute component={<ContactsPage />} />}
-          />
-          <Route
-            path="register"
-            element={
-              <RestrictedRoute
-                component={<Register />}
-                redirectTo="/contacts"
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute component={<Login />} redirectTo="/contacts" />
-            }
-          />
-        </Route>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        !isRefreshing && <Route index element={<Home />} />
+        <Route
+          path="contacts"
+          element={<PrivateRoute component={<ContactsPage />} />}
+        />
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute component={<Login />} redirectTo="/contacts" />
+          }
+        />
+      </Route>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    )
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
