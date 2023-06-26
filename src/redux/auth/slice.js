@@ -35,9 +35,11 @@ const authSlice = createSlice({
       .addCase(ops.register.fulfilled, r.handleRegisterFulfilled)
       .addCase(ops.login.fulfilled, r.handleLoginFulfilled)
       .addCase(ops.logout.fulfilled, r.handleLogoutFulfilled)
+
       .addCase(ops.refresh.pending, r.handleRefreshPending)
       .addCase(ops.refresh.rejected, r.handleRefreshRejected)
       .addCase(ops.refresh.fulfilled, r.handleRefreshFulfilled)
+
       .addMatcher(isFulfilled(...extraActions), r.handleFulfilled)
       .addMatcher(isPending(...extraActions), r.handlePending)
       .addMatcher(isRejected(...extraActions), r.handleRejected),

@@ -2,17 +2,18 @@ import Login from 'pages/Login';
 import { lazy, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
+
 import { refresh } from 'redux/auth/operations';
 import { selectAuth } from 'redux/selectors';
+
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
+const SharedLayout = lazy(() => import('components/SharedLayout'));
 const Home = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const Register = lazy(() => import('pages/Register'));
 const NotFound = lazy(() => import('pages/NotFound'));
-
-const SharedLayout = lazy(() => import('components/SharedLayout'));
 
 // ################################################
 
@@ -22,6 +23,11 @@ export default function App() {
 
   useEffect(() => {
     dispatch(refresh());
+    //  const promise = dispatch(refresh())
+    // return () => {
+    //   // `createAsyncThunk` attaches an `abort()` method to the promise
+    //   promise.abort()
+    // }
   }, [dispatch]);
 
   return (

@@ -27,6 +27,7 @@ export const logout = async () => {
 export const refresh = async token => {
   setAuthHeader(token);
   const { data } = await axios.get('/users/current');
+  console.log('data in refresh: ', data);
   return data;
 };
 
