@@ -24,13 +24,7 @@ export default function App() {
 
   useEffect(() => {
     if (!token) return;
-
     dispatch(refresh());
-    //  const promise = dispatch(refresh())
-    // return () => {
-    //   // `createAsyncThunk` attaches an `abort()` method to the promise
-    //   promise.abort()
-    // }
   }, [dispatch, token]);
 
   return (
