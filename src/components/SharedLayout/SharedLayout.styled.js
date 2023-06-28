@@ -13,19 +13,19 @@ export const Container = styled.div`
 
   /* @media screen and (max-width: (${tablet} - 1)) {
     min-width: calc(100vw - 40px);
-  }
+  } */
 
   @media screen and (min-width: ${tablet}) {
     width: ${tablet};
-  } */
+  }
 
   @media screen and (min-width: ${desktop}) {
     width: ${desktop};
   }
 
-  @media screen and (min-width: ${desktopWide}) {
+  /* @media screen and (min-width: ${desktopWide}) {
     width: ${desktopWide};
-  }
+  } */
 
   width: 100%;
 `;
