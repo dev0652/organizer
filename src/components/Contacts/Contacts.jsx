@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { faker } from '@faker-js/faker';
 
 import Section from 'components/Section';
-import AddForm from 'components/Forms/AddForm';
 import ContactsList from 'components/ContactsList';
 import Filter from 'components/Filter';
 import Error from 'components/Error';
@@ -27,6 +26,7 @@ import { addContact, fetchContacts } from 'redux/contacts/operations';
 import Card from 'components/Card/Card';
 import Prompt from 'components/Prompt/Prompt';
 import { toast } from 'react-hot-toast';
+import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
 
 // ################################################
 
@@ -103,7 +103,7 @@ export default function Contacts() {
       {showModal && (
         <Modal onClose={toggleModal}>
           <Section title="New Contact">
-            <AddForm toggleModal={toggleModal} />
+            <ContactDataForm formType={'add'} toggleModal={toggleModal} />
           </Section>
         </Modal>
       )}

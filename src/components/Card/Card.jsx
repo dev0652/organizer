@@ -8,7 +8,6 @@ import { faker } from '@faker-js/faker';
 
 import Modal from 'components/Modal';
 import Section from 'components/Section';
-import EditForm from 'components/Forms/EditForm';
 
 import {
   EditButton,
@@ -23,6 +22,7 @@ import {
   EmailLink,
 } from './Card.styled';
 import { toast } from 'react-hot-toast';
+import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
 
 // ##################################################
 
@@ -49,6 +49,8 @@ export default function Card() {
       .then(toast.success('Contacts has been deleted'))
       .catch(er => toast.error(er.message));
   };
+
+  const values = { name, number, email, id: currentId };
 
   return (
     <CardWrapper>
@@ -84,12 +86,10 @@ export default function Card() {
       {showModal && (
         <Modal onClose={toggleModal}>
           <Section title="Edit Contact">
-            <EditForm
+            <ContactDataForm
+              formType={'edit'}
+              editValues={values}
               toggleModal={toggleModal}
-              nameToEdit={name}
-              phoneToEdit={number}
-              emailToEdit={email}
-              id={currentId}
             />
           </Section>
         </Modal>
