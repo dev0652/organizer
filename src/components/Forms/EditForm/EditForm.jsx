@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 
 import { editContact } from 'redux/contacts/operations';
@@ -30,7 +31,10 @@ export default function EditForm({
       // email
     };
 
-    dispatch(editContact({ id, editedContact }));
+    dispatch(editContact({ id, editedContact }))
+      .then(toast.success('Changes have been saved'))
+      .catch(er => toast.error(er.message));
+
     toggleModal();
   };
 

@@ -6,6 +6,7 @@ import { register } from 'redux/auth/operations';
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 import { FormContainer } from './SignUpForm.styled';
+import { toast } from 'react-hot-toast';
 
 // ################################################
 
@@ -23,7 +24,10 @@ export default function SignUpForm() {
       password: form.elements.password.value,
     };
 
-    dispatch(register(credentials));
+    dispatch(register(credentials))
+      .then(toast.success('Registration successful'))
+      .catch(er => toast.error(er.message));
+
     form.reset();
     // toggleModal();
   };

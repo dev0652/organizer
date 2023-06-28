@@ -1,5 +1,5 @@
 import Login from 'pages/Login';
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 
@@ -10,6 +10,7 @@ import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
 import SharedLayout from 'components/SharedLayout';
+import { toast } from 'react-hot-toast';
 
 const Home = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
@@ -22,9 +23,19 @@ export default function App() {
   const { isRefreshing, token } = useSelector(selectAuth);
   const dispatch = useDispatch();
 
+  // https://nikolamargit.dev/skip-useeffect-hook-on-first-render/
+  const isFirstRender = useRef(false);
+
   useEffect(() => {
     if (!token) return;
-    dispatch(refresh());
+
+    if (isFirstRender.current) {
+      toast.success('REFRESH');
+
+      dispatch(refresh());
+    } else {
+      isFirstRender.current = true;
+    }
   }, [dispatch, token]);
 
   return (

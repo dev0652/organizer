@@ -20,16 +20,10 @@ const authSlice = createSlice({
     isLoggedIn: false,
     isRefreshing: false,
 
-    toastMessageAuth: null,
-    toastTypeAuth: 'success',
     isLoading: false,
     error: null,
   },
-  reducers: {
-    resetToastMessageAuth(state) {
-      state.toastMessageAuth = null;
-    },
-  },
+
   extraReducers: builder =>
     builder
       .addCase(ops.register.fulfilled, r.handleRegisterFulfilled)
@@ -44,7 +38,5 @@ const authSlice = createSlice({
       .addMatcher(isPending(...extraActions), r.handlePending)
       .addMatcher(isRejected(...extraActions), r.handleRejected),
 });
-
-export const { resetToastMessageAuth } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

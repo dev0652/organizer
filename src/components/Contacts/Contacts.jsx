@@ -26,6 +26,7 @@ import { addContact, fetchContacts } from 'redux/contacts/operations';
 
 import Card from 'components/Card/Card';
 import Prompt from 'components/Prompt/Prompt';
+import { toast } from 'react-hot-toast';
 
 // ################################################
 
@@ -54,7 +55,11 @@ export default function Contacts() {
       // image: faker.internet.avatar(),
     };
 
-    dispatch(addContact(randomContact));
+    dispatch(addContact(randomContact))
+      .then(
+        toast.success(`${randomContact.name} has been added to the phonebook`)
+      )
+      .catch(er => toast.error(er.message));
   };
 
   return (

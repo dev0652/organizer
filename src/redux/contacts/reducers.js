@@ -4,14 +4,11 @@ export const handlePending = state => {
 };
 export const handleRejected = (state, { error: { message } }) => {
   state.isLoading = false;
-  state.toastType = 'error';
   state.error = message;
-  state.toastMessage = message;
 };
 export const handleFulfilled = state => {
   state.isLoading = false;
   state.error = null;
-  state.toastType = 'success';
 };
 
 // On success:
@@ -24,7 +21,6 @@ export const handleFetchFulfilled = (state, { payload }) => {
 // Add a new contact
 export const handleAddFulfilled = (state, { payload }) => {
   state.items.push(payload);
-  state.toastMessage = `${payload.name} has been added to the phonebook`;
 };
 
 // Delete a contact
@@ -33,16 +29,21 @@ export const handleDeleteFulfilled = (state, { payload }) => {
 
   state.items.splice(index, 1);
   state.currentId = null;
-  state.toastMessage = 'Contact has been deleted';
+  // state.toastMessage = 'Contact has been deleted';
 };
 
 // Edit a contact
 export const handleEditFulfilled = (state, { payload }) => {
-  const { id, name, phone, email } = payload;
+  const {
+    id,
+    name,
+    number,
+    // email
+  } = payload;
   const contact = state.items.find(item => item.id === id);
 
   contact.name = name;
-  contact.phone = phone;
-  contact.email = email;
-  state.toastMessage = 'Changes have been saved';
+  contact.number = number;
+  // contact.email = email;
+  // state.toastMessage = 'Changes have been saved';
 };

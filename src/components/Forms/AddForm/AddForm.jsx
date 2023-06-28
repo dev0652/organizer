@@ -34,7 +34,9 @@ export default function AddForm({ toggleModal }) {
         number,
         // email
       })
-    );
+    )
+      .then(toast.success(`Contact '${name}' was added`))
+      .catch(er => toast.error(er.message));
     toggleModal();
   };
 

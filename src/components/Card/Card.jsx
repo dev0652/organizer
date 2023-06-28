@@ -22,6 +22,7 @@ import {
   TelephoneLink,
   EmailLink,
 } from './Card.styled';
+import { toast } from 'react-hot-toast';
 
 // ##################################################
 
@@ -44,7 +45,9 @@ export default function Card() {
   // faker.image.people(width, height, randomize?: boolean = false)
 
   const handleDelete = id => {
-    dispatch(deleteContact(id));
+    dispatch(deleteContact(id))
+      .then(toast.success('Contacts has been deleted'))
+      .catch(er => toast.error(er.message));
   };
 
   return (

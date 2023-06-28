@@ -5,6 +5,7 @@ import { login } from 'redux/auth/operations';
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 import { FormContainer } from './SignInForm.styled';
+import { toast } from 'react-hot-toast';
 
 // ################################################
 
@@ -21,7 +22,10 @@ export default function SignInForm() {
       password: form.elements.password.value,
     };
 
-    dispatch(login(credentials));
+    dispatch(login(credentials))
+      .then(toast.success('Login successful'))
+      .catch(er => toast.error(er.message));
+
     form.reset();
     // toggleModal();
   };
