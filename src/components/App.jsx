@@ -30,8 +30,6 @@ export default function App() {
     if (!token) return;
 
     if (isFirstRender.current) {
-      toast.success('REFRESH');
-
       dispatch(refresh());
     } else {
       isFirstRender.current = true;

@@ -1,16 +1,31 @@
 import { useDispatch } from 'react-redux';
 
-import { login } from 'redux/auth/operations';
+import { login, register } from 'redux/auth/operations';
 
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
-import { FormContainer } from './SignInForm.styled';
+import { FormContainer } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
 
 // ################################################
 
-export default function SignInForm() {
+export default function AuthDataForm({ formType }) {
   const dispatch = useDispatch();
+
+  const isSignUp = formType === 'register';
+  let buttonText, messageText, operation;
+
+  if (formType === 'login') {
+    buttonText = 'Sign in';
+    messageText = 'Login successful';
+    operation = login;
+  }
+
+  if (isSignUp) {
+    buttonText = 'Sign up';
+    messageText = 'Registration successful';
+    operation = register;
+  }
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -22,8 +37,10 @@ export default function SignInForm() {
       password: form.elements.password.value,
     };
 
-    dispatch(login(credentials))
-      .then(toast.success('Login successful'))
+    if (isSignUp) credentials.name = form.elements.name.value;
+
+    dispatch(operation(credentials))
+      .then(toast.success(messageText))
       .catch(er => toast.error(er.message));
 
     form.reset();
@@ -34,6 +51,11 @@ export default function SignInForm() {
     <FormContainer>
       <FormWrapper onSubmit={handleSubmit}>
         <FieldsWrapper>
+          {/* Name */}
+          {isSignUp && (
+            <TextField type="text" name="name" placeholder="Name" required />
+          )}
+          {/* Email */}
           <TextField
             type="email"
             name="email"
@@ -41,7 +63,7 @@ export default function SignInForm() {
             defaultValue="dev0652@mail.au"
             required
           />
-
+          {/* Pass */}
           <TextField
             type="password"
             name="password"
@@ -53,7 +75,7 @@ export default function SignInForm() {
           />
         </FieldsWrapper>
 
-        <SubmitButton type="submit">Sign in</SubmitButton>
+        <SubmitButton type="submit">{buttonText}</SubmitButton>
       </FormWrapper>
     </FormContainer>
   );

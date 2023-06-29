@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 
 // import Modal from 'components/Modal';
 // import Section from 'components/Section';
-import SignUpForm from 'components/Forms/SignUpForm';
+import AuthDataForm from 'components/Forms/AuthDataForm';
 
 export default function Register() {
   // const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,7 @@ export default function Register() {
           alignItems: 'center',
         }}
       >
-        <SignUpForm />
+        <AuthDataForm formType="register" />
       </div>
 
       {/* <Modal onClose={toggleModal}>
