@@ -10,7 +10,6 @@ import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
 import SharedLayout from 'components/SharedLayout';
-import { toast } from 'react-hot-toast';
 
 const Home = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
@@ -45,22 +44,20 @@ export default function App() {
             path="contacts"
             element={<PrivateRoute component={<ContactsPage />} />}
           />
-          <Route
-            path="register"
-            element={
-              <RestrictedRoute
-                component={<Register />}
-                redirectTo="/contacts"
-              />
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <RestrictedRoute component={<Login />} redirectTo="/contacts" />
-            }
-          />
         </Route>
+
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute component={<Login />} redirectTo="/contacts" />
+          }
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

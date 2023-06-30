@@ -6,6 +6,8 @@ import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 import { FormContainer } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import SwitchForms from '../SwitchForms/SwitchForms';
 
 // ################################################
 
@@ -22,7 +24,7 @@ export default function AuthDataForm({ formType }) {
   }
 
   if (isSignUp) {
-    buttonText = 'Sign up';
+    buttonText = 'Create an account';
     messageText = 'Registration successful';
     operation = register;
   }
@@ -77,6 +79,8 @@ export default function AuthDataForm({ formType }) {
 
         <SubmitButton type="submit">{buttonText}</SubmitButton>
       </FormWrapper>
+
+      <SwitchForms condition={isSignUp} />
     </FormContainer>
   );
 }

@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 // import Modal from 'components/Modal';
 // import Section from 'components/Section';
 import AuthDataForm from 'components/Forms/AuthDataForm';
+import AuthBody from 'components/AuthBody/AuthBody';
 
 export default function Login() {
   // const [showModal, setShowModal] = useState(false);
@@ -26,7 +27,9 @@ export default function Login() {
           alignItems: 'center',
         }}
       >
-        <AuthDataForm formType="login" />
+        <AuthBody>
+          <AuthDataForm formType="login" />
+        </AuthBody>
       </div>
 
       {/* <Modal onClose={toggleModal}>
