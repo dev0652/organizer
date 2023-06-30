@@ -1,4 +1,13 @@
 import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
+
+const SwitchFormsText = styled.p`
+  text-align: center;
+  font-size: 0.9rem;
+`;
+const StyledLink = styled(Link)`
+  font-weight: 500;
+`;
 
 export default function SwitchForms({ condition }) {
   let message, linkTo, buttonText;
@@ -14,8 +23,8 @@ export default function SwitchForms({ condition }) {
   }
 
   return (
-    <div>
-      {message} <Link to={linkTo}>{buttonText}</Link>
-    </div>
+    <SwitchFormsText>
+      {message} <StyledLink to={linkTo}>{buttonText}</StyledLink>
+    </SwitchFormsText>
   );
 }

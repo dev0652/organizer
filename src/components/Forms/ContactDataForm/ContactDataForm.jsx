@@ -16,9 +16,7 @@ export default function ContactDataForm({
   editValues = null,
   toggleModal,
 }) {
-  // const { prePopulatedName, prePopulatedNumber, prePopulatedEmail, id } = editValues;
-  const { prePopulatedName, prePopulatedNumber, id } = editValues;
-  // let buttonText, initNameValue, initNumberValue, initEmailValue, toastMessage, operation, args;
+  //
   let buttonText, initNameValue, initNumberValue, toastMessage, operation, args;
 
   const [name, setName] = useState(initNameValue);
@@ -41,6 +39,8 @@ export default function ContactDataForm({
   }
 
   if (formType === 'edit') {
+    const { prePopulatedName, prePopulatedNumber, id } = editValues;
+
     buttonText = 'Save changes';
     initNameValue = prePopulatedName;
     initNumberValue = prePopulatedNumber;

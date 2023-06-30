@@ -4,10 +4,11 @@ import { login, register } from 'redux/auth/operations';
 
 import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
-import { FormContainer } from './AuthDataForm.styled';
+import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import SwitchForms from '../SwitchForms/SwitchForms';
+import Section from 'components/Section/Section';
 
 // ################################################
 
@@ -50,37 +51,41 @@ export default function AuthDataForm({ formType }) {
   };
 
   return (
-    <FormContainer>
-      <FormWrapper onSubmit={handleSubmit}>
-        <FieldsWrapper>
-          {/* Name */}
-          {isSignUp && (
-            <TextField type="text" name="name" placeholder="Name" required />
-          )}
-          {/* Email */}
-          <TextField
-            type="email"
-            name="email"
-            placeholder="Email"
-            defaultValue="dev0652@mail.au"
-            required
-          />
-          {/* Pass */}
-          <TextField
-            type="password"
-            name="password"
-            placeholder="Password"
-            defaultValue="1234567"
-            pattern="(?=.*).{7,}"
-            title="Password must be at least 7 characters long"
-            required
-          />
-        </FieldsWrapper>
+    <AuthFormContainer>
+      <Section title={buttonText}>
+        <FormWrapper onSubmit={handleSubmit}>
+          <FieldsWrapper>
+            {/* Name */}
+            {isSignUp && (
+              <TextField type="text" name="name" placeholder="Name" required />
+            )}
+            {/* Email */}
+            <TextField
+              type="email"
+              name="email"
+              placeholder="Email"
+              defaultValue="dev0652@mail.au"
+              required
+            />
+            {/* Pass */}
+            <TextField
+              type="password"
+              name="password"
+              placeholder="Password"
+              defaultValue="1234567"
+              pattern="(?=.*).{7,}"
+              title="Password must be at least 7 characters long"
+              required
+            />
+          </FieldsWrapper>
 
-        <SubmitButton type="submit">{buttonText}</SubmitButton>
-      </FormWrapper>
+          <ButtonGroup>
+            <SubmitButton type="submit">{buttonText}</SubmitButton>
 
-      <SwitchForms condition={isSignUp} />
-    </FormContainer>
+            <SwitchForms condition={isSignUp} />
+          </ButtonGroup>
+        </FormWrapper>
+      </Section>
+    </AuthFormContainer>
   );
 }

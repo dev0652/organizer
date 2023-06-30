@@ -4,7 +4,8 @@ import { Helmet } from 'react-helmet-async';
 // import Modal from 'components/Modal';
 // import Section from 'components/Section';
 import AuthDataForm from 'components/Forms/AuthDataForm';
-import AuthBody from 'components/AuthBody/AuthBody';
+import AuthBody from 'components/AuthBody';
+import Section from 'components/Section';
 
 export default function Login() {
   // const [showModal, setShowModal] = useState(false);

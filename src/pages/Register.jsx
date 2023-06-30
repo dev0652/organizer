@@ -7,9 +7,6 @@ import AuthDataForm from 'components/Forms/AuthDataForm';
 import AuthBody from 'components/AuthBody/AuthBody';
 
 export default function Register() {
-  // const [showModal, setShowModal] = useState(false);
-  // const toggleModal = () => setShowModal(!showModal);
-
   return (
     <>
       <Helmet>
@@ -31,12 +28,6 @@ export default function Register() {
           <AuthDataForm formType="register" />
         </AuthBody>
       </div>
-
-      {/* <Modal onClose={toggleModal}>
-        <Section title="Create a New Account">
-          <SignUpForm toggleModal={toggleModal} />
-        </Section>
-      </Modal> */}
     </>
   );
 }

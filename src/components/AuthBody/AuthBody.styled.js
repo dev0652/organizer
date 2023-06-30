@@ -13,7 +13,7 @@ export const BannerSide = styled.div`
   overflow: hidden;
   color: #fff;
 
-  width: 50%;
+  width: 45%;
   padding: 0 30px;
 
   display: flex;
@@ -21,18 +21,18 @@ export const BannerSide = styled.div`
   /* align-items: center; */
 `;
 
-export const BannerTextWrapper = styled.p`
+export const BannerTextWrapper = styled.div`
   margin-top: 30vh;
 `;
 
 export const BannerText = styled.p`
-  font-size: 36px;
+  font-size: 2rem;
   text-align: center;
   font-weight: bold;
 `;
 
 export const FormSide = styled.div`
-  width: 50%;
+  width: 55%;
 
   display: flex;
   justify-content: center;

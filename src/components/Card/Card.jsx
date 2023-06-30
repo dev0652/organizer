@@ -46,7 +46,7 @@ export default function Card() {
 
   const handleDelete = id => {
     dispatch(deleteContact(id))
-      .then(toast.success('Contacts has been deleted'))
+      .then(toast.success('Contact has been deleted'))
       .catch(er => toast.error(er.message));
   };
 

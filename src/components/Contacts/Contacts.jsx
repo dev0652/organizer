@@ -65,31 +65,29 @@ export default function Contacts() {
   return (
     <PageWrapper>
       <Sidebar>
-        <Section title="Contacts">
-          <Bar>
-            <Filter />
+        <Bar>
+          <Filter />
 
-            <ButtonsWrapper>
-              <NewContactIconButton
-                type="button"
-                onClick={toggleModal}
-                disabled={error}
-                aria-label="New contact"
-              >
-                <AddIcon />
-              </NewContactIconButton>
+          <ButtonsWrapper>
+            <NewContactIconButton
+              type="button"
+              onClick={toggleModal}
+              disabled={error}
+              aria-label="New contact"
+            >
+              <AddIcon />
+            </NewContactIconButton>
 
-              <NewRandomContactButton
-                type="button"
-                onClick={addRandomContact}
-                disabled={error}
-                aria-label="New random contact (for testing)"
-              >
-                <AddRandomIcon />
-              </NewRandomContactButton>
-            </ButtonsWrapper>
-          </Bar>
-        </Section>
+            <NewRandomContactButton
+              type="button"
+              onClick={addRandomContact}
+              disabled={error}
+              aria-label="New random contact (for testing)"
+            >
+              <AddRandomIcon />
+            </NewRandomContactButton>
+          </ButtonsWrapper>
+        </Bar>
 
         {items.length > 0 && <ContactsList />}
       </Sidebar>
