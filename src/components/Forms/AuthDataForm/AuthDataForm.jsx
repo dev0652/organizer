@@ -15,18 +15,22 @@ export default function AuthDataForm({ formType }) {
   const dispatch = useDispatch();
 
   const isSignUp = formType === 'register';
-  let buttonText, messageText, operation;
+  let buttonText, messageText, operation, emailDefaultValue, passDefaultValue;
 
   if (formType === 'login') {
     buttonText = 'Sign in';
     messageText = 'Login successful';
     operation = login;
+    emailDefaultValue = 'dev0652@mail.au';
+    passDefaultValue = '1234567';
   }
 
   if (isSignUp) {
     buttonText = 'Create an account';
     messageText = 'Registration successful';
     operation = register;
+    emailDefaultValue = '';
+    passDefaultValue = '';
   }
 
   const handleSubmit = event => {
@@ -63,7 +67,7 @@ export default function AuthDataForm({ formType }) {
               type="email"
               name="email"
               placeholder="Email"
-              defaultValue="dev0652@mail.au"
+              defaultValue={emailDefaultValue}
               required
             />
             {/* Pass */}
@@ -71,7 +75,7 @@ export default function AuthDataForm({ formType }) {
               type="password"
               name="password"
               placeholder="Password"
-              defaultValue="1234567"
+              defaultValue={passDefaultValue}
               pattern="(?=.*).{7,}"
               title="Password must be at least 7 characters long"
               required
