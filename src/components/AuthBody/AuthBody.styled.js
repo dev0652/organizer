@@ -25,7 +25,7 @@ export const BannerSide = styled.div`
 
   display: flex;
   justify-content: center;
-  /* align-items: center; */
+  align-items: center;
 `;
 
 export const BannerTextWrapper = styled.div`
@@ -36,6 +36,11 @@ export const BannerText = styled.p`
   font-size: 2rem;
   text-align: center;
   font-weight: bold;
+`;
+
+export const BannerImage = styled.img`
+  max-width: 30vw;
+  max-width: 70%;
 `;
 
 export const FormSide = styled.div`

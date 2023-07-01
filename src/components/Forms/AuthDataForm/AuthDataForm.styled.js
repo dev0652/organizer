@@ -1,7 +1,7 @@
 import { styled } from 'styled-components';
 
 export const AuthFormContainer = styled.div`
-  margin-top: 20vh;
+  margin-top: 30vh;
 `;
 
 export const ButtonGroup = styled.div`
