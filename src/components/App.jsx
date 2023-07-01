@@ -5,6 +5,9 @@ import { Routes, Route } from 'react-router-dom';
 import { refresh } from 'redux/auth/operations';
 import { selectAuth } from 'redux/selectors';
 
+import { containerStyle, toastOptions } from 'services/toastOptions';
+import { Toaster } from 'react-hot-toast';
+
 import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
@@ -40,30 +43,37 @@ export default function App() {
 
   return (
     !isRefreshing && (
-      <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+      <>
+        <Routes>
+          <Route path="/" element={<SharedLayout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="contacts"
+              element={<PrivateRoute component={<ContactsPage />} />}
+            />
+          </Route>
+
           <Route
-            path="contacts"
-            element={<PrivateRoute component={<ContactsPage />} />}
+            path="register"
+            element={
+              <RestrictedRoute
+                component={<Register />}
+                redirectTo="/contacts"
+              />
+            }
           />
-        </Route>
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute component={<Login />} redirectTo="/contacts" />
+            }
+          />
 
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute component={<Login />} redirectTo="/contacts" />
-          }
-        />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
+      </>
     )
   );
 }

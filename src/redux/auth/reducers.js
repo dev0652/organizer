@@ -2,15 +2,12 @@
 export const handlePending = state => {
   state.isLoading = true;
 };
-export const handleRejected = (state, { error: { message } }) => {
+export const handleRejected = (state, { payload, error }) => {
   state.isLoading = false;
-  state.toastTypeAuth = 'error';
-  state.toastMessageAuth = message;
-  state.error = message;
+  state.error = error ? error.message : payload;
 };
 export const handleFulfilled = state => {
   state.isLoading = false;
-  state.toastTypeAuth = 'success';
   state.error = null;
 };
 

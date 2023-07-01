@@ -11,8 +11,6 @@ import loaderOptions from 'services/loaderOptions';
 
 import { StyledNavLink } from 'styling/links';
 import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
-import { containerStyle, toastOptions } from 'services/toastOptions';
-import { Toaster } from 'react-hot-toast';
 
 // ##############################
 
@@ -46,8 +44,6 @@ export default function SharedLayout() {
           </main>
         </Suspense>
       </Container>
-
-      <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
     </>
   );
 }
