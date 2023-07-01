@@ -20,7 +20,7 @@ export const BannerSide = styled.div`
   overflow: hidden;
   color: #fff;
 
-  width: 45%;
+  width: 50%;
   padding: 0 30px;
 
   display: flex;
@@ -39,12 +39,12 @@ export const BannerText = styled.p`
 `;
 
 export const BannerImage = styled.img`
-  max-width: 30vw;
-  max-width: 70%;
+  /* max-width: 40vw; */
+  max-width: 90%;
 `;
 
 export const FormSide = styled.div`
-  width: 55%;
+  width: 50%;
 
   display: flex;
   justify-content: center;
