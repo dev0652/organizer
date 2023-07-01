@@ -7,7 +7,6 @@ const desktop = breakpoints.desktop;
 const desktopWide = breakpoints.desktopWide;
 
 export const Container = styled.div`
-  /* outline: 2px solid red; */
   margin-left: auto;
   margin-right: auto;
 
@@ -15,9 +14,9 @@ export const Container = styled.div`
     min-width: calc(100vw - 40px);
   } */
 
-  @media screen and (min-width: ${tablet}) {
+  /* @media screen and (min-width: ${tablet}) {
     width: ${tablet};
-  }
+  } */
 
   @media screen and (min-width: ${desktop}) {
     width: ${desktop};
@@ -29,10 +28,6 @@ export const Container = styled.div`
 
   width: 100%;
 `;
-
-// export const HeaderContainer = styled(Container)`
-//   outline: 2px solid green;
-// `;
 
 export const AppBarWrapper = styled.div`
   display: flex;
@@ -49,7 +44,9 @@ export const AppBar = styled.header`
   padding: 8px 10px;
   border-bottom: 2px solid gray;
 
-  /* background-color: rgb(3, 37, 65); */
+  /* color: white;
+  background-color: #6684ff;
+  background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%); */
 
   nav {
     display: flex;

@@ -7,8 +7,15 @@ export const Wrapper = styled.div`
 `;
 
 export const BannerSide = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+
+  /* background-color: #660dd9; */
+
   background-color: #6684ff;
   background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%);
+
   padding: 65px 12px 0;
   overflow: hidden;
   color: #fff;
@@ -22,7 +29,7 @@ export const BannerSide = styled.div`
 `;
 
 export const BannerTextWrapper = styled.div`
-  margin-top: 30vh;
+  /* margin-top: 30vh; */
 `;
 
 export const BannerText = styled.p`

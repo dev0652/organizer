@@ -33,6 +33,8 @@ export const Sidebar = styled.div`
     var(--gradient-start-color) 55%,
     var(--gradient-end-color) 100%
   );
+
+  /* background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%); */
 `;
 
 export const Right = styled.div`
