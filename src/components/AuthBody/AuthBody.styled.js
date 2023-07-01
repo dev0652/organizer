@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 export const BannerSide = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5vh;
+  gap: 10vh;
 
   /* background-color: #660dd9; */
 
@@ -24,12 +24,12 @@ export const BannerSide = styled.div`
   padding: 0 30px;
 
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 `;
 
 export const BannerTextWrapper = styled.div`
-  /* margin-top: 30vh; */
+  margin-top: 20vh;
 `;
 
 export const BannerText = styled.p`
@@ -40,7 +40,8 @@ export const BannerText = styled.p`
 
 export const BannerImage = styled.img`
   /* max-width: 40vw; */
-  max-width: 90%;
+  width: 90%;
+  max-width: 600px;
 `;
 
 export const FormSide = styled.div`

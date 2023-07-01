@@ -2,16 +2,17 @@ import { styled } from 'styled-components';
 
 export const AuthFormContainer = styled.div`
   margin-top: 30vh;
+  width: 70%;
+  max-width: 350px;
+
+  scale: 1.2;
 `;
 
 export const ButtonGroup = styled.div`
   width: 100%;
-
   display: flex;
   flex-direction: column;
-
   /* align-items: center; */
-
   gap: 10px;
 `;
 
