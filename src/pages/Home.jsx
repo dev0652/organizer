@@ -10,9 +10,9 @@ const { height: headerHeight } = header.getBoundingClientRect();
 const subtractedValue = `${headerHeight}px`;
 
 const Wrapper = styled.div`
-  height: 100vh;
-  /* height: 100%; */
   height: calc(100vh - ${subtractedValue});
+
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
