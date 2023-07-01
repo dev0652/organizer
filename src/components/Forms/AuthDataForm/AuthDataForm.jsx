@@ -6,7 +6,6 @@ import { AccentedButton as SubmitButton } from 'styling/buttons';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
-import { Link } from 'react-router-dom';
 import SwitchForms from '../SwitchForms/SwitchForms';
 import Section from 'components/Section/Section';
 
