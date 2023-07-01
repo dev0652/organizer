@@ -40,7 +40,7 @@ export default function Home() {
       </Helmet>
 
       <Wrapper>
-        <h1>Forget about Google</h1>
+        <h1>Welcome to EasyContacts!</h1>
 
         <HomeText>
           Create, manage and access your contacts with piece of mind without
