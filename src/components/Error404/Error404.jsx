@@ -6,9 +6,11 @@ import {
   StyledLink,
   Wrapper,
 } from './Error404.styled';
+// import { Suspense } from 'react';
 
 export default function Error404() {
   return (
+    // <Suspense fallback={'Loading...'}>
     <Wrapper>
       <Image src={image404} alt="Pile of tangled filmstrip" />
 
@@ -19,5 +21,6 @@ export default function Error404() {
         <StyledLink to="/">Take me back to the homepage</StyledLink>
       </div>
     </Wrapper>
+    // </Suspense>
   );
 }

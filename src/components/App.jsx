@@ -1,4 +1,3 @@
-import Login from 'pages/Login';
 import { lazy, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
@@ -10,11 +9,13 @@ import RestrictedRoute from './RestrictedRoute';
 import PrivateRoute from './PrivateRoute';
 
 import SharedLayout from 'components/SharedLayout';
+import NotFound from 'pages/NotFound';
 
 const Home = lazy(() => import('pages/Home'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 const Register = lazy(() => import('pages/Register'));
-const NotFound = lazy(() => import('pages/NotFound'));
+const Login = lazy(() => import('pages/Login'));
+// const NotFound = lazy(() => import('pages/NotFound'));
 
 // ################################################
 

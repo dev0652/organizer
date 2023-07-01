@@ -6,13 +6,11 @@ import { Outlet } from 'react-router-dom';
 import UserBar from 'components/UserBar';
 import AuthNav from 'components/AuthNav';
 
-// import Toast from 'components/Toast';
-
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
 
 import { StyledNavLink } from 'styling/links';
-import { AppBar, AppBarWrapper, Container, Page } from './SharedLayout.styled';
+import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
 import { containerStyle, toastOptions } from 'services/toastOptions';
 import { Toaster } from 'react-hot-toast';
 
