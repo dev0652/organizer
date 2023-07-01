@@ -1,20 +1,21 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/1';
+// Backend: https://mockapi.io/projects/648a37bd5fa58521cab1030d
+
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // ############### User ##########################
 
 export const register = async credentials => {
   const { data } = await axios.post('/users/signup', credentials);
-  if ('token' in data) setAuthHeader(data.token);
+  setAuthHeader(data.token);
   return data;
 };
 
 export const login = async credentials => {
-  const response = await axios.post('/users/login', credentials);
-  console.log('response in api.login: ', response);
-
-  return response;
+  const { data } = await axios.post('/users/login', credentials);
+  setAuthHeader(data.token);
+  return data;
 };
 
 export const logout = async () => {

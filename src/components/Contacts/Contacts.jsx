@@ -95,7 +95,7 @@ export default function Contacts() {
       <Right>
         {!isLoading && error && <Error />}
         {!currentId && !error && <Prompt />}
-        {currentId && <Card />}
+        {currentId && !error && <Card />}
       </Right>
 
       {showModal && (

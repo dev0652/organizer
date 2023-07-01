@@ -50,7 +50,12 @@ export default function Card() {
       .catch(er => toast.error(er.message));
   };
 
-  const values = { name, number, email, id: currentId };
+  const values = {
+    name,
+    number,
+    // email,
+    id: currentId,
+  };
 
   return (
     <CardWrapper>
@@ -87,7 +92,7 @@ export default function Card() {
         <Modal onClose={toggleModal}>
           <Section title="Edit Contact">
             <ContactDataForm
-              formType={'edit'}
+              formType="edit"
               editValues={values}
               toggleModal={toggleModal}
             />

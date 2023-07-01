@@ -17,65 +17,17 @@ export default function ContactDataForm({
   toggleModal,
 }) {
   //
-  let buttonText, initNameValue, initNumberValue, toastMessage, operation, args;
+  const dispatch = useDispatch();
+  const { items, error } = useSelector(selectContacts);
+  const { initNameValue, initNumberValue, buttonText } = getInitialValues(
+    formType,
+    editValues
+  );
 
   const [name, setName] = useState(initNameValue);
   const [number, setNumber] = useState(initNumberValue);
   // const [email, setEmail] = useState(initEmailValue);
 
-  // const data = { name, number, email };
-  const data = { name, number };
-
-  const { items } = useSelector(selectContacts);
-  const dispatch = useDispatch();
-
-  if (formType === 'add') {
-    buttonText = 'Add contact';
-    initNameValue = '';
-    initNumberValue = '';
-    // initEmailValue = '';
-    operation = addContact;
-    args = [data];
-  }
-
-  if (formType === 'edit') {
-    const { prePopulatedName, prePopulatedNumber, id } = editValues;
-
-    buttonText = 'Save changes';
-    initNameValue = prePopulatedName;
-    initNumberValue = prePopulatedNumber;
-    // initEmailValue = prePopulatedEmail;
-    operation = editContact;
-    args = [id, data];
-  }
-
-  if (formType === 'add') toastMessage = `Contact '${name}' was added`;
-  if (formType === 'edit') toastMessage = 'Changes have been saved';
-
-  const handleSubmit = event => {
-    event.preventDefault();
-
-    if (formType === 'add') {
-      if (checkIfContactExists(name)) {
-        toast.error(`${name} is already a contact`);
-        return;
-      }
-    }
-
-    dispatch(operation(args))
-      .then(toast.success(toastMessage))
-      .catch(er => toast.error(er.message));
-
-    toggleModal();
-  };
-
-  // Check if contact with this name already exists
-  const checkIfContactExists = nameToCompare =>
-    items.find(
-      ({ name }) => name.toLowerCase() === nameToCompare.toLowerCase()
-    );
-
-  // Update input on change
   const handleChange = event => {
     const { name, value } = event.currentTarget;
 
@@ -92,6 +44,32 @@ export default function ContactDataForm({
       default:
         return;
     }
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    // const data = { name, number, email };
+    const data = { name, number };
+
+    const { operation, operationArgs, toastMessage } = getDispatchData(
+      formType,
+      editValues,
+      data
+    );
+    //
+    if (formType === 'add' && checkIfContactExists(items, name)) {
+      toast.error(`${name} is already a contact`);
+      return;
+    }
+
+    console.log('operationArgs before dispatch', operationArgs);
+
+    dispatch(operation(operationArgs))
+      .then(toast.success(toastMessage))
+      .catch(toast.error(error));
+
+    toggleModal();
   };
 
   return (
@@ -128,3 +106,44 @@ export default function ContactDataForm({
     </FormWrapper>
   );
 }
+
+function getInitialValues(formType, editValues) {
+  let initNameValue, initNumberValue, buttonText, operation;
+
+  if (formType === 'add') {
+    initNameValue = '';
+    initNumberValue = '';
+    buttonText = 'Add contact';
+  }
+  if (formType === 'edit') {
+    initNameValue = editValues.name;
+    initNumberValue = editValues.number;
+    buttonText = 'Save changes';
+  }
+
+  return { initNameValue, initNumberValue, buttonText, operation };
+}
+
+function getDispatchData(formType, editValues, data) {
+  let operationArgs, toastMessage, operation;
+
+  if (formType === 'add') {
+    operation = addContact;
+    operationArgs = data;
+    toastMessage = `Contact '${data.name}' was added`;
+  }
+
+  if (formType === 'edit') {
+    const id = editValues.id;
+
+    operation = editContact;
+    operationArgs = { id, editedContact: data };
+    toastMessage = 'Changes have been saved';
+  }
+
+  return { operation, operationArgs, toastMessage };
+}
+
+// Check if contact with this name already exists
+const checkIfContactExists = (items, nameToCompare) =>
+  items.find(({ name }) => name.toLowerCase() === nameToCompare.toLowerCase());
