@@ -15,6 +15,7 @@ export const PageWrapper = styled.div`
 
 export const Sidebar = styled.div`
   padding: 25px;
+  padding-top: 50px;
   max-width: 400px;
 
   display: flex;

@@ -8,13 +8,13 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 export const register = async credentials => {
   const { data } = await axios.post('/users/signup', credentials);
-  setAuthHeader(data.token);
+  if ('token' in data) setAuthHeader(data.token);
   return data;
 };
 
 export const login = async credentials => {
   const { data } = await axios.post('/users/login', credentials);
-  setAuthHeader(data.token);
+  if ('token' in data) setAuthHeader(data.token);
   return data;
 };
 
@@ -27,7 +27,6 @@ export const logout = async () => {
 export const refresh = async token => {
   setAuthHeader(token);
   const { data } = await axios.get('/users/current');
-  // console.log('data in refresh: ', data);
   return data;
 };
 
