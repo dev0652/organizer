@@ -2,8 +2,12 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { login, register } from 'redux/auth/operations';
 
-import { AccentedButton as SubmitButton } from 'styling/buttons';
-import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
+import {
+  FieldsWrapper,
+  FormWrapper,
+  TextField,
+  SubmitButton,
+} from 'styling/forms';
 import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
 import SwitchForms from '../SwitchForms/SwitchForms';

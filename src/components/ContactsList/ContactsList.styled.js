@@ -27,7 +27,7 @@ export const ContactLink = styled.a`
   font-size: 1.1rem;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius.regular};
 
   text-overflow: ellipsis;
   white-space: nowrap;

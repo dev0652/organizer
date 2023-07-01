@@ -20,7 +20,7 @@ export const StyledNavLink = styled(NavLink)`
   padding: 8px 20px;
   font-weight: 500;
 
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius.regular};
 
   &:hover,
   &:focus {

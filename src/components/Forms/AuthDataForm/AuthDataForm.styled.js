@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
 export const AuthFormContainer = styled.div`
-  margin-top: 30vh;
+  margin-top: 25vh;
   width: 70%;
-  max-width: 350px;
+  max-width: 400px;
 
-  scale: 1.2;
+  /* scale: 1.2; */
 `;
 
 export const ButtonGroup = styled.div`
@@ -24,7 +24,7 @@ export const ButtonGroup = styled.div`
 //   align-self: flex-start;
 //   margin-top: 20vh;
 
-//   border-radius: ${({ theme }) => theme.borderRadius};
+//   border-radius: ${({ theme }) => theme.borderRadius.regular};
 
 //   --background-fallback: rgb(245, 245, 245);
 //   --gradient-start-color: rgba(240, 248, 255, 1);

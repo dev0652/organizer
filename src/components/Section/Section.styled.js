@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: ${({ theme }) => theme.colors.accentDark};
   text-align: ${({ align = 'center' }) => align};
 `;

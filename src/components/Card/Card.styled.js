@@ -5,7 +5,7 @@ import { BaseCardLink } from 'styling/links';
 import { BsTrash3 } from 'react-icons/bs';
 
 export const CardWrapper = styled.div`
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius.regular};
 
   padding: 20px 30px;
   flex-grow: 1;
@@ -17,7 +17,7 @@ export const CardWrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.div`
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius.regular};
   overflow: hidden;
   width: 200px;
 

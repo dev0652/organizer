@@ -6,7 +6,7 @@ export const BaseButton = styled.button`
   min-width: 90px;
   padding: 8px 20px;
   border: none;
-  border-radius: ${theme.borderRadius};
+  border-radius: ${theme.borderRadius.regular};
 
   background-color: lightGray;
 

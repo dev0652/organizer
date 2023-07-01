@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import { addContact, editContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/selectors';
 
-import { AccentedButton as SubmitButton } from 'styling/buttons';
+import { SubmitButton } from 'styling/forms';
 import { FieldsWrapper, FormWrapper, TextField } from 'styling/forms';
 
 // ################################################

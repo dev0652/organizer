@@ -17,14 +17,15 @@ export const Overlay = styled.div`
 export const ModalContent = styled.div`
   cursor: auto;
 
-  width: 300px;
+  width: 90%;
+  max-width: 480px;
   /* background-color: #fff; */
   padding: 60px;
   padding-top: 40px;
   align-self: flex-start;
   margin-top: 20vh;
 
-  border-radius: ${({ theme }) => theme.borderRadius};
+  border-radius: ${({ theme }) => theme.borderRadius.regular};
 
   --background-fallback: rgb(245, 245, 245);
   --gradient-start-color: rgba(240, 248, 255, 1);
