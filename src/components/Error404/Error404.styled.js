@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 // import { Link } from 'react-router-dom';
 
@@ -12,19 +13,28 @@ export const Wrapper = styled.div`
 `;
 
 export const Image = styled.img`
-  max-width: 50vw;
+  max-height: 40vh;
+  max-width: 90vw;
 `;
 
 export const ErrorNo = styled.p`
   font-weight: bold;
-  font-size: 2.5rem;
+  font-size: 3rem;
 `;
 
-// export const StyledLink = styled(Link)`
-//   color: Indigo;
+export const ErrorText = styled.p`
+  /* font-weight: bold; */
+  font-size: 2rem;
+`;
 
-//   :hover,
-//   :focus {
-//     color: darkOrange;
-//   }
-// `;
+export const StyledLink = styled(Link)`
+  color: Indigo;
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 1rem;
+
+  :hover,
+  :focus {
+    color: darkOrange;
+  }
+`;

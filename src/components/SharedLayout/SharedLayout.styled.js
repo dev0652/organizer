@@ -6,6 +6,10 @@ const tablet = breakpoints.tablet;
 const desktop = breakpoints.desktop;
 const desktopWide = breakpoints.desktopWide;
 
+// export const Page = styled.div`
+//   height: 100vh;
+// `;
+
 export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;

@@ -44,20 +44,22 @@ export default function App() {
             path="contacts"
             element={<PrivateRoute component={<ContactsPage />} />}
           />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                component={<Register />}
+                redirectTo="/contacts"
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute component={<Login />} redirectTo="/contacts" />
+            }
+          />
         </Route>
-
-        <Route
-          path="register"
-          element={
-            <RestrictedRoute component={<Register />} redirectTo="/contacts" />
-          }
-        />
-        <Route
-          path="login"
-          element={
-            <RestrictedRoute component={<Login />} redirectTo="/contacts" />
-          }
-        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
