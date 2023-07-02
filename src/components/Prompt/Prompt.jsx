@@ -14,8 +14,8 @@ export default function Prompt({ isError = false, isEmpty }) {
     <Wrapper>
       {isError ? <ErrorIcon /> : <InfoIcon />}
       <Text>
-        {messages.map(message => (
-          <Message>{message}</Message>
+        {messages.map((message, index) => (
+          <Message key={index}>{message}</Message>
         ))}
       </Text>
     </Wrapper>

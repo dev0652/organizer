@@ -16,7 +16,7 @@ export const PageWrapper = styled.div`
 export const LeftSide = styled.div`
   padding: 25px;
   padding-top: 50px;
-  max-width: 400px;
+  max-width: 450px;
 
   display: flex;
   flex-direction: column;

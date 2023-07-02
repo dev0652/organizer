@@ -1,13 +1,19 @@
 import { useSelector } from 'react-redux';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useLocation } from 'react-router-dom';
 import { selectToken } from 'redux/selectors';
 
 // Lomach:
 
 export default function PrivateRoute({ children, redirectTo }) {
   const isToken = useSelector(selectToken);
+  const location = useLocation();
+  console.log('location.state', location.state);
 
-  return isToken ? children : <Navigate to={redirectTo} />;
+  return isToken ? (
+    children
+  ) : (
+    <Navigate to={location.state ?? redirectTo} state={location} />
+  ); // take the user back to where he came from
 }
 
 // Repeta:

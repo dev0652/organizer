@@ -24,10 +24,10 @@ export const Name = styled.p``;
 export const ContactLink = styled.a`
   flex-grow: 1;
   color: black;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: ${({ theme }) => theme.borderRadius.regular};
+  border-radius: ${({ theme }) => theme.borderRadius.large};
 
   text-overflow: ellipsis;
   white-space: nowrap;
