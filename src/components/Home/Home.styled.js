@@ -25,8 +25,7 @@ export const Wrapper = styled.div`
 `;
 
 export const HomeImage = styled.img`
-  /* max-width: 70vw; */
-  max-height: 65vh;
+  max-height: 65%;
 `;
 
 export const HomeText = styled.p`
