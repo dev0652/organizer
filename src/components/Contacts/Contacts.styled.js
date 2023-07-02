@@ -60,13 +60,13 @@ export const NewRandomContactButton = styled(AccentedIconButton)`
 `;
 
 export const AddIcon = styled(HiPlus)`
-  --size: 70%;
+  --size: 50%;
   height: var(--size);
   width: var(--size);
 `;
 
 export const AddRandomIcon = styled(HiChevronDoubleRight)`
-  --size: 70%;
+  --size: 50%;
   height: var(--size);
   width: var(--size);
 `;

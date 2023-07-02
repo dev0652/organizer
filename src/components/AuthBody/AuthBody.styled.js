@@ -42,7 +42,7 @@ export const BannerText = styled.p`
 export const BannerImage = styled.img`
   /* max-width: 40vw; */
   width: 90%;
-  max-width: 600px;
+  max-width: 500px;
 `;
 
 export const FormSide = styled.div`

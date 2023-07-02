@@ -6,7 +6,13 @@ function generateOperation(type) {
   function payloadCreator(type) {
     const statement = type === 'fetch' ? `${type}Contacts` : `${type}Contact`;
 
-    return async arg => await api[statement](arg ? arg : '');
+    return async (arg, { rejectWithValue }) => {
+      try {
+        return await api[statement](arg ? arg : '');
+      } catch (error) {
+        return rejectWithValue(error.response.statusText);
+      }
+    };
   }
   //
   return createAsyncThunk(`contacts/${type}`, payloadCreator(type));

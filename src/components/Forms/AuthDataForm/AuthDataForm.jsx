@@ -1,5 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
-
+import { useDispatch } from 'react-redux';
 import { login, register } from 'redux/auth/operations';
 
 import {
@@ -12,20 +11,18 @@ import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
 import SwitchForms from '../SwitchForms/SwitchForms';
 import Section from 'components/Section/Section';
-import { selectAuth } from 'redux/selectors';
 
 // ################################################
 
 export default function AuthDataForm({ formType }) {
   const dispatch = useDispatch();
-  const { error } = useSelector(selectAuth);
 
   const isSignUp = formType === 'register';
-  let buttonText, messageText, operation, emailDefaultValue, passDefaultValue;
+  let buttonText, toastMessage, operation, emailDefaultValue, passDefaultValue;
 
   if (formType === 'login') {
     buttonText = 'Sign in';
-    messageText = 'Login successful';
+    toastMessage = 'Login successful';
     operation = login;
     emailDefaultValue = 'dev0652@mail.au';
     passDefaultValue = '1234567';
@@ -33,7 +30,7 @@ export default function AuthDataForm({ formType }) {
 
   if (isSignUp) {
     buttonText = 'Create an account';
-    messageText = 'Registration successful';
+    toastMessage = 'Registration successful';
     operation = register;
     emailDefaultValue = '';
     passDefaultValue = '';
@@ -52,8 +49,11 @@ export default function AuthDataForm({ formType }) {
     if (isSignUp) credentials.name = form.elements.name.value;
 
     dispatch(operation(credentials))
-      .then(toast.success(messageText))
-      .catch(toast.error(error));
+      .then(data => {
+        if (data.error) throw new Error(data.payload);
+        return toast.success(toastMessage);
+      })
+      .catch(error => toast.error(error.message));
 
     form.reset();
     // toggleModal();

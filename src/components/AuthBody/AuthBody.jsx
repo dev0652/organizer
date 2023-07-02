@@ -7,15 +7,16 @@ import {
   Page,
 } from './AuthBody.styled';
 
-import logo from 'images/project2.png';
+import logo from 'images/project10.png';
+// import logo from 'images/project8.png';
 
 export default function AuthBody({ children }) {
   return (
     <Page>
       <BannerSide>
         <BannerTextWrapper>
-          <BannerText>Manage your contacts.</BannerText>
-          <BannerText>Work with peace of mind</BannerText>
+          <BannerText>A simple and secure way</BannerText>
+          <BannerText>to manage your contacts</BannerText>
         </BannerTextWrapper>
 
         <BannerImage src={logo} alt="UI Design  Illustration" />

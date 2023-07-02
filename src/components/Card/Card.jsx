@@ -41,13 +41,14 @@ export default function Card() {
 
   const email = faker.internet.exampleEmail();
   const image = faker.image.avatar();
-  // const image = faker.image.people(640, 640, true);
-  // faker.image.people(width, height, randomize?: boolean = false)
 
   const handleDelete = id => {
     dispatch(deleteContact(id))
-      .then(toast.success('Contact has been deleted'))
-      .catch(er => toast.error(er.message));
+      .then(data => {
+        if (data.error) throw new Error(data.payload);
+        return toast.success('Contact has been deleted');
+      })
+      .catch(error => toast.error(error.message));
   };
 
   const values = {

@@ -18,7 +18,8 @@ export default function ContactDataForm({
 }) {
   //
   const dispatch = useDispatch();
-  const { items, error } = useSelector(selectContacts);
+
+  const { items } = useSelector(selectContacts);
   const { initNameValue, initNumberValue, buttonText } = getInitialValues(
     formType,
     editValues
@@ -63,11 +64,12 @@ export default function ContactDataForm({
       return;
     }
 
-    console.log('operationArgs before dispatch', operationArgs);
-
     dispatch(operation(operationArgs))
-      .then(toast.success(toastMessage))
-      .catch(toast.error(error));
+      .then(data => {
+        if (data.error) throw new Error(data.payload);
+        return toast.success(toastMessage);
+      })
+      .catch(error => toast.error(error.message));
 
     toggleModal();
   };

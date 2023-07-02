@@ -2,13 +2,14 @@
 export const handlePending = state => {
   state.isLoading = true;
 };
-export const handleRejected = (state, { payload, error }) => {
+export const handleRejected = (state, { error, payload }) => {
   state.isLoading = false;
-  state.error = payload ? payload : error.message;
+  state.error = payload ?? error.message;
 };
+
 export const handleFulfilled = state => {
   state.isLoading = false;
-  state.error = null;
+  // state.error = null;
 };
 
 // On success:
@@ -29,7 +30,6 @@ export const handleDeleteFulfilled = (state, { payload }) => {
 
   state.items.splice(index, 1);
   state.currentId = null;
-  // state.toastMessage = 'Contact has been deleted';
 };
 
 // Edit a contact
@@ -45,5 +45,4 @@ export const handleEditFulfilled = (state, { payload }) => {
   contact.name = name;
   contact.number = number;
   // contact.email = email;
-  // state.toastMessage = 'Changes have been saved';
 };
