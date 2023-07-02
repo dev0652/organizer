@@ -6,7 +6,10 @@ const { height: headerHeight } = header.getBoundingClientRect();
 const subtractedValue = `${headerHeight}px`;
 
 export const Wrapper = styled.div`
-  height: calc(100% - ${subtractedValue});
+  /* height: calc(100% - ${subtractedValue}); */
+  height: calc(100vh - ${subtractedValue});
+  /* height: 100vh; */
+  /* height: 100%; */
 
   display: flex;
   flex-direction: column;

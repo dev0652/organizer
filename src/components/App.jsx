@@ -23,6 +23,8 @@ const ContactsPage = lazy(() => import('pages/ContactsPage'));
 export default function App() {
   return (
     <>
+      <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
+
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
@@ -52,8 +54,6 @@ export default function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
-
-      <Toaster containerStyle={containerStyle} toastOptions={toastOptions} />
     </>
   );
 }
