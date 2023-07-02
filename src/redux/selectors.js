@@ -2,6 +2,7 @@ import { createSelector } from '@reduxjs/toolkit';
 
 // Authentication
 export const selectAuth = state => state.auth;
+export const selectToken = state => state.auth.token;
 
 // Filter
 export const selectFilter = state => state.filter;

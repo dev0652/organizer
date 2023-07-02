@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
-import { useSelector } from 'react-redux';
+import { Suspense, useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth, selectContacts } from 'redux/selectors';
 import { Outlet } from 'react-router-dom';
 
@@ -11,12 +11,24 @@ import loaderOptions from 'services/loaderOptions';
 
 import { StyledNavLink } from 'styling/links';
 import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
+import { refresh } from 'redux/auth/operations';
 
 // ##############################
 
 export default function SharedLayout() {
   const { isLoading } = useSelector(selectContacts);
-  const { isLoggedIn } = useSelector(selectAuth);
+  const { isLoggedIn, isRefreshing, token } = useSelector(selectAuth);
+  const dispatch = useDispatch();
+
+  // https://nikolamargit.dev/skip-useeffect-hook-on-first-render/
+  const isFirstRender = useRef(false);
+
+  useEffect(() => {
+    if (!token) return;
+
+    if (isFirstRender.current) dispatch(refresh());
+    else isFirstRender.current = true;
+  }, [dispatch, token]);
 
   return (
     <>
@@ -35,15 +47,19 @@ export default function SharedLayout() {
         </Container>
       </AppBar>
 
-      <Container>
-        <Suspense
-          fallback={isLoading ? Loading.dots(loaderOptions) : Loading.remove()}
-        >
-          <main>
-            <Outlet />
-          </main>
-        </Suspense>
-      </Container>
+      {!isRefreshing && (
+        <Container>
+          <Suspense
+            fallback={
+              isLoading ? Loading.dots(loaderOptions) : Loading.remove()
+            }
+          >
+            <main>
+              <Outlet />
+            </main>
+          </Suspense>
+        </Container>
+      )}
     </>
   );
 }
