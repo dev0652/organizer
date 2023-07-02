@@ -9,7 +9,7 @@ export const handleRejected = (state, { error, payload }) => {
 
 export const handleFulfilled = state => {
   state.isLoading = false;
-  // state.error = null;
+  state.error = null;
 };
 
 // On success:
