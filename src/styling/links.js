@@ -5,7 +5,7 @@ import { theme } from 'styling/theme';
 export const BaseCardLink = styled.a`
   text-decoration: none;
   color: ${theme.colors.secondaryText};
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 
   &:hover,
   &:focus {

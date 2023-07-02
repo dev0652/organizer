@@ -12,7 +12,7 @@ export const Page = styled.div`
 export const BannerSide = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10vh;
+  gap: 5vh;
   width: 50%;
   /* justify-content: center; */
   align-items: center;
