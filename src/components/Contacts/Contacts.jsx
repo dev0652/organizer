@@ -39,12 +39,11 @@ export default function Contacts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
-    //  const promise = dispatch(fetchContacts())
-    // return () => {
-    //   // `createAsyncThunk` attaches an `abort()` method to the promise
-    //   promise.abort()
-    // }
+    dispatch(fetchContacts())
+      .unwrap()
+      .catch(() =>
+        toast.error('Error loading contacts. Please refresh the page')
+      );
   }, [dispatch]);
 
   const addRandomContact = () => {
@@ -94,7 +93,7 @@ export default function Contacts() {
 
       <Right>
         {!isLoading && error && <Error />}
-        {!currentId && !error && <Prompt />}
+        {!currentId && !error && <Prompt length={items.length} />}
         {currentId && !error && <Card />}
       </Right>
 

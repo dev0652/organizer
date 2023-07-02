@@ -65,6 +65,7 @@ export default function ContactDataForm({
     }
 
     dispatch(operation(operationArgs))
+      .unwrap()
       .then(data => {
         if (data.error) throw new Error(data.payload);
         return toast.success(toastMessage);

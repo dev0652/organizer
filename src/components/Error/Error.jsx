@@ -6,7 +6,7 @@ export default function Error() {
       <Icon />
       <Text>
         <Message>Something went wrong</Message>
-        <Message>Try reloading the page or check back later</Message>
+        <Message>Try refreshing the page or check back later</Message>
       </Text>
     </Wrapper>
   );

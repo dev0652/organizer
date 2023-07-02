@@ -1,4 +1,7 @@
-import { useDispatch } from 'react-redux';
+import {
+  useDispatch,
+  // useSelector
+} from 'react-redux';
 import { login, register } from 'redux/auth/operations';
 
 import {
@@ -11,11 +14,13 @@ import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
 import SwitchForms from '../SwitchForms/SwitchForms';
 import Section from 'components/Section/Section';
+// import { selectContacts } from 'redux/selectors';
 
 // ################################################
 
 export default function AuthDataForm({ formType }) {
   const dispatch = useDispatch();
+  // const { error } = useSelector(selectContacts);
 
   const isSignUp = formType === 'register';
   let buttonText, toastMessage, operation, emailDefaultValue, passDefaultValue;
@@ -49,11 +54,9 @@ export default function AuthDataForm({ formType }) {
     if (isSignUp) credentials.name = form.elements.name.value;
 
     dispatch(operation(credentials))
-      .then(data => {
-        if (data.error) throw new Error(data.payload);
-        return toast.success(toastMessage);
-      })
-      .catch(error => toast.error(error.message));
+      .unwrap()
+      .then(() => toast.success(toastMessage))
+      .catch(() => toast.error('Error logging in. Please try again later'));
 
     form.reset();
     // toggleModal();
