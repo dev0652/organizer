@@ -13,7 +13,7 @@ export const PageWrapper = styled.div`
   height: calc(100vh - ${subtractedValue});
 `;
 
-export const Sidebar = styled.div`
+export const LeftSide = styled.div`
   padding: 25px;
   padding-top: 50px;
   max-width: 400px;
@@ -37,7 +37,7 @@ export const Sidebar = styled.div`
   /* background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%); */
 `;
 
-export const Right = styled.div`
+export const RightSide = styled.div`
   display: flex;
   flex-direction: column;
   padding: 25px;

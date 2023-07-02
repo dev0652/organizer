@@ -17,8 +17,8 @@ import ContactDataForm from 'components/Forms/ContactDataForm';
 import {
   AddIcon,
   NewContactIconButton,
-  Right,
-  Sidebar,
+  LeftSide,
+  RightSide,
   Bar,
   PageWrapper,
   NewRandomContactButton,
@@ -59,20 +59,9 @@ export default function Contacts() {
       .catch(er => toast.error(er.message));
   };
 
-  const errorMessages = [
-    'Something went wrong',
-    'Try refreshing the page or check back later',
-  ];
-  const infoMessages = [
-    items.length === 0
-      ? 'Phonebook is empty'
-      : 'Select a contact to display here',
-  ];
-  const messages = error ? errorMessages : infoMessages;
-
   return (
     <PageWrapper>
-      <Sidebar>
+      <LeftSide>
         <Bar>
           <Filter />
 
@@ -98,16 +87,14 @@ export default function Contacts() {
         </Bar>
 
         {items.length > 0 && <ContactsList />}
-      </Sidebar>
+      </LeftSide>
 
-      <Right>
-        {/* <Prompt messages={messages} isError={!isLoading && error} /> */}
-
-        {!currentId && !error && <Prompt messages={messages} />}
-        {!isLoading && error && <Prompt messages={messages} isError={true} />}
+      <RightSide>
+        {!currentId && !error && <Prompt isEmpty={items.length === 0} />}
+        {!isLoading && error && <Prompt isError={error !== null} />}
 
         {currentId && !error && <Card />}
-      </Right>
+      </RightSide>
 
       {showModal && (
         <Modal onClose={toggleModal}>
