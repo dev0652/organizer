@@ -2,29 +2,24 @@ import { Helmet } from 'react-helmet-async';
 
 import AuthDataForm from 'components/Forms/AuthDataForm';
 import AuthBody from 'components/AuthBody';
+import { FlexCentered } from 'styling/positioning';
 
-export default function Login() {
+export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title>Register</title>
+        <title>Login</title>
         <meta
           name="description"
-          content="Log in page. You need to be logged in to view your personalized items"
+          content="Log in to view your personalized items"
         />
       </Helmet>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <FlexCentered>
         <AuthBody>
           <AuthDataForm formType="login" />
         </AuthBody>
-      </div>
+      </FlexCentered>
     </>
   );
 }

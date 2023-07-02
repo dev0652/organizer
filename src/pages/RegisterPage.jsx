@@ -1,10 +1,8 @@
 import { Helmet } from 'react-helmet-async';
-// import { useState } from 'react';
 
-// import Modal from 'components/Modal';
-// import Section from 'components/Section';
 import AuthDataForm from 'components/Forms/AuthDataForm';
 import AuthBody from 'components/AuthBody/AuthBody';
+import { FlexCentered } from 'styling/positioning';
 
 export default function Register() {
   return (
@@ -13,21 +11,15 @@ export default function Register() {
         <title>Register</title>
         <meta
           name="description"
-          content="Register or log in to see your personalized items"
+          content="Register to see your personalized items"
         />
       </Helmet>
 
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
+      <FlexCentered>
         <AuthBody>
           <AuthDataForm formType="register" />
         </AuthBody>
-      </div>
+      </FlexCentered>
     </>
   );
 }

@@ -24,12 +24,12 @@ export const ErrorNo = styled.p`
 
 export const ErrorText = styled.p`
   /* font-weight: bold; */
-  font-size: 2rem;
+  font-size: 1.6rem;
 `;
 
 export const StyledLink = styled(Link)`
   color: Indigo;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   display: block;
   margin-top: 1rem;
 

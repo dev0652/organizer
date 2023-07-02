@@ -9,8 +9,8 @@ import PrivateRoute from './PrivateRoute';
 
 import SharedLayout from 'components/SharedLayout';
 import NotFound from 'pages/NotFound';
-import Register from 'pages/Register';
-import Login from 'pages/Login';
+import Register from 'pages/RegisterPage';
+import Login from 'pages/LoginPage';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
