@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth, selectContacts } from 'redux/selectors';
 import { Outlet } from 'react-router-dom';
@@ -17,21 +17,13 @@ import { refresh } from 'redux/auth/operations';
 
 export default function SharedLayout() {
   const { isLoading } = useSelector(selectContacts);
-  const { isLoggedIn, isRefreshing, token } = useSelector(selectAuth);
+  const { isLoggedIn, isRefreshing, user, token } = useSelector(selectAuth);
+
   const dispatch = useDispatch();
 
-  // https://nikolamargit.dev/skip-useeffect-hook-on-first-render/
-  const isFirstRender = useRef(false);
-
   useEffect(() => {
-    if (isFirstRender.current) {
-      if (!token) return;
-
-      dispatch(refresh());
-    } else {
-      isFirstRender.current = true;
-    }
-  }, [dispatch, token]);
+    if (token && !user.name) dispatch(refresh(token));
+  }, [dispatch, token, user]);
 
   return (
     <>
