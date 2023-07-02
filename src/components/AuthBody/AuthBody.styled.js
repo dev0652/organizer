@@ -25,12 +25,10 @@ export const BannerSide = styled.div`
   padding: 20vh 30px;
 `;
 
-export const BannerTextWrapper = styled.div`
-  /* margin-top: 10vh; */
-`;
+export const BannerTextWrapper = styled.div``;
 
 export const BannerText = styled.p`
-  font-size: 4vh;
+  font-size: 3.6vh;
   text-align: center;
   font-weight: bold;
 `;
