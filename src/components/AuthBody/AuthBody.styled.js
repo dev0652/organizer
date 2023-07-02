@@ -3,6 +3,8 @@ import { styled } from 'styled-components';
 export const Page = styled.div`
   display: flex;
   width: 100%;
+  max-height: 100%;
+  /* max-height: 100vh; */
   /* height: 100%; */
   height: 100vh;
 `;
@@ -11,37 +13,38 @@ export const BannerSide = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10vh;
-
-  /* background-color: #660dd9; */
-
-  background-color: #6684ff;
-  background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%);
-
-  padding: 65px 12px 0;
-  color: #fff;
-
   width: 50%;
-  padding: 0 30px;
-
-  display: flex;
   /* justify-content: center; */
   align-items: center;
+
+  color: #fff;
+  background-color: #6684ff;
+  background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%);
+  /* background-size: cover; */
+
+  padding: 20vh 30px;
 `;
 
 export const BannerTextWrapper = styled.div`
-  margin-top: 20vh;
+  /* margin-top: 10vh; */
 `;
 
 export const BannerText = styled.p`
-  font-size: 2rem;
+  font-size: 4vh;
   text-align: center;
   font-weight: bold;
 `;
-
-export const BannerImage = styled.img`
-  /* max-width: 40vw; */
+export const BannerImageCnt = styled.div`
   width: 90%;
   max-width: 500px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const BannerImage = styled.img`
+  object-fit: contain;
 `;
 
 export const FormSide = styled.div`

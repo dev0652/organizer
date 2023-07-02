@@ -1,5 +1,6 @@
 import {
   BannerImage,
+  BannerImageCnt,
   BannerSide,
   BannerText,
   BannerTextWrapper,
@@ -7,8 +8,8 @@ import {
   Page,
 } from './AuthBody.styled';
 
-import logo from 'images/project10.png';
-// import logo from 'images/project8.png';
+// import logo from 'images/project5.png';
+import logo from 'images/project8.png';
 
 export default function AuthBody({ children }) {
   return (
@@ -18,8 +19,9 @@ export default function AuthBody({ children }) {
           <BannerText>A simple and secure way</BannerText>
           <BannerText>to manage your contacts</BannerText>
         </BannerTextWrapper>
-
-        <BannerImage src={logo} alt="UI Design  Illustration" />
+        <BannerImageCnt>
+          <BannerImage src={logo} alt="UI Design  Illustration" />
+        </BannerImageCnt>
       </BannerSide>
       <FormSide>{children}</FormSide>
     </Page>
