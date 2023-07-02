@@ -30,5 +30,5 @@ export const HomeText = styled.p`
   font-size: 1.6rem;
   display: block;
   text-align: center;
-  max-width: 70vw;
+  max-width: 80%;
 `;
