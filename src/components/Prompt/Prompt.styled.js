@@ -1,5 +1,6 @@
 import { styled } from 'styled-components';
-import { CiCircleInfo as ReactIcon } from 'react-icons/ci';
+import { CiCircleInfo } from 'react-icons/ci';
+import { RxCrossCircled } from 'react-icons/rx';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,7 +18,13 @@ export const Text = styled.div`
   align-items: center;
 `;
 
-export const Icon = styled(ReactIcon)`
+export const InfoIcon = styled(CiCircleInfo)`
+  --size: 5rem;
+  height: var(--size);
+  width: var(--size);
+`;
+
+export const ErrorIcon = styled(RxCrossCircled)`
   --size: 5rem;
   height: var(--size);
   width: var(--size);

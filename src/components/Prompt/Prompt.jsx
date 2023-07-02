@@ -1,15 +1,13 @@
-import React from 'react';
-import { Icon, Message, Text, Wrapper } from './Prompt.styled';
+import { ErrorIcon, InfoIcon, Message, Text, Wrapper } from './Prompt.styled';
 
-export default function Prompt({ length }) {
-  const message =
-    length === 0 ? 'Phonebook is empty' : 'Select a contact to display here';
-
+export default function Prompt({ isError = false, messages }) {
   return (
     <Wrapper>
-      <Icon />
+      {isError ? <ErrorIcon /> : <InfoIcon />}
       <Text>
-        <Message>{message}</Message>
+        {messages.map(message => (
+          <Message>{message}</Message>
+        ))}
       </Text>
     </Wrapper>
   );

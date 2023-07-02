@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectContacts } from 'redux/selectors';
+import { addContact, fetchContacts } from 'redux/contacts/operations';
 
 import { faker } from '@faker-js/faker';
+import { toast } from 'react-hot-toast';
 
 import Section from 'components/Section';
 import ContactsList from 'components/ContactsList';
-import Filter from 'components/Filter';
-import Error from 'components/Error';
+import Filter from 'components/Forms/Filter';
 import Modal from 'components/Modal';
+import Card from 'components/Card';
+import Prompt from 'components/Prompt';
+import ContactDataForm from 'components/Forms/ContactDataForm';
+
 import {
   AddIcon,
   NewContactIconButton,
@@ -19,14 +25,6 @@ import {
   ButtonsWrapper,
   AddRandomIcon,
 } from './Contacts.styled';
-
-import { selectContacts } from 'redux/selectors';
-import { addContact, fetchContacts } from 'redux/contacts/operations';
-
-import Card from 'components/Card/Card';
-import Prompt from 'components/Prompt/Prompt';
-import { toast } from 'react-hot-toast';
-import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
 
 // ################################################
 
@@ -61,6 +59,17 @@ export default function Contacts() {
       .catch(er => toast.error(er.message));
   };
 
+  const errorMessages = [
+    'Something went wrong',
+    'Try refreshing the page or check back later',
+  ];
+  const infoMessages = [
+    items.length === 0
+      ? 'Phonebook is empty'
+      : 'Select a contact to display here',
+  ];
+  const messages = error ? errorMessages : infoMessages;
+
   return (
     <PageWrapper>
       <Sidebar>
@@ -92,8 +101,11 @@ export default function Contacts() {
       </Sidebar>
 
       <Right>
-        {!isLoading && error && <Error />}
-        {!currentId && !error && <Prompt length={items.length} />}
+        {/* <Prompt messages={messages} isError={!isLoading && error} /> */}
+
+        {!currentId && !error && <Prompt messages={messages} />}
+        {!isLoading && error && <Prompt messages={messages} isError={true} />}
+
         {currentId && !error && <Card />}
       </Right>
 

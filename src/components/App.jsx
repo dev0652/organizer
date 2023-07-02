@@ -12,7 +12,7 @@ import NotFound from 'pages/NotFound';
 import Register from 'pages/Register';
 import Login from 'pages/Login';
 
-const Home = lazy(() => import('pages/Home'));
+const HomePage = lazy(() => import('pages/HomePage'));
 const ContactsPage = lazy(() => import('pages/ContactsPage'));
 // const Register = lazy(() => import('pages/Register'));
 // const Login = lazy(() => import('pages/Login'));
@@ -25,7 +25,7 @@ export default function App() {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
           <Route
             path="contacts"
             element={
