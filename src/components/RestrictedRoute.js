@@ -7,7 +7,7 @@ import { selectToken } from 'redux/selectors';
 export default function RestrictedRoute({ children, redirectTo }) {
   const isToken = useSelector(selectToken);
 
-  return isToken ? children : <Navigate to={redirectTo} />;
+  return !isToken ? children : <Navigate to={redirectTo} />;
 }
 
 // Repeta:
