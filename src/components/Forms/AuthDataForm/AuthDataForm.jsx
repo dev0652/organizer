@@ -56,7 +56,7 @@ export default function AuthDataForm({ formType }) {
     dispatch(operation(credentials))
       .unwrap()
       .then(() => toast.success(toastMessage))
-      .catch(() => toast.error('Error logging in. Please try again later'));
+      .catch(() => toast.error('Error authenticating. Please try again later'));
 
     form.reset();
     // toggleModal();

@@ -2,9 +2,8 @@ import { styled } from 'styled-components';
 
 export const Page = styled.div`
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  /* height: 100%; */
+  width: 100%;
+  height: 100%;
 `;
 
 export const BannerSide = styled.div`
@@ -18,7 +17,6 @@ export const BannerSide = styled.div`
   background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%);
 
   padding: 65px 12px 0;
-  overflow: hidden;
   color: #fff;
 
   width: 50%;
@@ -47,10 +45,7 @@ export const BannerImage = styled.img`
 
 export const FormSide = styled.div`
   width: 50%;
-  overflow: hidden;
   display: flex;
   justify-content: center;
   /* align-items: center; */
 `;
-
-// export const xxx = styled.div``;

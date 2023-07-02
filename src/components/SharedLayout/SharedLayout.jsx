@@ -24,10 +24,13 @@ export default function SharedLayout() {
   const isFirstRender = useRef(false);
 
   useEffect(() => {
-    if (!token) return;
+    if (isFirstRender.current) {
+      if (!token) return;
 
-    if (isFirstRender.current) dispatch(refresh());
-    else isFirstRender.current = true;
+      dispatch(refresh());
+    } else {
+      isFirstRender.current = true;
+    }
   }, [dispatch, token]);
 
   return (
