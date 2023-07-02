@@ -10,6 +10,8 @@ export const Wrapper = styled.div`
   /* justify-content: center; */
   align-items: center;
   margin-top: 10vh;
+
+  background-color: whitesmoke;
 `;
 
 export const Image = styled.img`
@@ -25,6 +27,7 @@ export const ErrorNo = styled.p`
 export const ErrorText = styled.p`
   /* font-weight: bold; */
   font-size: 1.6rem;
+  color: #6684ff;
 `;
 
 export const StyledLink = styled(Link)`
