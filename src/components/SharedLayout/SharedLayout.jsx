@@ -11,7 +11,7 @@ import loaderOptions from 'services/loaderOptions';
 
 import { StyledNavLink } from 'styling/links';
 import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
-import { refresh } from 'redux/auth/operations';
+import { logout, refresh } from 'redux/auth/operations';
 
 // ##############################
 
@@ -22,7 +22,10 @@ export default function SharedLayout() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (token && !user.name) dispatch(refresh(token));
+    if (token && !user.name)
+      dispatch(refresh(token))
+        .unwrap()
+        .catch(() => dispatch(logout())); // log out if token is outdated
   }, [dispatch, token, user]);
 
   return (
