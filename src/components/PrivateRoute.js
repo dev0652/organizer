@@ -7,7 +7,6 @@ import { selectToken } from 'redux/selectors';
 export default function PrivateRoute({ children, redirectTo }) {
   const isToken = useSelector(selectToken);
   const location = useLocation();
-  console.log('location.state', location.state);
 
   return isToken ? (
     children
