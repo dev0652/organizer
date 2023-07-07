@@ -12,6 +12,7 @@ import loaderOptions from 'services/loaderOptions';
 import { StyledNavLink } from 'styling/links';
 import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
 import { logout, refresh } from 'redux/auth/operations';
+import PageNav, { TabsRouter } from 'components/PageNav/PageNav';
 
 // ##############################
 
@@ -33,12 +34,14 @@ export default function SharedLayout() {
       <AppBar className="header">
         <Container>
           <AppBarWrapper>
-            <nav>
+            {/* <nav>
               <StyledNavLink to="/">Home</StyledNavLink>
               {isLoggedIn && (
                 <StyledNavLink to="/contacts">Contacts</StyledNavLink>
               )}
-            </nav>
+            </nav> */}
+            <PageNav isLoggedIn={isLoggedIn} />
+            {/* <TabsRouter /> */}
 
             {isLoggedIn ? <UserBar /> : <AuthNav />}
           </AppBarWrapper>

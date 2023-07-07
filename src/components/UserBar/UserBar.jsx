@@ -19,7 +19,7 @@ export default function UserBar() {
   return (
     <Wrapper>
       <WelcomeMsg>Welcome, {name}</WelcomeMsg>
-      <LogoutButton type="button" onClick={handleLogout}>
+      <LogoutButton variant="outlined" type="button" onClick={handleLogout}>
         Log out
       </LogoutButton>
     </Wrapper>

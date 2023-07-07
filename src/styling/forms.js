@@ -1,19 +1,24 @@
 import styled from 'styled-components';
 import { theme } from 'styling/theme';
 import { AccentedButton } from 'styling/buttons';
+import MUITextField from '@mui/material/TextField';
 
-export const TextField = styled.input`
-  padding: 2px 25px 0;
-  border-radius: ${theme.borderRadius.large};
-  /* font-size: 1.1rem; */
-  font-size: inherit;
-  line-height: 2;
-  /* background-color: white; */
-
-  &::placeholder {
-    color: Silver;
-  }
+export const TextField = styled(MUITextField)`
+  background-color: white;
 `;
+
+// export const TextField = styled.input`
+//   padding: 2px 25px 0;
+//   border-radius: ${theme.borderRadius.large};
+//   /* font-size: 1.1rem; */
+//   font-size: inherit;
+//   line-height: 2;
+//   /* background-color: white; */
+
+//   &::placeholder {
+//     color: Silver;
+//   }
+// `;
 
 export const FormWrapper = styled.form`
   display: flex;

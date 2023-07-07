@@ -6,13 +6,14 @@ import { addContact, fetchContacts } from 'redux/contacts/operations';
 import { faker } from '@faker-js/faker';
 import { toast } from 'react-hot-toast';
 
-import Section from 'components/Section';
+// import Section from 'components/Section';
 import ContactsList from 'components/ContactsList';
 import Filter from 'components/Forms/Filter';
 import Modal from 'components/Modal';
 import Card from 'components/Card';
 import Prompt from 'components/Prompt';
-import ContactDataForm from 'components/Forms/ContactDataForm';
+// import ContactDataForm from 'components/Forms/ContactDataForm';
+import ContactFormMUI from 'components/Forms/ContactFormMUI';
 
 import {
   AddIcon,
@@ -98,9 +99,10 @@ export default function Contacts() {
 
       {showModal && (
         <Modal onClose={toggleModal}>
-          <Section title="New Contact">
+          {/* <Section title="New Contact">
             <ContactDataForm formType={'add'} toggleModal={toggleModal} />
-          </Section>
+          </Section> */}
+          <ContactFormMUI formType={'add'} toggleModal={toggleModal} />
         </Modal>
       )}
     </PageWrapper>

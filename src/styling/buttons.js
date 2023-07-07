@@ -1,26 +1,29 @@
 import styled from 'styled-components';
 import { theme } from 'styling/theme';
+import MUIbutton from '@mui/material/Button';
 
-export const BaseButton = styled.button`
-  font-size: 1.2rem;
-  min-width: 90px;
-  padding: 8px 20px;
-  border: none;
-  border-radius: ${theme.borderRadius.regular};
+export const BaseButton = styled(MUIbutton)``;
 
-  background-color: lightGray;
+// export const BaseButton = styled.button`
+//   font-size: 1.2rem;
+//   min-width: 90px;
+//   padding: 8px 20px;
+//   border: none;
+//   border-radius: ${theme.borderRadius.regular};
 
-  &:hover,
-  &:focus {
-    background-color: ${theme.colors.accent};
-    color: ${theme.colors.highlightedText};
-    font-weight: 500;
-  }
+//   background-color: lightGray;
 
-  &:active {
-    background-color: ${theme.colors.accentDark};
-  }
-`;
+//   &:hover,
+//   &:focus {
+//     background-color: ${theme.colors.accent};
+//     color: ${theme.colors.highlightedText};
+//     font-weight: 500;
+//   }
+
+//   &:active {
+//     background-color: ${theme.colors.accentDark};
+//   }
+// `;
 
 export const AccentedButton = styled(BaseButton)`
   color: ${theme.colors.highlightedText};

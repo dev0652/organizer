@@ -36,8 +36,8 @@ export default function SignFormMUI({ formType }) {
     passDefaultValue;
 
   if (formType === 'login') {
-    title = 'Sign in';
-    buttonText = 'Sign in';
+    title = 'Log in';
+    buttonText = 'Sign in to your account';
     toastMessage = 'Login successful';
     operation = login;
     emailDefaultValue = 'dev0652@mail.au';
@@ -123,16 +123,16 @@ export default function SignFormMUI({ formType }) {
             {/* Name */}
             {isSignUp && (
               <TextField
-                type="text"
-                name="name"
-                placeholder="Name"
                 margin="normal"
                 required
                 fullWidth
+                id="name"
                 label="Name"
+                name="name"
                 autoComplete="name"
-                value={name}
+                // autoFocus
                 onChange={handleChange}
+                value={name}
               />
             )}
 

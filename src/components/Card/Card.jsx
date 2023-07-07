@@ -7,7 +7,7 @@ import { deleteContact } from 'redux/contacts/operations';
 import { faker } from '@faker-js/faker';
 
 import Modal from 'components/Modal';
-import Section from 'components/Section';
+// import Section from 'components/Section';
 
 import {
   EditButton,
@@ -22,7 +22,8 @@ import {
   EmailLink,
 } from './Card.styled';
 import { toast } from 'react-hot-toast';
-import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
+// import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
+import ContactFormMUI from 'components/Forms/ContactFormMUI';
 
 // ##################################################
 
@@ -91,13 +92,18 @@ export default function Card() {
 
       {showModal && (
         <Modal onClose={toggleModal}>
-          <Section title="Edit Contact">
+          {/* <Section title="Edit Contact">
             <ContactDataForm
               formType="edit"
               editValues={values}
               toggleModal={toggleModal}
             />
-          </Section>
+          </Section> */}
+          <ContactFormMUI
+            formType={'edit'}
+            editValues={values}
+            toggleModal={toggleModal}
+          />
         </Modal>
       )}
     </CardWrapper>
