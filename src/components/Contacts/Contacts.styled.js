@@ -1,6 +1,6 @@
 import { AccentedIconButton } from 'styling/buttons';
 
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { HiPlus, HiChevronDoubleRight } from 'react-icons/hi';
 
 // Body height adjust to compensate for positioned header height

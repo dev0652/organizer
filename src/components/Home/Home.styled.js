@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 // Body height adjust to compensate for positioned header height
 const header = document.querySelector('.header');

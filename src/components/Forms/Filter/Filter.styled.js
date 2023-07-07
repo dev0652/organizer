@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 import { TextField as BaseTextField } from 'styling/forms';
 

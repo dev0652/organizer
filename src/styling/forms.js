@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { theme } from 'styling/theme';
 import { AccentedButton } from 'styling/buttons';
 

@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { theme } from 'styling/theme';
 
 export const BaseButton = styled.button`

@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { login, register } from 'redux/auth/operations';
+import Button from '@mui/material/Button';
 
 import {
   FieldsWrapper,
   FormWrapper,
   TextField,
-  SubmitButton,
+  // SubmitButton,
 } from 'styling/forms';
 import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
@@ -86,7 +87,10 @@ export default function AuthDataForm({ formType }) {
           </FieldsWrapper>
 
           <ButtonGroup>
-            <SubmitButton type="submit">{buttonText}</SubmitButton>
+            {/* <SubmitButton type="submit">{buttonText}</SubmitButton> */}
+            <Button variant="contained" type="submit">
+              {buttonText}
+            </Button>
 
             <SwitchForms condition={isSignUp} />
           </ButtonGroup>

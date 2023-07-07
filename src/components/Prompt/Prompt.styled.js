@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { CiCircleInfo } from 'react-icons/ci';
 import { RxCrossCircled } from 'react-icons/rx';
 
