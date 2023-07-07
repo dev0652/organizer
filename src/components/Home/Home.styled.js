@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  /* justify-content: center; */
   align-items: center;
   padding-top: 10vh;
 
@@ -22,10 +21,20 @@ export const Wrapper = styled.div`
 
   background-color: #6684ff;
   background: linear-gradient(105.62deg, #524abe -7.88%, #6684ff 100%);
+
+  @media screen and (max-width: 768px) {
+    padding-top: 0;
+    justify-content: center;
+    gap: 40px;
+  }
 `;
 
 export const HomeImage = styled.img`
   max-height: 65%;
+
+  @media screen and (max-width: 768px) {
+    max-height: 40%;
+  }
 `;
 
 export const HomeText = styled.p`

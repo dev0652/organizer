@@ -9,17 +9,18 @@ export const CardWrapper = styled.div`
 
   padding: 20px 30px;
   flex-grow: 1;
-  max-width: 400px;
 
   display: flex;
-  flex-direction: column;
   gap: 20px;
+
+  flex-direction: column;
 
   @media screen and (max-width: 768px) {
     flex-direction: row;
   }
 
   @media screen and (min-width: calc(768px + 1px)) {
+    max-width: 400px;
   }
 `;
 
@@ -30,6 +31,7 @@ export const InfoWrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     justify-content: space-between;
+    flex-grow: 1;
   }
 `;
 

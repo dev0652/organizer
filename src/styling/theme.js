@@ -13,7 +13,7 @@ export const theme = {
 
   // spacing: value => `${value * 4}px`,
   borderRadius: {
-    regular: '20px',
+    regular: '6px',
     large: '30px',
   },
 
