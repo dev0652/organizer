@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth } from 'redux/selectors';
 
-import { WelcomeMsg, Wrapper } from './UserBar.styled';
+import { UserName, Wrapper } from './UserBar.styled';
 import { BaseButton as LogoutButton } from 'styling/buttons';
 import { logout } from 'redux/auth/operations';
 
@@ -18,7 +18,9 @@ export default function UserBar() {
 
   return (
     <Wrapper>
-      <WelcomeMsg>Welcome, {name}</WelcomeMsg>
+      <div>
+        Hello <UserName>{name}</UserName>
+      </div>
       <LogoutButton variant="outlined" type="button" onClick={handleLogout}>
         Log out
       </LogoutButton>

@@ -6,6 +6,6 @@ export const Wrapper = styled.div`
   gap: 10px;
 `;
 
-export const WelcomeMsg = styled.div`
+export const UserName = styled.span`
   font-weight: bold;
 `;
