@@ -26,7 +26,7 @@ import {
   ButtonsWrapper,
   AddRandomIcon,
 } from './Contacts.styled';
-import SplitButton from 'components/ButtonGroup/ButtonGroup';
+// import SplitButton from 'components/ButtonGroup/ButtonGroup';
 
 // ################################################
 
@@ -61,8 +61,8 @@ export default function Contacts() {
       .catch(er => toast.error(er.message));
   };
 
-  const splitButtonOptions = ['New', 'Random'];
-  const splitButtonActions = [toggleModal, addRandomContact];
+  // const splitButtonOptions = ['New', 'Random'];
+  // const splitButtonActions = [toggleModal, addRandomContact];
 
   return (
     <PageWrapper>
@@ -72,13 +72,12 @@ export default function Contacts() {
             <Filter />
           </div>
 
-          {/* <div > */}
-          <SplitButton
+          {/* <SplitButton
             options={splitButtonOptions}
             actions={splitButtonActions}
-          />
-          {/* </div> */}
-          {/* <ButtonsWrapper>
+          /> */}
+
+          <ButtonsWrapper>
             <NewContactIconButton
               type="button"
               onClick={toggleModal}
@@ -96,7 +95,7 @@ export default function Contacts() {
             >
               <AddRandomIcon />
             </NewRandomContactButton>
-          </ButtonsWrapper> */}
+          </ButtonsWrapper>
         </Bar>
 
         {items.length > 0 && <ContactsList />}

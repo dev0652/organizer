@@ -36,7 +36,6 @@ export default function SplitButton({ options, actions }) {
   return (
     <>
       <ButtonGroup
-        style={{ height: '100%' }}
         variant="contained"
         ref={anchorRef}
         aria-label="split button"
