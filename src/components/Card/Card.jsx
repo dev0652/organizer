@@ -20,6 +20,7 @@ import {
   Name,
   TelephoneLink,
   EmailLink,
+  InfoWrapper,
 } from './Card.styled';
 import { toast } from 'react-hot-toast';
 // import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
@@ -64,17 +65,19 @@ export default function Card() {
 
   return (
     <CardWrapper>
-      <ImageWrapper>
-        <Image src={image} alt={name} width={640} />
-      </ImageWrapper>
+      <InfoWrapper>
+        <ImageWrapper>
+          <Image src={image} alt={name} width={640} />
+        </ImageWrapper>
 
-      <Meta>
-        <Name>{name}</Name>
+        <Meta>
+          <Name>{name}</Name>
 
-        <TelephoneLink href={`tel:+${number}`}>{number}</TelephoneLink>
+          <TelephoneLink href={`tel:+${number}`}>{number}</TelephoneLink>
 
-        <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
-      </Meta>
+          <EmailLink href={`mailto:${email}`}>{email}</EmailLink>
+        </Meta>
+      </InfoWrapper>
 
       <ButtonWrapper>
         {/* <EditButton type="button" onClick={toggleModal}>

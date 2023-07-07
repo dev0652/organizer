@@ -9,7 +9,9 @@ export const Wrapper = styled.div`
   align-items: center;
   color: silver;
 
-  margin-top: 20vh;
+  @media screen and (min-width: calc(768px + 1px)) {
+    margin-top: 20vh;
+  }
 `;
 
 export const Text = styled.div`

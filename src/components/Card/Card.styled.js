@@ -14,6 +14,23 @@ export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: row;
+  }
+
+  @media screen and (min-width: calc(768px + 1px)) {
+  }
+`;
+
+export const InfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 export const ImageWrapper = styled.div`
@@ -49,6 +66,11 @@ export const EmailLink = styled(BaseCardLink)``;
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 20px;
+
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    justify-content: end;
+  }
 `;
 
 export const EditButton = styled(BaseButton)``;

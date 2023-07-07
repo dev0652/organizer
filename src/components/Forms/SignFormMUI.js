@@ -20,6 +20,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useState } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 const defaultTheme = createTheme();
 
@@ -96,18 +97,21 @@ export default function SignFormMUI({ formType }) {
       : setPassword(value);
   };
 
+  const matches = useMediaQuery('(max-height: 600px)');
+
+  const styles = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    // marginTop: '17vh',
+    marginTop: matches ? '0' : '17vh',
+  };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <Box
-          sx={{
-            marginTop: '17vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
+        <Box sx={styles}>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
