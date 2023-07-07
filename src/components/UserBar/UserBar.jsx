@@ -7,6 +7,7 @@ import { BaseButton as LogoutButton } from 'styling/buttons';
 import { logout } from 'redux/auth/operations';
 
 import LogoutIcon from '@mui/icons-material/Logout';
+import LetterAvatar from 'components/Avatar/Avatar';
 
 export default function UserBar() {
   const {
@@ -20,9 +21,12 @@ export default function UserBar() {
 
   return (
     <Wrapper>
+      <LetterAvatar username={name} />
+
       <div>
-        Hello <UserName>{name}</UserName>
+        <UserName>{name}</UserName>
       </div>
+
       <LogoutButton
         variant="outlined"
         startIcon={<LogoutIcon />}
