@@ -88,6 +88,7 @@ export default function Card() {
         <Button
           variant="outlined"
           startIcon={<EditIcon />}
+          size="large"
           onClick={toggleModal}
         >
           Edit
@@ -96,6 +97,7 @@ export default function Card() {
           variant="outlined"
           color="error"
           startIcon={<DeleteIcon />}
+          size="large"
           onClick={() => handleDelete(currentId)}
         >
           Delete

@@ -73,5 +73,9 @@ export const AddRandomIcon = styled(HiChevronDoubleRight)`
 
 export const Bar = styled.div`
   display: flex;
-  gap: 20px;
+  gap: 15px;
+
+  /* outline: auto; */
+  /* justify-content: space-between; */
+  align-items: center;
 `;
