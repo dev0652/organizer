@@ -19,9 +19,9 @@ export const CardWrapper = styled.div`
     flex-direction: row;
   }
 
-  @media screen and (min-width: calc(768px + 1px)) {
+  /* @media screen and (min-width: calc(768px + 1px)) {
     max-width: 400px;
-  }
+  } */
 `;
 
 export const InfoWrapper = styled.div`
