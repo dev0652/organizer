@@ -1,17 +1,19 @@
 import { useDispatch } from 'react-redux';
 import { login, register } from 'redux/auth/operations';
-import Button from '@mui/material/Button';
+
+// import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 import {
   FieldsWrapper,
   FormWrapper,
-  TextField,
-  // SubmitButton,
+  // TextField,
+  SubmitButton,
 } from 'styling/forms';
 import { AuthFormContainer, ButtonGroup } from './AuthDataForm.styled';
 import { toast } from 'react-hot-toast';
-import SwitchForms from '../SwitchForms/SwitchForms';
-import Section from 'components/Section/Section';
+import SwitchForms from '../SwitchForms';
+import Section from 'components/Section';
 
 // ################################################
 
@@ -19,9 +21,15 @@ export default function AuthDataForm({ formType }) {
   const dispatch = useDispatch();
 
   const isSignUp = formType === 'register';
-  let buttonText, toastMessage, operation, emailDefaultValue, passDefaultValue;
+  let title,
+    buttonText,
+    toastMessage,
+    operation,
+    emailDefaultValue,
+    passDefaultValue;
 
   if (formType === 'login') {
+    title = 'Sign in';
     buttonText = 'Sign in';
     toastMessage = 'Login successful';
     operation = login;
@@ -30,6 +38,7 @@ export default function AuthDataForm({ formType }) {
   }
 
   if (isSignUp) {
+    title = 'Sign up';
     buttonText = 'Create an account';
     toastMessage = 'Registration successful';
     operation = register;
@@ -59,7 +68,7 @@ export default function AuthDataForm({ formType }) {
 
   return (
     <AuthFormContainer>
-      <Section title={buttonText}>
+      <Section title={title}>
         <FormWrapper onSubmit={handleSubmit}>
           <FieldsWrapper>
             {/* Name */}
@@ -87,10 +96,10 @@ export default function AuthDataForm({ formType }) {
           </FieldsWrapper>
 
           <ButtonGroup>
-            {/* <SubmitButton type="submit">{buttonText}</SubmitButton> */}
-            <Button variant="contained" type="submit">
+            <SubmitButton type="submit">{buttonText}</SubmitButton>
+            {/* <Button variant="contained" type="submit">
               {buttonText}
-            </Button>
+            </Button> */}
 
             <SwitchForms condition={isSignUp} />
           </ButtonGroup>

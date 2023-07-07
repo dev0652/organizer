@@ -1,8 +1,9 @@
 import { Helmet } from 'react-helmet-async';
 
-import AuthDataForm from 'components/Forms/AuthDataForm';
+// import AuthDataForm from 'components/Forms/AuthDataForm';
 import AuthBody from 'components/AuthBody/AuthBody';
 import { FlexCentered } from 'styling/positioning';
+import SignFormMUI from 'components/Forms/SignFormMUI';
 
 export default function Register() {
   return (
@@ -17,7 +18,8 @@ export default function Register() {
 
       <FlexCentered>
         <AuthBody>
-          <AuthDataForm formType="register" />
+          {/* <AuthDataForm formType="register" /> */}
+          <SignFormMUI formType="register" />
         </AuthBody>
       </FlexCentered>
     </>

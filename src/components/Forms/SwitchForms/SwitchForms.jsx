@@ -1,13 +1,4 @@
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-
-const SwitchFormsText = styled.p`
-  text-align: center;
-  font-size: 0.9rem;
-`;
-const StyledLink = styled(Link)`
-  font-weight: 500;
-`;
+import { StyledLink, SwitchFormsText } from './SwitchForms.styled';
 
 export default function SwitchForms({ condition }) {
   let message, linkTo, buttonText;
