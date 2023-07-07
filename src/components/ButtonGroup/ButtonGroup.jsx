@@ -14,11 +14,7 @@ export default function SplitButton({ options, actions }) {
   const anchorRef = React.useRef(null);
   const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleClick = index => {
-    console.log('actions', actions);
-    console.log('action', actions[index]);
-    return actions[index];
-  };
+  const handleClick = index => actions[index];
 
   const handleMenuItemClick = (event, index) => {
     setSelectedIndex(index);
