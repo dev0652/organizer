@@ -9,10 +9,9 @@ import AuthNav from 'components/AuthNav';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import loaderOptions from 'services/loaderOptions';
 
-import { StyledNavLink } from 'styling/links';
 import { AppBar, AppBarWrapper, Container } from './SharedLayout.styled';
 import { logout, refresh } from 'redux/auth/operations';
-import PageNav, { TabsRouter } from 'components/PageNav/PageNav';
+import PageNav from 'components/PageNav/PageNav';
 
 // ##############################
 
@@ -29,19 +28,14 @@ export default function SharedLayout() {
         .catch(() => dispatch(logout())); // log out if token is outdated
   }, [dispatch, token, user]);
 
+  const fallback = isLoading ? Loading.dots(loaderOptions) : Loading.remove();
+
   return (
     <>
       <AppBar className="header">
         <Container>
           <AppBarWrapper>
-            {/* <nav>
-              <StyledNavLink to="/">Home</StyledNavLink>
-              {isLoggedIn && (
-                <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-              )}
-            </nav> */}
             <PageNav isLoggedIn={isLoggedIn} />
-            {/* <TabsRouter /> */}
 
             {isLoggedIn ? <UserBar /> : <AuthNav />}
           </AppBarWrapper>
@@ -50,15 +44,11 @@ export default function SharedLayout() {
 
       {!isRefreshing && (
         <Container>
-          <Suspense
-            fallback={
-              isLoading ? Loading.dots(loaderOptions) : Loading.remove()
-            }
-          >
-            <main>
+          <main>
+            <Suspense fallback={fallback}>
               <Outlet />
-            </main>
-          </Suspense>
+            </Suspense>
+          </main>
         </Container>
       )}
     </>

@@ -16,7 +16,6 @@ function useRouteMatch(patterns) {
       return possibleMatch;
     }
   }
-
   return null;
 }
 
@@ -39,13 +38,3 @@ export default function PageNav({ isLoggedIn }) {
     </Tabs>
   );
 }
-
-// export default function PageNav({ isLoggedIn }) {
-//     return (
-//       <nav>
-//         <StyledNavLink to="/">Home</StyledNavLink>
-
-//         {isLoggedIn && <StyledNavLink to="/contacts">Contacts</StyledNavLink>}
-//       </nav>
-//     );
-//   }

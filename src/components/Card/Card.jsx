@@ -10,8 +10,8 @@ import Modal from 'components/Modal';
 // import Section from 'components/Section';
 
 import {
-  EditButton,
-  DeleteButton,
+  // EditButton,
+  // DeleteButton,
   ButtonWrapper,
   CardWrapper,
   Image,
@@ -24,6 +24,9 @@ import {
 import { toast } from 'react-hot-toast';
 // import ContactDataForm from 'components/Forms/ContactDataForm/ContactDataForm';
 import ContactFormMUI from 'components/Forms/ContactFormMUI';
+import { Button } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 // ##################################################
 
@@ -74,20 +77,29 @@ export default function Card() {
       </Meta>
 
       <ButtonWrapper>
-        <EditButton type="button" onClick={toggleModal}>
+        {/* <EditButton type="button" onClick={toggleModal}>
           Edit
-        </EditButton>
+        </EditButton> */}
 
-        <DeleteButton type="button" onClick={() => handleDelete(currentId)}>
+        {/* <DeleteButton type="button" onClick={() => handleDelete(currentId)}>
           Delete
-        </DeleteButton>
-        {/* 
-        <DeleteIconButton
-          onClick={() => handleDelete(currentId)}
-          aria-label="Delete contact"
+        </DeleteButton> */}
+
+        <Button
+          variant="outlined"
+          startIcon={<EditIcon />}
+          onClick={toggleModal}
         >
-          <DeleteIcon />
-        </DeleteIconButton> */}
+          Edit
+        </Button>
+        <Button
+          variant="outlined"
+          color="error"
+          startIcon={<DeleteIcon />}
+          onClick={() => handleDelete(currentId)}
+        >
+          Delete
+        </Button>
       </ButtonWrapper>
 
       {showModal && (
